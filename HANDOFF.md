@@ -19,10 +19,10 @@ origin git@github.com:femisstudio/femstudio.git
 branch main
 ```
 
-Most recent functional code checkpoint before this handoff update:
+Most recent functional code checkpoint before adding the latest owner brief:
 
 ```bash
-9ebeca7 Add photography gallery hover interactions
+9bd6be8 Update handoff and gallery hover fallback
 ```
 
 Verified commands:
@@ -52,6 +52,120 @@ Primary business goal:
 
 - Help FemStudio appear credible for people searching for photographers, headshots, brand photography, and web design in Houston.
 - Support Google search, image search, and AI answer engines with clean metadata, structured data, semantic HTML, canonical URLs, and descriptive image alt text.
+- Convert visitors into paying photography and web design clients.
+
+Owner identity and guardrails:
+
+- Owner: John Adeniran.
+- John is a UX Designer based in Houston, TX.
+- Do not mention John's employer anywhere on the site.
+- FemStudio is a real business, founded in 2022.
+- Domain: `femsstudio.com`.
+- Instagram: `@femstudio__`.
+
+Primary buyers:
+
+- Individuals who need professional headshots for LinkedIn, internships, job applications, or personal branding.
+- Small businesses in Houston that need premium websites that look good and support inquiries.
+
+Core conversion principle:
+
+- Every design decision, every line of copy, and every page should help visitors trust FemStudio, understand the offer, see real work, and contact John.
+
+---
+
+## 1A. Latest Owner Rebuild Brief
+
+The latest owner brief says the site should include exactly five public pages:
+
+1. Homepage `/`
+2. Photography `/photography`
+3. Web Design `/web-design`
+4. About `/about`
+5. Contact `/contact`
+
+Homepage target:
+
+- Split hero:
+  - Left panel: Photography, editorial image, large italic "Photography" heading.
+  - Right panel: dark gradient panel, bold Syncopate "WEB DESIGN & STRATEGY".
+  - Central vertical gold divider must use the exact text "BRAND PHOTOGRAPHY" and "CUSTOM WEB DESIGN".
+- Services section: "THE ARTIFACTS" with 5 service cards, no prices, and "INQUIRE" links to `/contact`.
+- Selected Works section: 6 portfolio cards in a 3-column grid.
+- Footer with inquiry form.
+
+Photography target:
+
+- Hero: Porsche editorial shot with "Every frame, a story." italic heading.
+- Functional filter tabs: ALL, HEADSHOTS, EDITORIAL & BRAND, CELEBRATIONS.
+- Masonry grid: 12 portfolio cards.
+- Gallery photos start grayscale and return to color on hover.
+- Category tag appears on hover.
+- Professional Headshots strip: horizontal scroll of 4 portrait cards.
+- "READY TO BOOK?" CTA linking to `/contact`.
+
+Web Design target:
+
+- Hero: "WEB DESIGN" in white plus "& STRATEGY" in gold outline, browser mockup on the right.
+- Functional filter tabs: ALL, WEB DESIGN, E-COMMERCE, SEO & MARKETING.
+- 2-column project grid with these 6 client/project names:
+  - The Dirt Way
+  - Tarro Law Group
+  - Luna Cleanz
+  - OC South Coast Cleaning
+  - Climtransformlab
+  - FemStudio
+- Process section: 4 steps with timeline.
+- "START YOUR PROJECT" CTA.
+
+About target:
+
+- Hero: "The Story Behind the Lens".
+- Founder section with photo of John Adeniran.
+- Use the three John story paragraphs from the owner brief. Note: the owner provided them with em dashes, but also said no em dashes in copy. Prefer clean punctuation without em dashes unless John explicitly asks for exact punctuation.
+- Stats strip: EST. 2022, HOUSTON TX, 2 SERVICES.
+- Values:
+  - 01 "Everyone deserves a professional image."
+  - 02 "Design should do something."
+  - 03 "Craft first, scale second."
+- CTA: "READY TO WORK TOGETHER?"
+
+Contact target:
+
+- Hero: "LET'S TALK." in Syncopate.
+- Split layout: left contact info, right full form.
+- Form fields:
+  - First name
+  - Last name
+  - Email
+  - Phone optional
+  - Service interest radio: Photography, Web Design, E-Commerce, Both
+  - Project details textarea
+  - Budget range radio: Under $500, $500-$1500, $1500-$5000, $5000+
+- Success message should be exactly: "Message received. We will be in touch within 24 hours."
+- FAQ strip with 3 questions at bottom.
+- Footer.
+
+Important conflict note:
+
+- The owner brief asks for budget ranges on the contact form, but also says no pricing shown anywhere on the site. Treat these as lead qualification ranges, not service pricing. Keep them only on the contact form unless John says otherwise.
+
+---
+
+## 1B. Known Gaps Against Latest Owner Brief
+
+These are not necessarily bugs, but they are the next things Claude should audit before editing:
+
+- Current GitHub remote is `git@github.com:femisstudio/femstudio.git`, while the latest owner brief says `femisstudio/Femstudio-website`. Do not change the remote without confirming which repo John wants as canonical.
+- Current app image folders use direct paths like `/images/editorial/`, while the latest owner brief mentions `/images/portfolio/photography/` and `/images/portfolio/web/`. Earlier cleanup made the direct folders canonical. Do not move images again unless John confirms the new structure.
+- Current homepage center divider uses stats and mood text, not the exact owner-required "BRAND PHOTOGRAPHY" and "CUSTOM WEB DESIGN".
+- Current homepage has a "DIGITAL ALCHEMY" process section, not the requested "THE ARTIFACTS" services section and 6-card Selected Works section.
+- Current photography hero has the Porsche image first, then the "Every frame, a story." heading in the green intro section. Latest owner target asks for the heading on the hero.
+- Current photography service page intentionally removed visible FAQ content to match a prior reference design. Latest SEO/GEO brief says service pages should include FAQ content.
+- Current contact page uses "Start with a few details." as the visible `h1`, not "LET'S TALK."
+- Current contact form uses a service select and a freeform budget input, not the requested radio groups.
+- Current contact success message is "Inquiry sent. We will be in touch soon." unless overridden by the API response. Latest owner brief requests exact success text.
+- Current shared Header/Footer exist, but several reference-style pages use custom per-page headers and footers. Decide whether to consolidate only after visual QA.
 
 ---
 
@@ -104,6 +218,7 @@ Git is initialized locally on branch `main`.
 
 Recent local backup commits include:
 
+- `9bd6be8` - `Update handoff and gallery hover fallback`
 - `9ebeca7` - `Add photography gallery hover interactions`
 - `82540da` - `Convert photography page to reference layout`
 - `f43a162` - `Convert web design page to reference layout`
@@ -170,15 +285,21 @@ This version has breaking changes. Read the relevant guide in node_modules/next/
 - Always use Houston or Houston TX naturally in location context.
 - Founder name: John Adeniran.
 - Contact info: `info@femsstudio.com`, `+1 (281) 818-3726`.
+- Do not mention John's employer.
 - No AI-generated images.
 - No unattributed client logos.
-- No false claims, fake awards, or inflated authority claims.
+- No false claims, fake reviews, fake awards, testimonials, or inflated authority claims.
 - No superlatives like "best" or "fastest" in visible copy.
 - No pricing numbers in service copy.
+- No pricing packages on the site. Budget range inputs on the contact form are lead qualification only if used.
+- No em dashes in visible site copy.
+- No AI-sounding language.
 - No "500+ headshots" anywhere on the site.
 - No "150+ websites" anywhere on the site.
 - Real stats only: 50+ headshots, 5-6 client websites, EST. 2022.
 - No Zone Entertainment event photos. These are not FemStudio portfolio assets.
+- Homepage hero divider must say "BRAND PHOTOGRAPHY" and "CUSTOM WEB DESIGN" if following the latest owner brief.
+- Copy should sell outcomes, not deliverables.
 
 ---
 
@@ -188,6 +309,7 @@ Colors:
 
 - Dark Green: `#0a1f19`
 - Forest: `#0f2d24`
+- Light Green: `#1a4336`
 - Cream: `#fcfbf7`
 - Gold: `#c9a227`
 
@@ -284,6 +406,12 @@ public/images/portfolio/web/
 
 Those were external source-folder paths from the older local asset set, not the canonical app paths.
 
+Latest owner brief conflict:
+
+- The owner brief mentions `public/images/portfolio/photography/` and `public/images/portfolio/web/`.
+- Current working repo and current code use the direct folder structure above.
+- Before moving or renaming images, confirm with John which structure should be canonical going forward.
+
 ---
 
 ## 9. Current Image Assets
@@ -372,6 +500,19 @@ SEO reality check:
 - No code can guarantee FemStudio shows up first in Google or AI answers.
 - The rebuilt site is structured to support discoverability, but ranking also depends on backlinks, Google Business Profile, real reviews, content freshness, domain authority, citations, page speed, and local relevance.
 
+Target search phrases from the latest owner brief:
+
+- "professional headshots Houston"
+- "web designer Houston"
+- "headshots for LinkedIn Houston"
+- "small business website design Houston"
+
+AI discovery goals:
+
+- Service pages should have natural Houston-focused FAQ content.
+- Structured data should stay accurate and should not include fake reviews, ratings, awards, or inflated claims.
+- NAP should stay consistent: FemStudio, Houston TX, `info@femsstudio.com`, `+1 (281) 818-3726`.
+
 ---
 
 ## 11. Environment Variables
@@ -396,6 +537,7 @@ Rules:
 
 High priority:
 
+- Audit and close the known gaps listed in Section 1B.
 - Review `/photography` hero crop on real mobile devices. The page uses a Porsche/model/car image that works well on desktop but may crop on narrow screens.
 - Review `/photography` gallery hover behavior on real desktop: portfolio images should start black and white, then return to color with a gold overlay on hover.
 - Test that the logo appears in the header on every page.
@@ -414,6 +556,11 @@ Before launch:
 - Validate structured data.
 - Submit sitemap to Google Search Console.
 - Create or update Google Business Profile.
+- Connect the canonical GitHub repository to Vercel.
+- Add `RESEND_API_KEY` in Vercel Environment Variables.
+- Update DNS when ready:
+  - A record: `@` to `76.76.21.21`
+  - CNAME: `www` to `cname.vercel-dns.com`
 
 ---
 
@@ -421,19 +568,23 @@ Before launch:
 
 1. Read `AGENTS.md`.
 2. Read relevant Next.js 16 docs in `node_modules/next/dist/docs/`.
-3. Run `npm run build`.
-4. Run `npm run lint`.
-5. Open every page locally:
+3. Read Section 1A and Section 1B of this file.
+4. Run `git status`.
+5. Run `git pull origin main`.
+6. Confirm the current branch and latest commit.
+7. Run `npm run build`.
+8. Run `npm run lint`.
+9. Open every page locally:
    - `/`
    - `/about`
    - `/photography`
    - `/web-design`
    - `/contact`
-6. Confirm the FemStudio logo displays in the header.
-7. Confirm no image placeholders are visible where real images should render.
-8. Confirm `/photography` hero shows both the model and car.
-9. Confirm `/photography` portfolio images start black and white and return to color on hover.
-10. Confirm all image paths use:
+10. Confirm the FemStudio logo displays in the header.
+11. Confirm no image placeholders are visible where real images should render.
+12. Confirm `/photography` hero shows both the model and car.
+13. Confirm `/photography` portfolio images start black and white and return to color on hover.
+14. Confirm all image paths use:
    - `/images/editorial/`
    - `/images/headshots/`
    - `/images/celebrations/`
@@ -441,18 +592,19 @@ Before launch:
    - `/images/webdesign/`
    - `/images/brand/`
    - `/images/og/`
-11. Search for and remove any accidental old paths:
+15. Search for and remove any accidental old paths:
    - `portfolio/photography`
    - `portfolio/web`
-12. Search for forbidden claims:
+16. Search for forbidden claims:
    - `500+`
    - `150+`
    - `best`
    - `fastest`
    - `Zone Entertainment`
-13. Review `app/api/contact/route.ts` for serverless rate-limit limitations.
-14. Do not touch `.env` or secrets.
-15. Do not invent client names, awards, or inflated numbers.
+17. Search for em dashes in visible copy and replace them unless John explicitly approves exact punctuation.
+18. Review `app/api/contact/route.ts` for serverless rate-limit limitations.
+19. Do not touch `.env` or secrets.
+20. Do not invent client names, awards, testimonials, reviews, ratings, or inflated numbers.
 
 Useful searches:
 
@@ -470,19 +622,24 @@ Read HANDOFF.md first. This project was rebuilt after accidental deletion.
 
 Do not touch .env or secrets.
 
-Read the relevant Next.js 16 docs in node_modules/next/dist/docs per AGENTS.md, then run npm run build and npm run lint.
+Read Section 1A and Section 1B carefully. They contain the latest owner brief and known gaps against the current implementation.
 
-Fix only issues needed to make the rebuilt FemStudio site work.
+Read the relevant Next.js 16 docs in node_modules/next/dist/docs per AGENTS.md, then run git status, git pull origin main, npm run build, and npm run lint.
+
+Fix only issues needed to align the rebuilt FemStudio site with the latest owner brief and confirmed visual references.
 
 Verify:
 - Header logo displays
 - Images load from canonical direct folders
 - Photography hero shows both model and car
 - Photography gallery starts black and white, then returns to color on hover
+- Homepage hero divider uses BRAND PHOTOGRAPHY and CUSTOM WEB DESIGN if implementing the latest owner brief
+- Contact page uses LET'S TALK. and the requested form structure if implementing the latest owner brief
 - No old portfolio/photography or portfolio/web paths remain
 - One h1 per page
 - main id="main-content" on public pages
 - No forbidden inflated claims
+- No em dashes in visible site copy unless John explicitly approves exact punctuation
 - Contact API still uses process.env.RESEND_API_KEY only
 
 Afterward report files changed, build result, lint result, remaining risks, and manual deployment tasks.
