@@ -58,8 +58,8 @@ const items: PortfolioItem[] = [
     id: 'editorial-1',
     category: 'editorial',
     label: 'Editorial',
-    src: '/images/editorial/porsche-editorial-houston-photographer-01.jpg',
-    alt: 'Porsche editorial photography in Houston TX by FemStudio',
+    src: '/images/editorial/porsche-editorial-houston-photographer-03.jpg',
+    alt: 'Porsche editorial photography with model and car in Houston TX by FemStudio',
     className: 'md:row-span-2',
   },
   {
@@ -74,8 +74,8 @@ const items: PortfolioItem[] = [
     id: 'editorial-3',
     category: 'editorial',
     label: 'Campaign',
-    src: '/images/editorial/porsche-editorial-houston-photographer-03.jpg',
-    alt: 'Automotive editorial portrait shoot in Houston TX by FemStudio',
+    src: '/images/editorial/porsche-editorial-houston-photographer-01.jpg',
+    alt: 'Automotive editorial portrait shoot with Porsche in Houston TX by FemStudio',
     className: 'md:row-span-2',
   },
   {

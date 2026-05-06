@@ -26,13 +26,17 @@ This checkpoint was recreated after the FemStudio project folder was accidentall
 
 ## Build Status
 
-Build still needs to be run after dependency installation.
+- `npm install` succeeded after network permission was granted.
+- `npm run lint` passes.
+- `npm run build` passes.
+- The first build attempt failed only because Turbopack needed permission to bind an internal port in the sandbox.
 
 ## Known Missing or Weak Areas
 
 - OG images were recreated quickly and should be refined visually.
 - Web design imagery uses an available local screenshot during recovery.
 - Visual QA is still needed on real browser widths.
+- `/photography` desktop hero was adjusted to preserve the model and car, but mobile crop still needs real device review.
 
 ## Security-Sensitive Areas to Review
 
@@ -44,9 +48,9 @@ Build still needs to be run after dependency installation.
 ## Claude Review Checklist
 
 - [ ] Read `HANDOFF.md`.
-- [ ] Run `npm install` if needed.
-- [ ] Run `npm run build`.
-- [ ] Confirm no TypeScript errors.
+- [x] Run `npm install` if needed.
+- [x] Run `npm run build`.
+- [x] Confirm no TypeScript errors.
 - [ ] Confirm all images load.
 - [ ] Confirm `/photography` hero shows model and car.
 - [ ] Confirm each page has one `h1`.

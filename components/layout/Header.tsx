@@ -48,7 +48,7 @@ export default function Header() {
           width={190}
           height={45}
           sizes="(max-width: 768px) 170px, 190px"
-          className="h-auto w-full"
+          className="h-auto w-full drop-shadow-[0_2px_14px_rgba(0,0,0,0.45)]"
         />
       </Link>
 

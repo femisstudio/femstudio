@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { FormEvent, useState } from 'react'
 
@@ -75,7 +76,16 @@ export default function Footer() {
     <footer className="border-t border-gold/20 bg-[#081712] px-6 py-20 md:px-24" aria-label="Site footer">
       <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1fr_0.9fr]">
         <div>
-          <p className="mb-5 font-sans text-xs tracking-[0.3em] text-gold">FEMSTUDIO</p>
+          <Link href="/" aria-label="FemStudio homepage" className="focus-ring mb-8 block w-[190px] rounded-sm">
+            <Image
+              src="/images/brand/femstudio-logo-horizontal.png"
+              alt="FemStudio"
+              width={190}
+              height={45}
+              sizes="190px"
+              className="h-auto w-full"
+            />
+          </Link>
           <h2 className="mb-8 max-w-2xl font-serif text-5xl italic leading-tight text-cream md:text-7xl">
             Let&apos;s create something honest.
           </h2>

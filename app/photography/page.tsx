@@ -140,7 +140,7 @@ export default function PhotographyPage() {
             fill
             preload
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover object-[62%_center] md:object-contain md:object-center"
           />
           <div
             className="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,45,36,0.98)_0%,rgba(15,45,36,0.76)_35%,rgba(15,45,36,0.2)_72%),linear-gradient(to_top,rgba(15,45,36,0.8),transparent_65%)]"

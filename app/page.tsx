@@ -69,8 +69,8 @@ const services = [
 const selectedWorks = [
   {
     title: 'Porsche Editorial',
-    src: '/images/editorial/porsche-editorial-houston-photographer-02.jpg',
-    alt: 'Porsche editorial brand photography in Houston TX by FemStudio',
+    src: '/images/editorial/porsche-editorial-houston-photographer-03.jpg',
+    alt: 'Porsche editorial brand photography with model and car in Houston TX by FemStudio',
   },
   {
     title: 'Professional Headshots',
@@ -117,7 +117,7 @@ export default function HomePage() {
                 fill
                 preload
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover opacity-70"
+                className="object-cover object-[62%_center] opacity-70"
               />
             </div>
             <div className="relative bg-darkGreen">

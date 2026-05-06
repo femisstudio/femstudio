@@ -1,8 +1,8 @@
 # FemStudio Project Handoff Document
 
-**Last Updated**: May 5, 2026, 9:02 PM EDT  
+**Last Updated**: May 5, 2026, after rebuild verification  
 **Project**: FemStudio - Houston-based Photography and Web Design Studio  
-**Status**: Rebuilt after accidental deletion. Dependencies and build still need verification.
+**Status**: Rebuilt after accidental deletion. Dependencies installed. Lint and production build pass.
 
 ---
 
@@ -10,16 +10,15 @@
 
 The original project folder was accidentally deleted by Claude with no backup. Codex rebuilt the site from retained project context and local image assets found under `/Users/femi/Desktop/public/images`.
 
-The rebuilt code is present in `/Users/femi/Desktop/femstudio`, but dependency installation failed because the sandbox could not resolve `registry.npmjs.org`. As a result, `npm run build` has not been verified after the rebuild.
+The rebuilt code is present in `/Users/femi/Desktop/femstudio`. Dependencies were installed after network permission was granted, and both lint and production build pass.
 
-Next model should do this first:
+Verified commands:
 
 ```bash
 npm install
+npm run lint
 npm run build
 ```
-
-If `npm install` fails again, it is likely a network/DNS permission issue, not necessarily a code issue.
 
 Important: do not read, print, edit, or expose `.env` or `.env.local`.
 
@@ -85,7 +84,12 @@ Image documentation:
 - `public/images/README.md`
 - `public/images/og/README.md`
 
-There is currently no `.git` repository in this folder.
+Git is initialized locally on branch `main`.
+
+Current local backup commits:
+
+- `104d4e7` - `Rebuild FemStudio baseline`
+- Latest commit - `Verify build and polish design`
 
 ---
 
@@ -102,7 +106,7 @@ There is currently no `.git` repository in this folder.
 - ESLint 9
 - TypeScript
 
-Attempted command:
+Dependency command:
 
 ```bash
 npm install
@@ -110,12 +114,12 @@ npm install
 
 Result:
 
-- Failed with `ENOTFOUND registry.npmjs.org`.
-- This was a network/DNS issue in the sandbox.
-- `node_modules` may be missing or incomplete.
-- `npm run build` was not run successfully after the rebuild.
+- Initial attempt failed with `ENOTFOUND registry.npmjs.org` due sandbox network/DNS restrictions.
+- Second attempt with network permission succeeded.
+- `package-lock.json` was generated.
+- `node_modules/` is present locally and ignored by Git.
 
-Next model should install dependencies with network access and then run:
+Verification commands now pass:
 
 ```bash
 npm run build
@@ -133,7 +137,7 @@ This is NOT the Next.js you know
 This version has breaking changes. Read the relevant guide in node_modules/next/dist/docs/ before writing any code.
 ```
 
-Because `node_modules` is not currently installed, the next model must run `npm install` before reading those local docs.
+`node_modules` is currently installed locally, so future agents can read those docs before editing.
 
 ---
 
@@ -194,7 +198,7 @@ Photography `/photography`
 - Uses a client filter component for portfolio categories.
 - Includes visible FAQ content and FAQPage JSON-LD.
 - Includes Service JSON-LD.
-- Current visual concern from user: verify hero crop still shows model and car at desktop and mobile sizes.
+- The hero crop was adjusted so desktop uses the wide Porsche hero image without cropping away the model or car. Mobile still needs visual QA because very narrow screens cannot show the full horizontal scene without tradeoffs.
 
 Web Design `/web-design`
 
@@ -308,7 +312,7 @@ Cleanup candidates from recovery:
 - `public/images/og/og-web-design-source.jpg`
 - `public/images/webdesign/client-website-example.png`
 
-Do not delete cleanup candidates until after confirming no code references them.
+Do not delete cleanup candidates until after confirming no code references them. A path scan showed app code is using canonical `/images/...` paths only.
 
 ---
 
@@ -369,9 +373,6 @@ Rules:
 
 High priority:
 
-- Run `npm install`.
-- Run `npm run build`.
-- Fix any build or lint issues.
 - Test `/photography` hero crop at desktop and mobile so both model and car remain visible.
 - Test that the logo appears in the header on every page.
 - Confirm all images load from the canonical direct folders.
@@ -395,11 +396,10 @@ Before launch:
 ## 13. Exact Review Checklist for Claude
 
 1. Read `AGENTS.md`.
-2. Run `npm install`.
-3. Read relevant Next.js 16 docs in `node_modules/next/dist/docs/`.
-4. Run `npm run build`.
-5. Run `npm run lint`.
-6. Open every page locally:
+2. Read relevant Next.js 16 docs in `node_modules/next/dist/docs/`.
+3. Run `npm run build`.
+4. Run `npm run lint`.
+5. Open every page locally:
    - `/`
    - `/about`
    - `/photography`
@@ -467,10 +467,10 @@ Afterward report files changed, build result, lint result, remaining risks, and 
 ## 15. Known Risks and Assumptions
 
 - The rebuild is based on retained context, not an original Git backup.
-- Dependencies are not verified because `npm install` failed from network DNS restrictions.
-- Build is not verified after the rebuild.
+- Dependencies are installed and verified locally.
+- Production build passes.
+- Lint passes.
 - OG images are functional placeholders made from restored photography and should be redesigned before launch.
 - Some recovery source files remain in `public/images`; clean them only after verifying no references.
 - Web design portfolio assets are limited and should be replaced or expanded with approved client screenshots.
 - SEO foundation is present, but search ranking is not guaranteed by metadata alone.
-
