@@ -117,7 +117,7 @@ export default function HomePage() {
                 fill
                 preload
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover object-[62%_center] opacity-70"
+                className="object-cover object-[62%_center] opacity-70 md:object-contain"
               />
             </div>
             <div className="relative bg-darkGreen">

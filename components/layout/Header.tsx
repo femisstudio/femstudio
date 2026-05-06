@@ -32,8 +32,10 @@ export default function Header() {
   return (
     <header
       role="banner"
-      className={`fixed top-0 z-50 flex w-full items-center justify-between px-6 py-5 transition-all duration-300 md:px-10 ${
-        scrolled ? 'bg-darkGreen/92 shadow-sm backdrop-blur-sm' : 'bg-transparent'
+      className={`fixed top-0 z-50 flex w-full items-center justify-between border-b px-6 py-5 transition-all duration-300 md:px-10 ${
+        scrolled || menuOpen
+          ? 'border-cream/10 bg-darkGreen/92 shadow-sm backdrop-blur-md'
+          : 'border-cream/10 bg-darkGreen/45 backdrop-blur-[2px]'
       }`}
     >
       <Link
@@ -77,7 +79,7 @@ export default function Header() {
         aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
         aria-expanded={menuOpen}
         aria-controls="mobile-menu"
-        className="focus-ring inline-flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-full border border-cream/50 md:hidden"
+        className="focus-ring inline-flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-full border border-cream/60 bg-darkGreen/30 md:hidden"
         onClick={() => setMenuOpen((open) => !open)}
       >
         <span className={`h-px w-5 bg-cream transition-transform ${menuOpen ? 'translate-y-[7px] rotate-45' : ''}`} />

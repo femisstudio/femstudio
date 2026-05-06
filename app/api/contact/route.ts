@@ -33,6 +33,20 @@ function getDetails(payload: ContactPayload) {
   return clean(payload.details ?? payload.message, MAX_LENGTHS.details)
 }
 
+function escapeHtml(value: string) {
+  return value.replace(/[&<>"']/g, (char) => {
+    const entities: Record<string, string> = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+    }
+
+    return entities[char] || char
+  })
+}
+
 export async function POST(request: NextRequest) {
   const contentLength = Number(request.headers.get('content-length') || 0)
 
@@ -72,6 +86,12 @@ export async function POST(request: NextRequest) {
   }
 
   const resend = new Resend(apiKey)
+  const safeName = escapeHtml(name)
+  const safeEmail = escapeHtml(email)
+  const safePhone = escapeHtml(phone)
+  const safeService = escapeHtml(service)
+  const safeBudget = escapeHtml(budget)
+  const safeDetails = escapeHtml(details).replace(/\n/g, '<br />')
 
   try {
     await resend.emails.send({
@@ -94,13 +114,13 @@ export async function POST(request: NextRequest) {
         .join('\n'),
       html: `
         <h2>New FemStudio Inquiry</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
-        <p><strong>Service:</strong> ${service}</p>
-        ${budget ? `<p><strong>Budget:</strong> ${budget}</p>` : ''}
+        <p><strong>Name:</strong> ${safeName}</p>
+        <p><strong>Email:</strong> ${safeEmail}</p>
+        ${phone ? `<p><strong>Phone:</strong> ${safePhone}</p>` : ''}
+        <p><strong>Service:</strong> ${safeService}</p>
+        ${budget ? `<p><strong>Budget:</strong> ${safeBudget}</p>` : ''}
         <p><strong>Details:</strong></p>
-        <p>${details.replace(/\n/g, '<br />')}</p>
+        <p>${safeDetails}</p>
       `,
     })
   } catch (error) {

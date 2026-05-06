@@ -122,46 +122,61 @@ export default function Footer() {
         <form onSubmit={onSubmit} className="rounded-lg border border-cream/15 bg-cream/[0.03] p-6 md:p-8">
           <h3 className="mb-6 font-serif text-3xl italic text-cream">Quick inquiry</h3>
           <div className="grid gap-5">
-            <input
-              required
-              value={form.name}
-              onChange={(event) => setForm({ ...form, name: event.target.value })}
-              placeholder="Name"
-              className="rounded-none border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-xl text-cream outline-none placeholder:text-cream/35 focus:border-gold"
-            />
-            <input
-              required
-              type="email"
-              value={form.email}
-              onChange={(event) => setForm({ ...form, email: event.target.value })}
-              placeholder="Email"
-              className="rounded-none border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-xl text-cream outline-none placeholder:text-cream/35 focus:border-gold"
-            />
-            <input
-              value={form.phone}
-              onChange={(event) => setForm({ ...form, phone: event.target.value })}
-              placeholder="Phone (optional)"
-              className="rounded-none border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-xl text-cream outline-none placeholder:text-cream/35 focus:border-gold"
-            />
-            <select
-              value={form.service}
-              onChange={(event) => setForm({ ...form, service: event.target.value })}
-              className="rounded-none border-0 border-b border-cream/25 bg-transparent px-0 py-3 font-sans text-sm tracking-[0.15em] text-cream outline-none focus:border-gold"
-            >
-              {serviceOptions.map((option) => (
-                <option key={option.value} value={option.value} className="bg-darkGreen">
-                  {option.label}
-                </option>
-              ))}
-            </select>
-            <textarea
-              required
-              value={form.details}
-              onChange={(event) => setForm({ ...form, details: event.target.value })}
-              placeholder="Tell us about your project"
-              rows={5}
-              className="resize-none rounded-none border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-xl text-cream outline-none placeholder:text-cream/35 focus:border-gold"
-            />
+            <label className="block">
+              <span className="sr-only">Name</span>
+              <input
+                required
+                value={form.name}
+                onChange={(event) => setForm({ ...form, name: event.target.value })}
+                placeholder="Name"
+                className="w-full rounded-none border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-xl text-cream outline-none placeholder:text-cream/35 focus:border-gold"
+              />
+            </label>
+            <label className="block">
+              <span className="sr-only">Email</span>
+              <input
+                required
+                type="email"
+                value={form.email}
+                onChange={(event) => setForm({ ...form, email: event.target.value })}
+                placeholder="Email"
+                className="w-full rounded-none border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-xl text-cream outline-none placeholder:text-cream/35 focus:border-gold"
+              />
+            </label>
+            <label className="block">
+              <span className="sr-only">Phone</span>
+              <input
+                value={form.phone}
+                onChange={(event) => setForm({ ...form, phone: event.target.value })}
+                placeholder="Phone (optional)"
+                className="w-full rounded-none border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-xl text-cream outline-none placeholder:text-cream/35 focus:border-gold"
+              />
+            </label>
+            <label className="block">
+              <span className="sr-only">Service</span>
+              <select
+                value={form.service}
+                onChange={(event) => setForm({ ...form, service: event.target.value })}
+                className="w-full rounded-none border-0 border-b border-cream/25 bg-transparent px-0 py-3 font-sans text-sm tracking-[0.15em] text-cream outline-none focus:border-gold"
+              >
+                {serviceOptions.map((option) => (
+                  <option key={option.value} value={option.value} className="bg-darkGreen">
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="block">
+              <span className="sr-only">Project details</span>
+              <textarea
+                required
+                value={form.details}
+                onChange={(event) => setForm({ ...form, details: event.target.value })}
+                placeholder="Tell us about your project"
+                rows={5}
+                className="w-full resize-none rounded-none border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-xl text-cream outline-none placeholder:text-cream/35 focus:border-gold"
+              />
+            </label>
           </div>
 
           <button

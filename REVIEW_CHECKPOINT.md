@@ -18,7 +18,7 @@ This checkpoint was recreated after the FemStudio project folder was accidentall
 - Layout: global metadata, business schema, website schema, app shell styles.
 - Header: logo navigation and mobile menu.
 - Footer: contact details, quick inquiry form, footer navigation.
-- Contact API: validates, sanitizes, checks spam signals, and sends through Resend.
+- Contact API: validates, sanitizes, escapes email HTML, checks spam signals, and sends through Resend.
 - Photography page: hero, portfolio filtering, headshots, FAQ, structured data.
 - Web design page: service content, process, FAQ, structured data.
 - About page: founder story and Person schema.
@@ -36,13 +36,14 @@ This checkpoint was recreated after the FemStudio project folder was accidentall
 - OG images were recreated quickly and should be refined visually.
 - Web design imagery uses an available local screenshot during recovery.
 - Visual QA is still needed on real browser widths.
-- `/photography` desktop hero was adjusted to preserve the model and car, but mobile crop still needs real device review.
+- `/photography` now uses separate mobile and desktop Porsche hero images, but mobile crop still needs real device review.
 
 ## Security-Sensitive Areas to Review
 
 - `app/api/contact/route.ts`
 - Resend sender domain and reply-to behavior
 - Field length limits and anti-spam checks
+- Serverless rate-limit limitations
 - No `.env` or secrets committed
 
 ## Claude Review Checklist
@@ -55,6 +56,7 @@ This checkpoint was recreated after the FemStudio project folder was accidentall
 - [ ] Confirm `/photography` hero shows model and car.
 - [ ] Confirm each page has one `h1`.
 - [ ] Confirm every public page has `main id="main-content"`.
+- [ ] Confirm contact form labels and keyboard focus are accessible.
 - [ ] Confirm no inflated stats or prohibited content rules.
 - [ ] Confirm contact form response shape matches client forms.
 

@@ -1,6 +1,6 @@
 # FemStudio Project Handoff Document
 
-**Last Updated**: May 5, 2026, after rebuild verification  
+**Last Updated**: May 6, 2026  
 **Project**: FemStudio - Houston-based Photography and Web Design Studio  
 **Status**: Rebuilt after accidental deletion. Dependencies installed. Lint and production build pass.
 
@@ -86,10 +86,10 @@ Image documentation:
 
 Git is initialized locally on branch `main`.
 
-Current local backup commits:
+Recent local backup commits include:
 
 - `104d4e7` - `Rebuild FemStudio baseline`
-- Latest commit - `Verify build and polish design`
+- `59f0aab` - `Verify build and polish design`
 
 ---
 
@@ -224,7 +224,7 @@ Contact API `/api/contact`
 
 Security review note:
 
-- The API strips tags before placing values into the email HTML. A later reviewer should consider explicit HTML escaping as an additional hardening step.
+- The API strips tags from submitted fields and escapes values before placing them into the email HTML.
 - The in-memory anti-spam/rate-limit approach is simple and may not work consistently across serverless instances.
 
 ---
@@ -266,7 +266,6 @@ Brand:
 Founder:
 
 - `public/images/founder/john-adeniran-femstudio-houston-photographer.jpg`
-- `public/images/founder/john-adeniran-femstudio-houston-photographer.png`
 
 Editorial:
 
@@ -302,17 +301,10 @@ Open Graph:
 - `public/images/og/og-photography.jpg`
 - `public/images/og/og-web-design.jpg`
 
-Cleanup candidates from recovery:
+Recovery cleanup:
 
-- `public/images/editorial/porsche-hero-source.jpg`
-- `public/images/editorial/porsche-hero-fitted.jpg`
-- `public/images/og/og-femstudio-source.jpg`
-- `public/images/og/og-about-source.jpg`
-- `public/images/og/og-photography-source.jpg`
-- `public/images/og/og-web-design-source.jpg`
-- `public/images/webdesign/client-website-example.png`
-
-Do not delete cleanup candidates until after confirming no code references them. A path scan showed app code is using canonical `/images/...` paths only.
+- Unused recovery source images were removed after confirming app code did not reference them.
+- App code uses canonical `/images/...` paths only.
 
 ---
 
@@ -373,7 +365,7 @@ Rules:
 
 High priority:
 
-- Test `/photography` hero crop at desktop and mobile so both model and car remain visible.
+- Review `/photography` hero crop on real mobile devices. The page now uses a mobile-specific Porsche image and a desktop-wide Porsche hero image.
 - Test that the logo appears in the header on every page.
 - Confirm all images load from the canonical direct folders.
 - Test contact form UI validation.
@@ -425,7 +417,7 @@ Before launch:
    - `best`
    - `fastest`
    - `Zone Entertainment`
-13. Review `app/api/contact/route.ts` for HTML escaping and serverless rate-limit limitations.
+13. Review `app/api/contact/route.ts` for serverless rate-limit limitations.
 14. Do not touch `.env` or secrets.
 15. Do not invent client names, awards, or inflated numbers.
 
@@ -445,7 +437,7 @@ Read HANDOFF.md first. This project was rebuilt after accidental deletion.
 
 Do not touch .env or secrets.
 
-First run npm install, then read the relevant Next.js 16 docs in node_modules/next/dist/docs per AGENTS.md, then run npm run build and npm run lint.
+Read the relevant Next.js 16 docs in node_modules/next/dist/docs per AGENTS.md, then run npm run build and npm run lint.
 
 Fix only issues needed to make the rebuilt FemStudio site work.
 
@@ -471,6 +463,6 @@ Afterward report files changed, build result, lint result, remaining risks, and 
 - Production build passes.
 - Lint passes.
 - OG images are functional placeholders made from restored photography and should be redesigned before launch.
-- Some recovery source files remain in `public/images`; clean them only after verifying no references.
+- Unused recovery source files were removed from `public/images`.
 - Web design portfolio assets are limited and should be replaced or expanded with approved client screenshots.
 - SEO foundation is present, but search ranking is not guaranteed by metadata alone.

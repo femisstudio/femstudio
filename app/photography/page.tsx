@@ -135,12 +135,20 @@ export default function PhotographyPage() {
             aria-hidden="true"
           />
           <Image
+            src="/images/editorial/porsche-editorial-houston-photographer-03.jpg"
+            alt="Porsche editorial brand photography with model and sports car in Houston TX by FemStudio"
+            fill
+            loading="eager"
+            sizes="(max-width: 767px) 100vw, 0vw"
+            className="object-cover object-[54%_center] md:hidden"
+          />
+          <Image
             src="/images/editorial/porsche-editorial-brand-photography-houston-model-car-hero.jpg"
             alt="Porsche editorial brand photography with model and sports car in Houston TX by FemStudio"
             fill
             preload
-            sizes="100vw"
-            className="object-cover object-[62%_center] md:object-contain md:object-center"
+            sizes="(min-width: 768px) 100vw, 0vw"
+            className="hidden object-contain object-center md:block"
           />
           <div
             className="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,45,36,0.98)_0%,rgba(15,45,36,0.76)_35%,rgba(15,45,36,0.2)_72%),linear-gradient(to_top,rgba(15,45,36,0.8),transparent_65%)]"
