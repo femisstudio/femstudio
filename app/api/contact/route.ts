@@ -7,6 +7,7 @@ const MAX_LENGTHS = {
   phone: 40,
   service: 80,
   budget: 80,
+  honeypot: 120,
   details: 3000,
 }
 
@@ -67,7 +68,12 @@ export async function POST(request: NextRequest) {
   const service = clean(payload.service, MAX_LENGTHS.service) || 'Not specified'
   const budget = clean(payload.budget, MAX_LENGTHS.budget)
   const details = getDetails(payload)
+  const honeypot = clean(payload.company ?? payload.website, MAX_LENGTHS.honeypot)
   const startedAt = typeof payload.startedAt === 'number' ? payload.startedAt : 0
+
+  if (honeypot) {
+    return json(400, { success: false, error: 'Invalid submission.' })
+  }
 
   if (startedAt && Date.now() - startedAt < MIN_SUBMISSION_TIME_MS) {
     return json(429, { success: false, error: 'Please take a moment before submitting.' })

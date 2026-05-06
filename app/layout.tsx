@@ -1,16 +1,33 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
+import { Cormorant_Garamond, Syncopate } from 'next/font/google'
 import './globals.css'
 
 const siteUrl = 'https://femsstudio.com'
 
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant',
+  display: 'swap',
+})
+
+const syncopate = Syncopate({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-syncopate',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  applicationName: 'FemStudio',
   title: {
-    default: 'FemStudio | Photography & Web Design - Houston, TX',
+    default: 'FemStudio | Houston Photography & Web Design Studio',
     template: '%s | FemStudio',
   },
   description:
-    'Houston-based photography and web design studio for professional headshots, editorial brand photography, celebration photography, and custom business websites.',
+    'FemStudio is a Houston, TX photography and web design studio creating professional headshots, editorial brand photography, celebration portraits, and custom websites.',
   keywords: [
     'houston photographer',
     'professional headshots houston',
@@ -36,9 +53,9 @@ export const metadata: Metadata = {
     type: 'website',
     url: siteUrl,
     siteName: 'FemStudio',
-    title: 'FemStudio | Photography & Web Design - Houston, TX',
+    title: 'FemStudio | Houston Photography & Web Design Studio',
     description:
-      'Houston photography and web design studio for headshots, editorial brand photography, celebrations, and custom business websites.',
+      'Houston, TX photography and web design studio for headshots, editorial brand photography, celebrations, and custom business websites.',
     locale: 'en_US',
     images: [
       {
@@ -51,17 +68,31 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FemStudio | Photography & Web Design - Houston, TX',
+    title: 'FemStudio | Houston Photography & Web Design Studio',
     description:
-      'Houston photography and web design studio for professional headshots, brand photography, and custom websites.',
+      'Houston, TX photography and web design studio for professional headshots, brand photography, and custom websites.',
     creator: '@femstudio__',
     images: ['/images/og/og-femstudio.jpg'],
   },
+  icons: {
+    icon: [{ url: '/icon.png', sizes: '512x512', type: 'image/png' }],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#0a1f19',
+  colorScheme: 'dark',
 }
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': ['LocalBusiness', 'ProfessionalService'],
   '@id': `${siteUrl}/#localbusiness`,
   name: 'FemStudio',
   url: siteUrl,
@@ -90,6 +121,16 @@ const localBusinessSchema = {
     '@type': 'City',
     name: 'Houston',
   },
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      contactType: 'customer inquiries',
+      email: 'info@femsstudio.com',
+      telephone: '+12818183726',
+      areaServed: 'US',
+      availableLanguage: ['English'],
+    },
+  ],
   sameAs: ['https://www.instagram.com/femstudio__'],
 }
 
@@ -111,7 +152,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${cormorant.variable} ${syncopate.variable}`}>
       <body>
         <script
           type="application/ld+json"

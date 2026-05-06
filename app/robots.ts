@@ -5,7 +5,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: ['/api/', '/admin/', '/staging/', '/internal/', '/private/'],
     },
     sitemap: 'https://femsstudio.com/sitemap.xml',
+    host: 'https://femsstudio.com',
   }
 }

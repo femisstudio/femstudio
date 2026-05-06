@@ -12,6 +12,7 @@ interface ContactFormState {
   service: string
   budget: string
   details: string
+  company: string
   startedAt: number
 }
 
@@ -23,6 +24,7 @@ const initialState = (): ContactFormState => ({
   service: 'Photography',
   budget: '',
   details: '',
+  company: '',
   startedAt: Date.now(),
 })
 
@@ -53,6 +55,7 @@ export default function ContactForm() {
           service: clean(form.service),
           budget: clean(form.budget),
           details: clean(form.details),
+          company: clean(form.company),
           startedAt: form.startedAt,
         }),
       })
@@ -75,6 +78,17 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="grid gap-6" aria-label="FemStudio contact form">
+      <div className="hidden" aria-hidden="true">
+        <label>
+          Company
+          <input
+            tabIndex={-1}
+            autoComplete="off"
+            value={form.company}
+            onChange={(event) => setForm({ ...form, company: event.target.value })}
+          />
+        </label>
+      </div>
       <div className="grid gap-6 md:grid-cols-2">
         <label className="block">
           <span className="sr-only">First Name</span>

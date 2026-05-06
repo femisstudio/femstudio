@@ -16,6 +16,7 @@ interface InquiryForm {
   phone: string
   service: string
   details: string
+  company: string
   startedAt: number
 }
 
@@ -25,6 +26,7 @@ const initialForm = (): InquiryForm => ({
   phone: '',
   service: 'photography',
   details: '',
+  company: '',
   startedAt: Date.now(),
 })
 
@@ -52,6 +54,7 @@ export default function Footer() {
           phone: clean(form.phone),
           service: form.service,
           details: clean(form.details),
+          company: clean(form.company),
           startedAt: form.startedAt,
         }),
       })
@@ -121,6 +124,17 @@ export default function Footer() {
 
         <form onSubmit={onSubmit} className="rounded-lg border border-cream/15 bg-cream/[0.03] p-6 md:p-8">
           <h3 className="mb-6 font-serif text-3xl italic text-cream">Quick inquiry</h3>
+          <div className="hidden" aria-hidden="true">
+            <label>
+              Company
+              <input
+                tabIndex={-1}
+                autoComplete="off"
+                value={form.company}
+                onChange={(event) => setForm({ ...form, company: event.target.value })}
+              />
+            </label>
+          </div>
           <div className="grid gap-5">
             <label className="block">
               <span className="sr-only">Name</span>
