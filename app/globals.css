@@ -62,13 +62,13 @@ select {
 }
 
 .portfolio-card img {
-  filter: saturate(0.9) contrast(1.04);
+  filter: grayscale(1) saturate(0.9) contrast(1.04);
   transition: transform 500ms ease, filter 500ms ease;
 }
 
 .portfolio-card:hover img,
 .portfolio-card:focus-within img {
-  filter: saturate(1.05) contrast(1.08);
+  filter: grayscale(0) saturate(1.05) contrast(1.08);
   transform: scale(1.04);
 }
 

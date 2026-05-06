@@ -2,7 +2,7 @@
 
 **Last Updated**: May 6, 2026  
 **Project**: FemStudio - Houston-based Photography and Web Design Studio  
-**Status**: Rebuilt after accidental deletion. Dependencies installed. Lint and production build pass.
+**Status**: Rebuilt after accidental deletion. Reference-style homepage, about, photography, and web design pages are implemented. Lint and production build pass. GitHub backup is active.
 
 ---
 
@@ -11,6 +11,19 @@
 The original project folder was accidentally deleted by Claude with no backup. Codex rebuilt the site from retained project context and local image assets found under `/Users/femi/Desktop/public/images`.
 
 The rebuilt code is present in `/Users/femi/Desktop/femstudio`. Dependencies were installed after network permission was granted, and both lint and production build pass.
+
+GitHub backup is connected:
+
+```bash
+origin git@github.com:femisstudio/femstudio.git
+branch main
+```
+
+Most recent functional code checkpoint before this handoff update:
+
+```bash
+9ebeca7 Add photography gallery hover interactions
+```
 
 Verified commands:
 
@@ -76,8 +89,11 @@ Components:
 
 - `components/layout/Header.tsx`
 - `components/layout/Footer.tsx`
+- `components/sections/AboutQuickInquiryForm.tsx`
 - `components/sections/ContactForm.tsx`
+- `components/sections/HomeSplitHero.tsx`
 - `components/sections/PhotographyContent.tsx`
+- `components/sections/WebDesignShowcase.tsx`
 
 Image documentation:
 
@@ -88,7 +104,13 @@ Git is initialized locally on branch `main`.
 
 Recent local backup commits include:
 
-- `104d4e7` - `Rebuild FemStudio baseline`
+- `9ebeca7` - `Add photography gallery hover interactions`
+- `82540da` - `Convert photography page to reference layout`
+- `f43a162` - `Convert web design page to reference layout`
+- `cea3bca` - `Convert homepage to interactive reference design`
+- `9f0eeb0` - `Convert about page to reference design`
+- `ff91e5a` - `Harden launch readiness`
+- `f0cdc2a` - `Polish responsive design and clean assets`
 - `59f0aab` - `Verify build and polish design`
 
 ---
@@ -164,10 +186,10 @@ This version has breaking changes. Read the relevant guide in node_modules/next/
 
 Colors:
 
-- Dark Green: `#0F2D24`
-- Forest: `#1A4336`
-- Cream: `#F5F1E8`
-- Gold: `#C9A227`
+- Dark Green: `#0a1f19`
+- Forest: `#0f2d24`
+- Cream: `#fcfbf7`
+- Gold: `#c9a227`
 
 Design direction:
 
@@ -183,28 +205,37 @@ Design direction:
 
 Homepage `/`
 
-- Uses two visual panels for photography and web design.
-- Includes service previews, selected work, CTA, metadata, and structured data.
+- Uses the reference-style split hero with interactive photography and web design panels.
+- Photography side uses local portrait imagery. Web design side uses animated digital styling.
+- Uses real stats only: 50+ headshots and 5-6 client websites.
+- Includes process, footer inquiry form, metadata, and structured data.
 
 About `/about`
 
 - Founder page for John Adeniran.
-- Uses Next.js `Image` for founder image with a gradient fallback underneath.
+- Uses the reference-style about layout with hero, founder story, stats strip, values, CTA, and footer inquiry form.
+- Uses Next.js `Image` for founder image with local asset only.
 - Includes metadata and Person JSON-LD.
 
 Photography `/photography`
 
-- Hero uses a Porsche editorial image intended to show both model and car.
-- Uses a client filter component for portfolio categories.
-- Includes visible FAQ content and FAQPage JSON-LD.
+- Uses the reference-style photography layout.
+- Header uses the local FemStudio logo asset.
+- Hero uses `public/images/editorial/porsche-editorial-houston-photographer-02.jpg` to show both model and car.
+- Includes a large green intro section with one visible `h1`: "Every frame, a story."
+- Uses `components/sections/PhotographyContent.tsx` as a client filter component for portfolio categories.
+- Gallery uses local images only, starts in black and white, returns to color on hover, shows a gold category overlay on hover, and uses masonry-style columns.
+- Includes the professional headshots horizontal strip, booking CTA, and footer inquiry form.
 - Includes Service JSON-LD.
-- The hero crop was adjusted so desktop uses the wide Porsche hero image without cropping away the model or car. Mobile still needs visual QA because very narrow screens cannot show the full horizontal scene without tradeoffs.
+- Does not currently include visible FAQ content or FAQPage JSON-LD. Re-add only if the design needs it.
+- Mobile hero crop still needs visual QA because very narrow screens can crop a wide editorial image.
 
 Web Design `/web-design`
 
-- Houston-focused web design service page.
-- Includes service breakdown, process, FAQ, Service JSON-LD, FAQPage JSON-LD, and full metadata.
-- Uses restored web design screenshot assets, but these should be reviewed for launch quality.
+- Uses the reference-style web design layout with browser-frame hero, interactive category filters, project cards, process section, CTA, and footer inquiry form.
+- Uses `components/sections/WebDesignShowcase.tsx` for client-side filter interactions.
+- Includes Houston-focused metadata, Service JSON-LD, FAQPage JSON-LD, and visible FAQ content.
+- Current web design assets are limited approved local screenshots and should be reviewed for launch quality.
 
 Contact `/contact`
 
@@ -322,7 +353,7 @@ The rebuild includes:
 - JSON-LD:
   - LocalBusiness and WebSite in `app/layout.tsx`
   - Person on `/about`
-  - Service and FAQPage on `/photography`
+  - Service on `/photography`
   - Service and FAQPage on `/web-design`
   - FAQPage on `/contact`
 
@@ -365,7 +396,8 @@ Rules:
 
 High priority:
 
-- Review `/photography` hero crop on real mobile devices. The page now uses a mobile-specific Porsche image and a desktop-wide Porsche hero image.
+- Review `/photography` hero crop on real mobile devices. The page uses a Porsche/model/car image that works well on desktop but may crop on narrow screens.
+- Review `/photography` gallery hover behavior on real desktop: portfolio images should start black and white, then return to color with a gold overlay on hover.
 - Test that the logo appears in the header on every page.
 - Confirm all images load from the canonical direct folders.
 - Test contact form UI validation.
@@ -397,9 +429,10 @@ Before launch:
    - `/photography`
    - `/web-design`
    - `/contact`
-7. Confirm the FemStudio logo displays in the header.
-8. Confirm no image placeholders are visible where real images should render.
-9. Confirm `/photography` hero shows both the model and car.
+6. Confirm the FemStudio logo displays in the header.
+7. Confirm no image placeholders are visible where real images should render.
+8. Confirm `/photography` hero shows both the model and car.
+9. Confirm `/photography` portfolio images start black and white and return to color on hover.
 10. Confirm all image paths use:
    - `/images/editorial/`
    - `/images/headshots/`
@@ -445,6 +478,7 @@ Verify:
 - Header logo displays
 - Images load from canonical direct folders
 - Photography hero shows both model and car
+- Photography gallery starts black and white, then returns to color on hover
 - No old portfolio/photography or portfolio/web paths remain
 - One h1 per page
 - main id="main-content" on public pages
