@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import Footer from '@/components/layout/Footer'
-import Header from '@/components/layout/Header'
+import AboutQuickInquiryForm from '@/components/sections/AboutQuickInquiryForm'
+import WebDesignShowcase from '@/components/sections/WebDesignShowcase'
 
 export const metadata: Metadata = {
   title: { absolute: 'Web Design Houston | FemStudio' },
@@ -47,21 +47,6 @@ export const metadata: Metadata = {
   },
 }
 
-const services = [
-  ['Landing Pages', 'Focused pages for launches, offers, campaigns, and service inquiries.'],
-  ['Portfolio Websites', 'Editorial portfolios for photographers, designers, creators, and Houston professionals.'],
-  ['E-Commerce Experiences', 'Product pages and shopping flows that present offers clearly.'],
-  ['Business Websites', 'Professional websites for service businesses that need trust and clarity.'],
-  ['SaaS or Dashboard Interfaces', 'Clean interface design for internal tools, products, and operations.'],
-]
-
-const process = [
-  ['Discovery', 'Clarify the business, audience, goals, content, and the action the website needs to support.'],
-  ['Design', 'Shape the visual system, page structure, messaging hierarchy, and responsive experience.'],
-  ['Build', 'Turn the approved direction into a polished, responsive website with clean implementation.'],
-  ['Launch', 'Prepare the final site, test key paths, and make sure the handoff is clear.'],
-]
-
 const faqs = [
   {
     q: 'How much does a website cost in Houston?',
@@ -74,6 +59,37 @@ const faqs = [
   {
     q: 'Do you build on WordPress or custom code?',
     a: 'FemStudio can advise on the right platform for the job, but the focus is custom web design and clean front-end implementation. For Houston businesses that need speed, flexibility, and a distinctive brand experience, custom code is often a strong fit.',
+  },
+]
+
+const processSteps = [
+  {
+    number: '01',
+    title: 'Discovery & Strategy',
+    copy: 'We learn your business, audience, offer, and goals so the website has a clear job from the start.',
+    image: '/images/webdesign/client-website-example.jpg',
+    alt: 'Website discovery and UX planning for Houston business web design by FemStudio',
+  },
+  {
+    number: '02',
+    title: 'Design & Prototype',
+    copy: 'We turn the strategy into layouts, visual direction, and page flows that feel polished before build begins.',
+    image: '/images/webdesign/tarro-law-group-website-design.jpg',
+    alt: 'Website prototype and interface design for a professional service business by FemStudio',
+  },
+  {
+    number: '03',
+    title: 'Development & Launch',
+    copy: 'We build responsive pages, test across key screens, and prepare the site for a clean launch.',
+    image: '/images/webdesign/client-website-example.jpg',
+    alt: 'Responsive website development and launch support by FemStudio',
+  },
+  {
+    number: '04',
+    title: 'Support & Growth',
+    copy: 'We help you refine the site after launch with practical updates, performance checks, and content improvements.',
+    image: '/images/og/og-web-design.jpg',
+    alt: 'Website growth and performance support for FemStudio web design clients',
   },
 ]
 
@@ -115,6 +131,19 @@ const faqSchema = {
   })),
 }
 
+function BrowserFrame({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="overflow-hidden rounded-lg border border-gold/30 bg-[#1a1a1a]">
+      <div className="flex items-center gap-1.5 border-b border-gold/20 bg-[#2a2a2a] px-3 py-2" aria-hidden="true">
+        <span className="h-2.5 w-2.5 rounded-full bg-cream/30" />
+        <span className="h-2.5 w-2.5 rounded-full bg-cream/30" />
+        <span className="h-2.5 w-2.5 rounded-full bg-cream/30" />
+      </div>
+      {children}
+    </div>
+  )
+}
+
 export default function WebDesignPage() {
   return (
     <>
@@ -130,106 +159,206 @@ export default function WebDesignPage() {
           __html: JSON.stringify(faqSchema).replace(/</g, '\\u003c'),
         }}
       />
-      <main id="main-content" className="bg-darkGreen">
-        <Header />
+      <main id="main-content" className="overflow-x-hidden bg-forest text-cream">
+        <header className="fixed inset-x-0 top-0 z-50 border-b border-cream/5 bg-darkGreen">
+          <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6 lg:px-12">
+            <Link
+              href="/"
+              aria-label="FemStudio homepage"
+              className="focus-ring relative h-8 w-36 rounded-sm md:w-40"
+            >
+              <Image
+                src="/images/brand/femstudio-logo-horizontal.png"
+                alt="FemStudio"
+                fill
+                sizes="160px"
+                className="object-contain object-left"
+              />
+            </Link>
 
-        <section aria-labelledby="web-design-hero-heading" className="relative h-[70vh] min-h-[560px] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-forest via-darkGreen to-[#17120c]" aria-hidden="true" />
-          <Image
-            src="/images/webdesign/client-website-example.jpg"
-            alt="Custom web design interface mockup for a Houston business by FemStudio"
-            fill
-            preload
-            sizes="100vw"
-            className="object-cover opacity-55"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-darkGreen via-darkGreen/75 to-darkGreen/15" aria-hidden="true" />
-          <div className="relative z-10 flex h-full items-end px-6 pb-16 md:px-24 md:pb-24">
-            <div className="max-w-3xl">
-              <p className="mb-5 font-sans text-xs tracking-[0.32em] text-gold">WEB DESIGN HOUSTON</p>
-              <h1 id="web-design-hero-heading" className="mb-6 font-serif text-6xl italic leading-tight text-cream md:text-8xl">
-                Websites built to make the next step clear.
-              </h1>
-              <p className="max-w-2xl text-xl leading-relaxed text-cream/75 md:text-2xl">
-                Custom web design for Houston businesses, photography brands, portfolios, e-commerce ideas, and teams that need a polished digital presence.
-              </p>
-              <Link
-                href="/contact?service=web-design"
-                className="focus-ring mt-10 inline-flex rounded-full bg-gold px-8 py-4 font-sans text-xs tracking-[0.22em] text-darkGreen"
-              >
-                START A WEB PROJECT
+            <nav className="hidden items-center gap-8 lg:flex xl:gap-12" aria-label="Main navigation">
+              <Link href="/photography" className="focus-ring rounded-sm font-serif text-lg italic text-cream/80 transition-colors hover:text-gold">
+                Photography
               </Link>
+              <Link href="/web-design" className="focus-ring rounded-sm font-serif text-lg italic text-cream/80 transition-colors hover:text-gold">
+                Web Design
+              </Link>
+              <Link href="/about" className="focus-ring rounded-sm font-serif text-lg italic text-cream/80 transition-colors hover:text-gold">
+                About
+              </Link>
+              <Link href="/contact" className="focus-ring rounded-sm font-serif text-lg italic text-cream/80 transition-colors hover:text-gold">
+                Contact
+              </Link>
+            </nav>
+
+            <Link
+              href="/contact?service=web-design"
+              className="focus-ring hidden rounded-full border-2 border-gold px-8 py-3 font-sans text-xs tracking-widest text-gold transition-colors hover:bg-gold hover:text-darkGreen lg:inline-flex"
+            >
+              START PROJECT
+            </Link>
+
+            <Link href="/contact?service=web-design" className="focus-ring rounded-full border border-gold px-4 py-2 font-sans text-[10px] tracking-widest text-gold lg:hidden">
+              START
+            </Link>
+          </div>
+        </header>
+
+        <section
+          id="hero-section"
+          className="flex min-h-[500px] items-center bg-darkGreen pt-24 lg:h-[60vh] lg:pt-32"
+          aria-labelledby="web-design-heading"
+        >
+          <div className="mx-auto flex h-full max-w-[1400px] flex-col items-center justify-between gap-8 px-6 py-12 lg:flex-row lg:gap-16 lg:px-12 lg:py-0">
+            <div className="flex-1 text-center lg:text-left">
+              <p className="mb-6 font-sans text-xs tracking-[0.3em] text-gold lg:mb-8">FEMSTUDIO / WEB DESIGN</p>
+              <h1 id="web-design-heading" className="mb-6 font-sans text-4xl font-bold leading-tight text-cream sm:text-5xl lg:mb-8 lg:text-6xl xl:text-7xl">
+                <span className="block">WEB DESIGN</span>
+                <span className="mt-2 block text-transparent [-webkit-text-stroke:2px_#c9a227]">&amp; STRATEGY</span>
+              </h1>
+              <p className="mx-auto max-w-xl font-serif text-xl italic text-cream/60 lg:mx-0 lg:text-2xl">
+                Bespoke digital experiences built for Houston businesses.
+              </p>
+            </div>
+
+            <div className="w-full max-w-2xl flex-1">
+              <BrowserFrame>
+                <div className="relative aspect-[16/10] overflow-hidden bg-cream">
+                  <Image
+                    src="/images/webdesign/tarro-law-group-website-design.jpg"
+                    alt="Custom web design mockup for a Houston business by FemStudio"
+                    fill
+                    preload
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+              </BrowserFrame>
             </div>
           </div>
         </section>
 
-        <section className="px-6 py-20 md:px-24 md:py-28" aria-labelledby="services-heading">
-          <div className="mx-auto max-w-7xl">
-            <p className="mb-4 font-sans text-xs tracking-[0.3em] text-gold">WHAT WE DESIGN</p>
-            <h2 id="services-heading" className="mb-14 font-serif text-5xl italic text-cream md:text-7xl">
-              Digital homes for real businesses.
-            </h2>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {services.map(([title, copy]) => (
-                <article key={title} className="rounded-lg border border-cream/15 bg-cream/[0.03] p-8">
-                  <h3 className="mb-4 font-serif text-3xl italic text-cream">{title}</h3>
-                  <p className="leading-relaxed text-cream/70">{copy}</p>
-                </article>
-              ))}
+        <WebDesignShowcase />
+
+        <section id="process-section" className="border-t border-cream/5 bg-darkGreen py-16 lg:py-24" aria-labelledby="process-heading">
+          <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start">
+                <h2 id="process-heading" className="mb-6 font-sans text-4xl font-bold text-cream lg:text-5xl xl:text-6xl">
+                  <span className="block">OUR</span>
+                  <span className="mt-2 block text-gold">PROCESS</span>
+                </h2>
+                <p className="max-w-md font-serif text-lg italic text-cream/60 lg:text-xl">
+                  Every site starts with strategy. We learn your business, design for your audience, and build for results.
+                </p>
+              </div>
+
+              <div className="relative lg:col-span-8">
+                <div className="absolute bottom-0 left-[7px] top-0 hidden w-0.5 bg-gold/30 lg:block" aria-hidden="true" />
+                {processSteps.map((step, index) => (
+                  <article key={step.title} className={`relative pl-0 lg:pl-12 ${index < processSteps.length - 1 ? 'mb-16 lg:mb-20' : ''}`}>
+                    <span className="absolute left-0 top-2 z-10 hidden h-4 w-4 rounded-full border-[3px] border-darkGreen bg-gold lg:block" aria-hidden="true" />
+                    <div className="mb-4">
+                      <p className="mb-2 block font-sans text-sm tracking-[0.3em] text-gold">{step.number}</p>
+                      <h3 className="mb-4 font-sans text-2xl font-bold text-cream lg:text-3xl">{step.title}</h3>
+                      <p className="mb-6 font-serif text-lg italic text-cream/70 lg:text-xl">{step.copy}</p>
+                    </div>
+                    <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-gold/20 bg-forest">
+                      <Image src={step.image} alt={step.alt} fill sizes="(max-width: 1024px) 100vw, 65vw" className="object-cover" />
+                    </div>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="bg-forest px-6 py-20 md:px-24 md:py-28" aria-labelledby="process-heading">
-          <div className="mx-auto max-w-7xl">
-            <p className="mb-4 font-sans text-xs tracking-[0.3em] text-gold">PROCESS</p>
-            <h2 id="process-heading" className="mb-14 font-serif text-5xl italic text-cream md:text-7xl">
-              From idea to launch.
+        <section id="faq-section" className="bg-forest px-6 py-16 lg:px-12 lg:py-24" aria-labelledby="faq-heading">
+          <div className="mx-auto max-w-[1000px]">
+            <p className="mb-4 text-center font-sans text-xs tracking-[0.3em] text-gold">FAQ</p>
+            <h2 id="faq-heading" className="mb-12 text-center font-sans text-4xl font-bold text-cream lg:text-5xl">
+              WEB DESIGN QUESTIONS
             </h2>
-            <div className="grid gap-6 md:grid-cols-4">
-              {process.map(([title, copy], index) => (
-                <article key={title} className="border-t border-gold/35 pt-8">
-                  <p className="mb-6 font-sans text-xs tracking-[0.28em] text-gold">
-                    {String(index + 1).padStart(2, '0')}
-                  </p>
-                  <h3 className="mb-4 font-serif text-3xl italic text-cream">{title}</h3>
-                  <p className="leading-relaxed text-cream/70">{copy}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="px-6 py-20 md:px-24 md:py-28" aria-labelledby="faq-heading">
-          <div className="mx-auto max-w-4xl">
-            <p className="mb-4 font-sans text-xs tracking-[0.3em] text-gold">FAQ</p>
-            <h2 id="faq-heading" className="mb-12 font-serif text-5xl italic text-cream md:text-7xl">
-              Web design questions.
-            </h2>
-            <div className="divide-y divide-cream/15">
+            <div className="divide-y divide-cream/10">
               {faqs.map((faq) => (
                 <article key={faq.q} className="py-8">
                   <h3 className="mb-4 font-serif text-3xl italic text-cream">{faq.q}</h3>
-                  <p className="text-lg leading-relaxed text-cream/70">{faq.a}</p>
+                  <p className="font-serif text-lg leading-relaxed text-cream/70">{faq.a}</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="bg-forest px-6 py-20 text-center md:px-24 md:py-28">
-          <h2 className="mx-auto mb-8 max-w-4xl font-serif text-5xl italic text-cream md:text-7xl">
-            Bring the idea. We will shape the interface.
-          </h2>
-          <Link
-            href="/contact?service=web-design"
-            className="focus-ring inline-flex rounded-full bg-gold px-10 py-4 font-sans text-xs tracking-[0.22em] text-darkGreen"
-          >
-            INQUIRE ABOUT WEB DESIGN
-          </Link>
+        <section id="cta-section" className="border-t border-cream/5 bg-forest py-20 text-center lg:py-32">
+          <div className="mx-auto max-w-[1000px] px-6 lg:px-12">
+            <h2 className="mb-6 font-sans text-4xl font-bold text-cream sm:text-5xl lg:mb-8 lg:text-6xl xl:text-7xl">
+              START YOUR PROJECT
+            </h2>
+            <p className="mx-auto mb-10 max-w-2xl font-serif text-xl italic text-cream/70 lg:mb-12 lg:text-2xl">
+              Tell us about your business and let&apos;s build something together.
+            </p>
+            <Link
+              href="/contact?service=web-design"
+              className="focus-ring inline-flex rounded-full border-2 border-gold px-12 py-4 font-sans text-sm tracking-widest text-gold transition-colors hover:bg-gold hover:text-darkGreen"
+            >
+              GET IN TOUCH
+            </Link>
+          </div>
         </section>
 
-        <Footer />
+        <footer id="footer" className="border-t border-cream/5 bg-darkGreen py-16 lg:py-20">
+          <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+            <div className="mb-16 grid grid-cols-1 gap-12 lg:mb-20 lg:grid-cols-2 lg:gap-16">
+              <div>
+                <h2 className="mb-6 font-sans text-3xl font-bold text-cream lg:mb-8 lg:text-4xl xl:text-5xl">
+                  LET&apos;S CREATE
+                  <br />
+                  MAGIC
+                </h2>
+                <p className="mb-8 font-serif text-lg italic text-cream/60 lg:text-xl">
+                  Ready to bring your vision to life? Get in touch and let&apos;s start the conversation.
+                </p>
+
+                <address className="mb-8 space-y-4 not-italic">
+                  <a href="mailto:info@femsstudio.com" className="focus-ring flex rounded-sm font-serif text-lg text-cream transition-colors hover:text-gold">
+                    info@femsstudio.com
+                  </a>
+                  <a href="tel:+12818183726" className="focus-ring flex rounded-sm font-serif text-lg text-cream transition-colors hover:text-gold">
+                    +1 (281) 818-3726
+                  </a>
+                </address>
+
+                <div className="flex items-center gap-4 font-sans text-xs tracking-widest text-gold" aria-label="Social links">
+                  <a
+                    href="https://www.instagram.com/femstudio__"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="focus-ring flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 transition-colors hover:bg-gold hover:text-darkGreen"
+                  >
+                    IG
+                  </a>
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/10 text-cream/25" aria-hidden="true">
+                    X
+                  </span>
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/10 text-cream/25" aria-hidden="true">
+                    BE
+                  </span>
+                </div>
+              </div>
+
+              <div>
+                <AboutQuickInquiryForm />
+              </div>
+            </div>
+
+            <div className="border-t border-cream/10 pt-8">
+              <p className="text-center font-sans text-xs tracking-wider text-cream/40">
+                &copy; 2026 FEMSTUDIO. ALL RIGHTS RESERVED.
+              </p>
+            </div>
+          </div>
+        </footer>
       </main>
     </>
   )
