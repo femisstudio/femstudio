@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 
-const portfolioItems = [
+const allPortfolioItems = [
   // HEADSHOTS
   {
     id: 1,
@@ -299,6 +299,18 @@ const portfolioItems = [
   },
 ]
 
+// Fix 1: Curated featured images for ALL view (15 images max)
+const featuredImages = [
+  // 6 headshots first
+  1, 2, 3, 4, 5, 6,
+  // 3 editorial
+  13, 14, 15,
+  // 3 celebrations
+  19, 24, 26,
+  // 3 events
+  33, 39, 45,
+]
+
 const filterCategories = ['ALL', 'HEADSHOTS', 'EDITORIAL & BRAND', 'CELEBRATIONS', 'PORTRAITS', 'EVENTS']
 
 export default function PhotographyGallery() {
@@ -306,8 +318,13 @@ export default function PhotographyGallery() {
 
   const filteredItems =
     activeFilter === 'ALL'
-      ? portfolioItems
-      : portfolioItems.filter((item) => item.category === activeFilter)
+      ? allPortfolioItems.filter((item) => featuredImages.includes(item.id))
+      : allPortfolioItems.filter((item) => item.category === activeFilter)
+
+  // Get indices for category dividers in ALL view
+  const showDividers = activeFilter === 'ALL'
+  const editorialStartIdx = showDividers ? 6 : -1
+  const moreWorkStartIdx = showDividers ? 9 : -1
 
   return (
     <>
@@ -333,27 +350,53 @@ export default function PhotographyGallery() {
         </div>
       </section>
 
-      {/* Grid Gallery */}
+      {/* Fix 2: Masonry grid layout */}
       <section className="w-full py-16 md:py-24 px-6 md:px-12 lg:px-24 bg-forest">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {filteredItems.map((item) => (
-              <div key={item.id} className="group relative overflow-hidden border border-transparent transition-all duration-500 hover:border-gold rounded-lg">
-                <div className="relative h-96 overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={item.alt}
-                    fill
-                    className="object-cover transition-all duration-700"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    quality={85}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-forest/90 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-end p-6">
-                    <span className="font-serif italic text-gold text-sm uppercase tracking-wider">{item.category}</span>
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 md:gap-8 space-y-6 md:space-y-8">
+            {filteredItems.map((item, idx) => {
+              const isTall = (idx + 1) % 3 === 0 && idx > 0
+              const showEditorialDivider = showDividers && idx === editorialStartIdx
+              const showMoreWorkDivider = showDividers && idx === moreWorkStartIdx
+
+              return (
+                <div key={item.id}>
+                  {/* Fix 4: Category dividers in ALL view */}
+                  {showEditorialDivider && (
+                    <div className="mb-8 text-center">
+                      <div className="border-t border-gold/30 mb-4" />
+                      <p className="font-sans text-xs tracking-[0.3em] text-gold uppercase">Editorial & Brand</p>
+                    </div>
+                  )}
+                  {showMoreWorkDivider && (
+                    <div className="mb-8 text-center">
+                      <div className="border-t border-gold/30 mb-4" />
+                      <p className="font-sans text-xs tracking-[0.3em] text-gold uppercase">More Work</p>
+                    </div>
+                  )}
+
+                  {/* Fix 3: Image tile with hover state */}
+                  <div
+                    className={`group relative overflow-hidden rounded-lg break-inside-avoid transition-transform duration-500 hover:scale-[1.02] ${
+                      isTall ? 'aspect-[3/4]' : 'aspect-square'
+                    }`}
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.alt}
+                      fill
+                      className="object-cover transition-all duration-700"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      quality={85}
+                    />
+                    {/* Hover overlay with VIEW label */}
+                    <div className="absolute inset-0 bg-forest-green/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <span className="font-sans text-xs tracking-widest text-cream">VIEW</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>

@@ -3,9 +3,8 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import PhotographyHeroNew from '@/components/sections/PhotographyHeroNew'
 import PhotographyGallery from '@/components/sections/PhotographyGallery'
-import HeadshotsHighlight from '@/components/sections/HeadshotsHighlight'
-import PhotographyBookingCTA from '@/components/sections/PhotographyBookingCTA'
-import FAQSection from '@/components/seo/FAQSection'
+import PhotographyCTA from '@/components/sections/PhotographyCTA'
+import FAQAccordion from '@/components/seo/FAQAccordion'
 
 export const metadata: Metadata = {
   title: { absolute: 'Professional Headshots Houston | FemStudio Photography' },
@@ -112,9 +111,8 @@ export default function PhotographyPage() {
         <PhotographyHeroNew />
         <div id="portfolio" className="bg-darkGreen text-cream">
           <PhotographyGallery />
-          <HeadshotsHighlight />
-          <PhotographyBookingCTA />
-          <FAQSection items={photographyFaqs} title="About Your Headshot Session" className="bg-darkGreen" />
+          <PhotographyCTA />
+          <FAQAccordion items={photographyFaqs} title="About Your Headshot Session" className="bg-darkGreen" />
         </div>
         <Footer />
       </main>
