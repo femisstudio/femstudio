@@ -1,6 +1,6 @@
 # FemStudio Project Handoff Document
 
-**Last Updated**: May 6, 2026  
+**Last Updated**: May 6, 2026 (Mosaic Grid Photography Hero Added)
 **Project**: FemStudio - Houston-based Photography and Web Design Studio  
 **Status**: Rebuilt after accidental deletion. Reference-style homepage, about, photography, and web design pages are implemented. Lint and production build pass. GitHub backup is active.
 
@@ -175,7 +175,7 @@ Core config:
 
 - `package.json`
 - `tsconfig.json`
-- `next.config.ts`
+- `next.config.ts` — Includes image qualities [75, 85, 90] for Next.js Image component
 - `postcss.config.mjs`
 - `eslint.config.mjs`
 - `.gitignore`
@@ -201,12 +201,17 @@ App Router:
 
 Components:
 
-- `components/layout/Header.tsx`
+- `components/layout/Header.tsx` — Uses FemStudio logo image from `public/images/brand/femstudio-logo-horizontal.png`
 - `components/layout/Footer.tsx`
-- `components/sections/AboutQuickInquiryForm.tsx`
+- `components/sections/HomeSplitHero.tsx` — Split hero for homepage
+- `components/sections/DigitalAlchemy.tsx` — Process section for homepage
+- `components/sections/HeroSplitDivider.tsx` — Alternative split hero with central divider
+- `components/sections/PhotographyHero.tsx` — Editorial photo hero (can be replaced)
+- `components/sections/HeadshotGrid.tsx` — Mosaic-style grid with 19 headshots and centered logo tile
+- `components/sections/PhotographyGallery.tsx` — Filter tabs and grid gallery for photography portfolio
+- `components/sections/HeadshotsHighlight.tsx` — Horizontal scrolling headshots showcase
+- `components/sections/PhotographyBookingCTA.tsx` — "Ready to Book?" call-to-action
 - `components/sections/ContactForm.tsx`
-- `components/sections/HomeSplitHero.tsx`
-- `components/sections/PhotographyContent.tsx`
 - `components/sections/WebDesignShowcase.tsx`
 
 Image documentation:
@@ -341,16 +346,19 @@ About `/about`
 
 Photography `/photography`
 
-- Uses the reference-style photography layout.
+- Uses a mosaic-style CSS grid hero section with varied tile sizes.
+- Grid structure: Top row has 4 larger tiles, middle row features the FemStudio logo tile prominently centered (2x visual weight) with tiles on sides, bottom row has 5 smaller equal tiles.
+- Hero grid uses all 19 professional headshot images from `public/images/headshots/professional-headshot-houston-01.jpg` through `professional-headshot-houston-19.jpg` plus the FemStudio logo on white background.
+- Images use `object-cover object-top` to keep faces in frame, zero gap between tiles, full viewport width with no padding.
+- Headshot tiles show dark green overlay `bg-[#0f2d24]/60` on hover with smooth transition.
+- Logo tile uses `femstudio-logo-stacked.png` with `object-contain` and `p-8` padding on white background.
+- Text section below grid includes eyebrow label "FemStudio Photography" (gold, tracking-widest), headline "Every frame, a story." (italic), subheading about Houston-based photography, and "BOOK YOUR SESSION" CTA button.
 - Header uses the local FemStudio logo asset.
-- Hero uses `public/images/editorial/porsche-editorial-houston-photographer-02.jpg` to show both model and car.
-- Includes a large green intro section with one visible `h1`: "Every frame, a story."
-- Uses `components/sections/PhotographyContent.tsx` as a client filter component for portfolio categories.
-- Gallery uses local images only, starts in black and white, returns to color on hover, shows a gold category overlay on hover, and uses masonry-style columns.
+- Uses `components/sections/PhotographyGallery.tsx` with functional filter tabs (ALL, HEADSHOTS, EDITORIAL & BRAND, CELEBRATIONS).
+- Gallery images start grayscale, return to color on hover, show gold category overlay on hover.
 - Includes the professional headshots horizontal strip, booking CTA, and footer inquiry form.
 - Includes Service JSON-LD.
 - Does not currently include visible FAQ content or FAQPage JSON-LD. Re-add only if the design needs it.
-- Mobile hero crop still needs visual QA because very narrow screens can crop a wide editorial image.
 
 Web Design `/web-design`
 
@@ -434,12 +442,11 @@ Editorial:
 - `public/images/editorial/porsche-editorial-houston-photographer-03.jpg`
 - `public/images/editorial/porsche-editorial-houston-photographer-04.jpg`
 
-Headshots:
+Headshots (19 total):
 
-- `public/images/headshots/professional-headshot-houston-01.jpg`
-- `public/images/headshots/professional-headshot-houston-02.jpg`
-- `public/images/headshots/professional-headshot-houston-03.jpg`
-- `public/images/headshots/professional-headshot-houston-04.jpg`
+- `public/images/headshots/professional-headshot-houston-01.jpg` through `professional-headshot-houston-19.jpg`
+- Used in `HeadshotGrid.tsx` mosaic layout (all 19 in grid + centered logo tile)
+- Used in `HeadshotsHighlight.tsx` horizontal scroll section (4-image showcase)
 
 Celebrations:
 

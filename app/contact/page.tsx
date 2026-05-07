@@ -90,9 +90,8 @@ export default function ContactPage() {
         <section className="px-6 pb-20 pt-36 md:px-24 md:pb-28 md:pt-44">
           <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.75fr_1fr]">
             <div>
-              <p className="mb-5 font-sans text-xs tracking-[0.32em] text-gold">CONTACT FEMSTUDIO</p>
-              <h1 className="mb-8 font-serif text-6xl italic leading-tight text-cream md:text-8xl">
-                Start with a few details.
+              <h1 className="mb-8 font-sans text-6xl font-bold tracking-tight leading-tight text-cream md:text-8xl">
+                LET&apos;S TALK.
               </h1>
               <p className="mb-10 max-w-xl text-xl leading-relaxed text-cream/75">
                 Tell us what you are building, booking, or trying to communicate. FemStudio will follow up with the next step.

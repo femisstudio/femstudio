@@ -1,216 +1,156 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
 import { FormEvent, useState } from 'react'
 
-const serviceOptions = [
-  { value: 'photography', label: 'Photography' },
-  { value: 'web-design', label: 'Web Design' },
-  { value: 'both', label: 'Both' },
-] as const
-
-interface InquiryForm {
-  name: string
-  email: string
-  phone: string
-  service: string
-  details: string
-  company: string
-  startedAt: number
-}
-
-const initialForm = (): InquiryForm => ({
-  name: '',
-  email: '',
-  phone: '',
-  service: 'photography',
-  details: '',
-  company: '',
-  startedAt: Date.now(),
-})
-
-function clean(value: string) {
-  return value.replace(/<[^>]*>/g, '').trim()
-}
-
 export default function Footer() {
-  const [form, setForm] = useState<InquiryForm>(() => initialForm())
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
-  const [message, setMessage] = useState('')
+  const [formState, setFormState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [formData, setFormData] = useState(() => ({
+    service: 'photography',
+    name: '',
+    email: '',
+    phone: '',
+    details: '',
+    company: '',
+    startedAt: Date.now(),
+  }))
 
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setStatus('submitting')
-    setMessage('')
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setFormState('loading')
 
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: clean(form.name),
-          email: clean(form.email),
-          phone: clean(form.phone),
-          service: form.service,
-          details: clean(form.details),
-          company: clean(form.company),
-          startedAt: form.startedAt,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.details,
+          company: formData.company,
+          startedAt: formData.startedAt,
         }),
       })
-      const data = (await response.json()) as { success?: boolean; error?: string; message?: string }
 
-      if (!response.ok || !data.success) {
-        setStatus('error')
-        setMessage(data.error || 'Something went wrong. Please email info@femsstudio.com.')
-        return
+      if (response.ok) {
+        setFormState('success')
+        setFormData({ service: 'photography', name: '', email: '', phone: '', details: '', company: '', startedAt: Date.now() })
+        setTimeout(() => setFormState('idle'), 4000)
+      } else {
+        setFormState('error')
+        setTimeout(() => setFormState('idle'), 3000)
       }
-
-      setStatus('success')
-      setMessage(data.message || 'Inquiry sent. We will be in touch soon.')
-      setForm(initialForm())
     } catch {
-      setStatus('error')
-      setMessage('Something went wrong. Please email info@femsstudio.com.')
+      setFormState('error')
+      setTimeout(() => setFormState('idle'), 3000)
     }
   }
 
   return (
-    <footer className="border-t border-gold/20 bg-[#081712] px-6 py-20 md:px-24" aria-label="Site footer">
-      <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1fr_0.9fr]">
-        <div>
-          <Link href="/" aria-label="FemStudio homepage" className="focus-ring mb-8 block w-[190px] rounded-sm">
-            <Image
-              src="/images/brand/femstudio-logo-horizontal.png"
-              alt="FemStudio"
-              width={190}
-              height={45}
-              sizes="190px"
-              className="h-auto w-full"
-            />
-          </Link>
-          <h2 className="mb-8 max-w-2xl font-serif text-5xl italic leading-tight text-cream md:text-7xl">
-            Let&apos;s create something honest.
-          </h2>
-          <p className="mb-10 max-w-xl text-xl leading-relaxed text-cream/70">
-            Houston photography and web design for people and businesses that need to show up with clarity.
-          </p>
+    <footer className="bg-darkGreen px-6 py-24 md:px-10">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-20 grid gap-16 md:grid-cols-[1fr_1fr]">
+          <div>
+            <h2 className="mb-8 font-sans text-3xl font-bold tracking-wider text-gold md:text-4xl">LET&apos;S CREATE MAGIC.</h2>
+            <address className="space-y-4 not-italic text-cream/75">
+              <p>
+                <a href="https://www.instagram.com/femstudio__" target="_blank" rel="noopener noreferrer" className="focus-ring rounded-sm hover:text-gold">
+                  @femstudio__
+                </a>
+              </p>
+              <p>
+                <a href="mailto:info@femsstudio.com" className="focus-ring rounded-sm hover:text-gold">
+                  info@femsstudio.com
+                </a>
+              </p>
+              <p>
+                <a href="tel:+12818183726" className="focus-ring rounded-sm hover:text-gold">
+                  +1 (281) 818-3726
+                </a>
+              </p>
+              <p>Houston, TX</p>
+            </address>
+          </div>
 
-          <address className="not-italic text-cream/75">
-            <p>Houston, TX</p>
-            <p>
-              <a className="focus-ring rounded-sm hover:text-gold" href="mailto:info@femsstudio.com">
-                info@femsstudio.com
-              </a>
-            </p>
-            <p>
-              <a className="focus-ring rounded-sm hover:text-gold" href="tel:+12818183726">
-                +1 (281) 818-3726
-              </a>
-            </p>
-          </address>
+          <div>
+            {formState === 'success' ? (
+              <div className="flex h-full items-center justify-center rounded-lg border border-gold/30 bg-gold/5 p-8 text-center">
+                <p className="font-serif text-xl text-gold">Message received. We&apos;ll be in touch within 24 hours.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="service-footer" className="block text-xs font-bold tracking-widest text-cream/60 mb-2">
+                    SERVICE INTEREST
+                  </label>
+                  <select
+                    id="service-footer"
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="w-full rounded-sm border border-cream/20 bg-darkGreen px-3 py-2 text-cream placeholder:text-cream/40 focus:border-gold focus:outline-none"
+                  >
+                    <option value="photography">Photography</option>
+                    <option value="web-design">Web Design</option>
+                    <option value="both">Both</option>
+                  </select>
+                </div>
 
-          <nav className="mt-10 flex flex-wrap gap-5 font-sans text-xs tracking-[0.22em]" aria-label="Footer links">
-            {['Photography', 'Web Design', 'About', 'Contact'].map((label) => {
-              const href = label === 'Web Design' ? '/web-design' : `/${label.toLowerCase()}`
-              return (
-                <Link key={label} href={href} className="focus-ring rounded-sm text-cream/70 hover:text-gold">
-                  {label.toUpperCase()}
-                </Link>
-              )
-            })}
-          </nav>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full rounded-sm border border-cream/20 bg-darkGreen px-3 py-2 text-cream placeholder:text-cream/40 focus:border-gold focus:outline-none"
+                />
+
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full rounded-sm border border-cream/20 bg-darkGreen px-3 py-2 text-cream placeholder:text-cream/40 focus:border-gold focus:outline-none"
+                />
+
+                <textarea
+                  name="details"
+                  placeholder="Tell us about your project"
+                  value={formData.details}
+                  onChange={handleChange}
+                  rows={4}
+                  className="w-full rounded-sm border border-cream/20 bg-darkGreen px-3 py-2 text-cream placeholder:text-cream/40 focus:border-gold focus:outline-none"
+                />
+
+                <input type="hidden" name="company" value={formData.company} />
+
+                <button
+                  type="submit"
+                  disabled={formState === 'loading'}
+                  className="w-full rounded-full border border-gold bg-gold px-6 py-2 font-sans text-xs font-bold tracking-widest text-darkGreen transition-colors hover:bg-gold/90 disabled:opacity-60"
+                >
+                  {formState === 'loading' ? 'SENDING...' : 'SEND MESSAGE'}
+                </button>
+
+                {formState === 'error' && <p className="text-center text-sm text-red-400">Something went wrong. Please try again.</p>}
+              </form>
+            )}
+          </div>
         </div>
 
-        <form onSubmit={onSubmit} className="rounded-lg border border-cream/15 bg-cream/[0.03] p-6 md:p-8">
-          <h3 className="mb-6 font-serif text-3xl italic text-cream">Quick inquiry</h3>
-          <div className="hidden" aria-hidden="true">
-            <label>
-              Company
-              <input
-                tabIndex={-1}
-                autoComplete="off"
-                value={form.company}
-                onChange={(event) => setForm({ ...form, company: event.target.value })}
-              />
-            </label>
-          </div>
-          <div className="grid gap-5">
-            <label className="block">
-              <span className="sr-only">Name</span>
-              <input
-                required
-                value={form.name}
-                onChange={(event) => setForm({ ...form, name: event.target.value })}
-                placeholder="Name"
-                className="w-full rounded-none border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-xl text-cream outline-none placeholder:text-cream/35 focus:border-gold"
-              />
-            </label>
-            <label className="block">
-              <span className="sr-only">Email</span>
-              <input
-                required
-                type="email"
-                value={form.email}
-                onChange={(event) => setForm({ ...form, email: event.target.value })}
-                placeholder="Email"
-                className="w-full rounded-none border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-xl text-cream outline-none placeholder:text-cream/35 focus:border-gold"
-              />
-            </label>
-            <label className="block">
-              <span className="sr-only">Phone</span>
-              <input
-                value={form.phone}
-                onChange={(event) => setForm({ ...form, phone: event.target.value })}
-                placeholder="Phone (optional)"
-                className="w-full rounded-none border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-xl text-cream outline-none placeholder:text-cream/35 focus:border-gold"
-              />
-            </label>
-            <label className="block">
-              <span className="sr-only">Service</span>
-              <select
-                value={form.service}
-                onChange={(event) => setForm({ ...form, service: event.target.value })}
-                className="w-full rounded-none border-0 border-b border-cream/25 bg-transparent px-0 py-3 font-sans text-sm tracking-[0.15em] text-cream outline-none focus:border-gold"
-              >
-                {serviceOptions.map((option) => (
-                  <option key={option.value} value={option.value} className="bg-darkGreen">
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className="block">
-              <span className="sr-only">Project details</span>
-              <textarea
-                required
-                value={form.details}
-                onChange={(event) => setForm({ ...form, details: event.target.value })}
-                placeholder="Tell us about your project"
-                rows={5}
-                className="w-full resize-none rounded-none border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-xl text-cream outline-none placeholder:text-cream/35 focus:border-gold"
-              />
-            </label>
-          </div>
-
-          <button
-            type="submit"
-            disabled={status === 'submitting'}
-            className="focus-ring mt-8 w-full rounded-full border border-gold px-8 py-4 font-sans text-xs tracking-[0.22em] text-gold transition-colors hover:bg-gold hover:text-darkGreen disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {status === 'submitting' ? 'SENDING' : 'SEND INQUIRY'}
-          </button>
-
-          {message && (
-            <p className={`mt-5 text-sm ${status === 'success' ? 'text-gold' : 'text-red-300'}`} role="status">
-              {message}
-            </p>
-          )}
-        </form>
+        <div className="border-t border-cream/10 pt-8 text-center text-xs text-cream/50">
+          2026 FEMSTUDIO. EST. 2022.
+        </div>
       </div>
-      <p className="mx-auto mt-16 max-w-7xl font-sans text-xs tracking-[0.2em] text-cream/35">
-        © 2026 FEMSTUDIO. EST. 2022.
-      </p>
     </footer>
   )
 }

@@ -3,6 +3,7 @@
 import { FormEvent, useMemo, useState } from 'react'
 
 const serviceOptions = ['Photography', 'Web Design', 'E-Commerce', 'Both'] as const
+const budgetOptions = ['Under $500', '$500 - $1,500', '$1,500 - $5,000', '$5,000+'] as const
 
 interface ContactFormState {
   firstName: string
@@ -131,9 +132,9 @@ export default function ContactForm() {
           className="w-full border-0 border-b border-cream/20 bg-transparent py-4 text-xl text-cream outline-none placeholder:text-cream/30 focus:border-gold"
         />
       </label>
-      <div className="grid gap-6 md:grid-cols-2">
-        <label className="block">
-          <span className="sr-only">Service</span>
+      <div>
+        <label className="block mb-4">
+          <span className="sr-only">Service Interest</span>
           <select
             value={form.service}
             onChange={(event) => setForm({ ...form, service: event.target.value })}
@@ -146,16 +147,26 @@ export default function ContactForm() {
             ))}
           </select>
         </label>
-        <label className="block">
-          <span className="sr-only">Budget Range</span>
-          <input
-            value={form.budget}
-            onChange={(event) => setForm({ ...form, budget: event.target.value })}
-            placeholder="Budget Range (Optional)"
-            className="w-full border-0 border-b border-cream/20 bg-transparent py-4 text-xl text-cream outline-none placeholder:text-cream/30 focus:border-gold"
-          />
-        </label>
       </div>
+
+      <fieldset className="border-0 p-0">
+        <legend className="mb-4 font-sans text-sm tracking-[0.15em] text-cream/70">Budget Range (Optional)</legend>
+        <div className="grid gap-3 md:grid-cols-2">
+          {budgetOptions.map((option) => (
+            <label key={option} className="flex items-center gap-3 cursor-pointer">
+              <input
+                type="radio"
+                name="budget"
+                value={option}
+                checked={form.budget === option}
+                onChange={(event) => setForm({ ...form, budget: event.target.value })}
+                className="h-4 w-4 appearance-none rounded-full border border-gold/50 checked:bg-gold cursor-pointer"
+              />
+              <span className="text-cream/70 font-sans text-sm">{option}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
       <label className="block">
         <span className="sr-only">Project or session details</span>
         <textarea

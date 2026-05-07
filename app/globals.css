@@ -3,6 +3,7 @@
 :root {
   --dark-green: #0a1f19;
   --forest: #0f2d24;
+  --light-green: #1a4336;
   --cream: #fcfbf7;
   --gold: #c9a227;
 }
@@ -79,6 +80,21 @@ select {
 .focus-ring:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 4px;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

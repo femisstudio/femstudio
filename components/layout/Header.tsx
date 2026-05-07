@@ -34,23 +34,23 @@ export default function Header() {
       role="banner"
       className={`fixed top-0 z-50 flex w-full items-center justify-between border-b px-6 py-5 transition-all duration-300 md:px-10 ${
         scrolled || menuOpen
-          ? 'border-cream/10 bg-darkGreen/92 shadow-sm backdrop-blur-md'
-          : 'border-cream/10 bg-darkGreen/45 backdrop-blur-[2px]'
+          ? 'border-cream/10 bg-darkGreen/95 backdrop-blur-md'
+          : 'border-cream/10 bg-transparent'
       }`}
     >
       <Link
         href="/"
         aria-label="FemStudio - return to homepage"
-        className="focus-ring block w-[170px] rounded-sm md:w-[190px]"
+        className="focus-ring block rounded-sm"
         onClick={() => setMenuOpen(false)}
       >
         <Image
           src="/images/brand/femstudio-logo-horizontal.png"
-          alt="FemStudio"
-          width={190}
-          height={45}
-          sizes="(max-width: 768px) 170px, 190px"
-          className="h-auto w-full drop-shadow-[0_2px_14px_rgba(0,0,0,0.45)]"
+          alt="FemStudio logo"
+          width={120}
+          height={40}
+          priority
+          className="h-10 w-auto md:h-12"
         />
       </Link>
 
@@ -69,7 +69,7 @@ export default function Header() {
       <Link
         href="/contact"
         aria-label="Start a project with FemStudio"
-        className="focus-ring hidden rounded-full border border-cream/75 px-8 py-3 font-sans text-xs tracking-[0.22em] text-cream transition-colors duration-200 hover:border-gold hover:text-gold md:inline-flex"
+        className="focus-ring hidden rounded-full border border-gold px-7 py-2 font-sans text-xs tracking-widest text-gold transition-colors duration-200 hover:bg-gold hover:text-darkGreen md:inline-flex"
       >
         START PROJECT
       </Link>
@@ -79,7 +79,7 @@ export default function Header() {
         aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
         aria-expanded={menuOpen}
         aria-controls="mobile-menu"
-        className="focus-ring inline-flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-full border border-cream/60 bg-darkGreen/30 md:hidden"
+        className="focus-ring inline-flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-full border border-cream/60 bg-cream/10 md:hidden"
         onClick={() => setMenuOpen((open) => !open)}
       >
         <span className={`h-px w-5 bg-cream transition-transform ${menuOpen ? 'translate-y-[7px] rotate-45' : ''}`} />
@@ -93,7 +93,7 @@ export default function Header() {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
-          className="fixed inset-0 top-[84px] z-40 bg-darkGreen/98 px-6 py-10 md:hidden"
+          className="fixed inset-0 top-[72px] z-40 bg-darkGreen/98 px-6 py-10 md:hidden"
         >
           <nav aria-label="Mobile navigation links" className="flex flex-col gap-8 font-serif text-4xl italic">
             {navLinks.map((link) => (
@@ -108,7 +108,7 @@ export default function Header() {
             ))}
             <Link
               href="/contact"
-              className="focus-ring mt-4 rounded-full border border-gold px-6 py-4 text-center font-sans text-sm not-italic tracking-[0.22em] text-gold"
+              className="focus-ring mt-4 rounded-full border border-gold px-6 py-4 text-center font-sans text-sm font-bold not-italic tracking-widest text-gold"
               onClick={() => setMenuOpen(false)}
             >
               START PROJECT

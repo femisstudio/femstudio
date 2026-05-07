@@ -23,6 +23,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     formats: ['image/webp', 'image/avif'],
+    qualities: [75, 85, 90],
   },
   webpack(config, { isServer }) {
     // Next 16.2.4 local production previews were missing split server chunks.
