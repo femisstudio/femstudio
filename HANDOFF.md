@@ -1,8 +1,8 @@
 # FemStudio Project Handoff Document
 
-**Last Updated**: May 6, 2026 (Mosaic Grid Photography Hero Added)
+**Last Updated**: May 7, 2026 (Photography Page & Footer Refinements Complete)
 **Project**: FemStudio - Houston-based Photography and Web Design Studio  
-**Status**: Rebuilt after accidental deletion. Reference-style homepage, about, photography, and web design pages are implemented. Lint and production build pass. GitHub backup is active.
+**Status**: Rebuilt after accidental deletion. Reference-style pages implemented with photography gallery enhancements, professional footer rebuild, and FAQ section improvements. Lint and production build pass. GitHub backup is active.
 
 ---
 
@@ -197,12 +197,14 @@ App Router:
 - `app/photography/page.tsx`
 - `app/web-design/page.tsx`
 - `app/contact/page.tsx`
+- `app/privacy/page.tsx` — Placeholder privacy policy page
+- `app/terms/page.tsx` — Placeholder terms of service page
 - `app/api/contact/route.ts`
 
 Components:
 
 - `components/layout/Header.tsx` — Uses FemStudio logo image from `public/images/brand/femstudio-logo-horizontal.png`
-- `components/layout/Footer.tsx`
+- `components/layout/Footer.tsx` — Professional four-column footer with Brand, Navigate, Services, and Contact columns; includes social icons, footer links, and bottom copyright bar
 - `components/sections/HomeSplitHero.tsx` — Split hero for homepage
 - `components/sections/DigitalAlchemy.tsx` — Process section for homepage
 - `components/sections/HeroSplitDivider.tsx` — Alternative split hero with central divider
@@ -346,19 +348,26 @@ About `/about`
 
 Photography `/photography`
 
-- Uses a mosaic-style CSS grid hero section with varied tile sizes.
-- Grid structure: Top row has 4 larger tiles, middle row features the FemStudio logo tile prominently centered (2x visual weight) with tiles on sides, bottom row has 5 smaller equal tiles.
-- Hero grid uses all 19 professional headshot images from `public/images/headshots/professional-headshot-houston-01.jpg` through `professional-headshot-houston-19.jpg` plus the FemStudio logo on white background.
-- Images use `object-cover object-top` to keep faces in frame, zero gap between tiles, full viewport width with no padding.
-- Headshot tiles show dark green overlay `bg-[#0f2d24]/60` on hover with smooth transition.
-- Logo tile uses `femstudio-logo-stacked.png` with `object-contain` and `p-8` padding on white background.
-- Text section below grid includes eyebrow label "FemStudio Photography" (gold, tracking-widest), headline "Every frame, a story." (italic), subheading about Houston-based photography, and "BOOK YOUR SESSION" CTA button.
-- Header uses the local FemStudio logo asset.
-- Uses `components/sections/PhotographyGallery.tsx` with functional filter tabs (ALL, HEADSHOTS, EDITORIAL & BRAND, CELEBRATIONS).
-- Gallery images start grayscale, return to color on hover, show gold category overlay on hover.
-- Includes the professional headshots horizontal strip, booking CTA, and footer inquiry form.
-- Includes Service JSON-LD.
-- Does not currently include visible FAQ content or FAQPage JSON-LD. Re-add only if the design needs it.
+- Uses a 3x3 grid hero section with professional headshot images.
+- Hero grid uses 9 professional headshot images in a responsive square grid with FemStudio logo in center tile.
+- Images use `object-cover` with `object-position: center top` to keep faces in frame.
+- All images display at full brightness by default; dark overlay only appears on hover.
+- Images start in grayscale by default and transition to full color on hover (interactive effect preserved).
+- Text section below grid includes eyebrow label (gold, tracking-widest), headline "Headshots that look like leadership." (serif), subheading about Houston-based photography, CTA buttons, and stats.
+- Header: Dark background with light text navigation (sans-serif font, tracking-widest).
+- Uses `components/sections/PhotographyGallery.tsx` with functional filter tabs (4 total: ALL, HEADSHOTS, EDITORIAL & BRAND, CELEBRATIONS).
+- Gallery images are clickable to open fullscreen modal viewer with dark background.
+- Removed "VIEW" overlay text from gallery images.
+- Added cream background FAQ section with:
+  - Section heading: text-5xl desktop, text-4xl mobile
+  - Question text: text-lg Syncopate with tracking-normal
+  - Answer text: text-lg Cormorant Garamond at 70% opacity
+  - Each FAQ row: py-8 padding
+  - Gold top border separating from dark CTA section
+  - First FAQ item open by default
+- CTA section: "Ready to look the part?" with $175 pricing (no special styling on price).
+- Includes Service JSON-LD and FAQPage JSON-LD.
+- Professional footer with four-column layout (Brand, Navigate, Services, Contact) plus bottom bar.
 
 Web Design `/web-design`
 
@@ -448,12 +457,12 @@ Headshots (19 total):
 - Used in `HeadshotGrid.tsx` mosaic layout (all 19 in grid + centered logo tile)
 - Used in `HeadshotsHighlight.tsx` horizontal scroll section (4-image showcase)
 
-Celebrations:
+Celebrations (includes prom, graduation, wedding guest, and casual portraits):
 
-- `public/images/celebrations/prom-photography-houston-01.jpg`
-- `public/images/celebrations/prom-photography-houston-02.jpg`
-- `public/images/celebrations/graduation-photography-houston-01.jpg`
-- `public/images/celebrations/graduation-photography-houston-02.jpg`
+- `public/images/celebrations/prom-photography-houston-01.jpg` through `prom-photography-houston-05.jpg`
+- `public/images/celebrations/graduation-photography-houston-01.jpg` through `graduation-photography-houston-08.jpg`
+- `public/images/wedding-guest/wedding-guest-photography-houston-01.jpg` through `wedding-guest-photography-houston-16.jpg` (moved to CELEBRATIONS filter)
+- `public/images/casual/casual-portrait-houston-01.jpg` (moved to HEADSHOTS filter)
 
 Web design:
 
@@ -544,15 +553,18 @@ Rules:
 
 High priority:
 
-- Audit and close the known gaps listed in Section 1B.
-- Review `/photography` hero crop on real mobile devices. The page uses a Porsche/model/car image that works well on desktop but may crop on narrow screens.
-- Review `/photography` gallery hover behavior on real desktop: portfolio images should start black and white, then return to color with a gold overlay on hover.
-- Test that the logo appears in the header on every page.
-- Confirm all images load from the canonical direct folders.
-- Test contact form UI validation.
-- Configure `RESEND_API_KEY` in Vercel.
-- Verify Resend domain records.
-- Send a real test inquiry and confirm email delivery.
+- Test fullscreen image viewer on `/photography` gallery — click images to open fullscreen, X button and outside click to close
+- Review filter tab consolidation (4 tabs total) to ensure images appear correctly for each filter
+- Review `/photography` gallery grayscale-to-color hover effect on real desktop
+- Test that the logo appears in the header on every page and is visible (brightness-0 invert applied to footer logo)
+- Confirm all images load from the canonical direct folders
+- Test footer four-column layout on mobile vs desktop — should stack on mobile
+- Test footer social icons (Instagram, LinkedIn) are clickable and open in new tab
+- Test contact form UI validation
+- Test `/privacy` and `/terms` placeholder pages link correctly from footer
+- Configure `RESEND_API_KEY` in Vercel
+- Verify Resend domain records
+- Send a real test inquiry and confirm email delivery
 
 Before launch:
 
@@ -571,7 +583,7 @@ Before launch:
 
 ---
 
-## 13. Exact Review Checklist for Claude
+## 17. Exact Review Checklist for Claude
 
 1. Read `AGENTS.md`.
 2. Read relevant Next.js 16 docs in `node_modules/next/dist/docs/`.
@@ -622,7 +634,7 @@ rg "/images/" app components
 
 ---
 
-## 14. Suggested Claude Kickoff Prompt
+## 18. Suggested Claude Kickoff Prompt
 
 ```text
 Read HANDOFF.md first. This project was rebuilt after accidental deletion.
@@ -654,7 +666,65 @@ Afterward report files changed, build result, lint result, remaining risks, and 
 
 ---
 
-## 15. Known Risks and Assumptions
+## 15. Recent Implementation Updates (May 7, 2026)
+
+**Photography Page Refinements:**
+- Consolidated gallery filter tabs from 6 to 4: ALL, HEADSHOTS, EDITORIAL & BRAND, CELEBRATIONS
+- Moved PORTRAITS category images into HEADSHOTS
+- Moved EVENTS category images into CELEBRATIONS
+- Removed PORTRAITS and EVENTS tabs completely
+- Updated hero grid to display images at full brightness by default
+- Set explicit object-position: center top on all hero grid images
+- Grayscale-to-color hover effect preserved as designed
+- Removed "VIEW" overlay text from gallery images
+- Added fullscreen image viewer modal - users click images to open in fullscreen
+- Modal closes with X button or by clicking outside the image
+
+**FAQ Section Rebuild:**
+- Moved FAQ section out of dark green portfolio section
+- Created distinct cream background section with gold top border
+- Updated typography:
+  - Question text: text-lg Syncopate with tracking-normal
+  - Answer text: text-lg Cormorant Garamond at 70% opacity
+  - Section heading: text-4xl mobile, text-5xl desktop
+  - Each FAQ row: py-8 padding
+- First FAQ item opens by default
+- Removed extra gap between CTA and FAQ sections
+
+**Footer Rebuild:**
+- Replaced entire footer with professional four-column design
+- Column 1 - Brand: Logo (h-20 with brightness-0 invert for visibility), description, social icons (Instagram/LinkedIn)
+- Column 2 - Navigate: Photography, Web Design, About, Contact links
+- Column 3 - Services: Corporate Headshots, Brand Photography, Web Design, Team Sessions, Branding Portraits
+- Column 4 - Contact: Email, phone, location, "START A PROJECT" CTA button
+- Bottom bar: Copyright, Privacy Policy, and Terms of Service links
+- All links properly styled with Cormorant Garamond and Syncopate fonts
+- Hover states with gold color transitions
+- Full WCAG AA accessibility with focus rings and aria-labels
+
+**New Pages Added:**
+- `/privacy` — Placeholder Privacy Policy page
+- `/terms` — Placeholder Terms of Service page
+
+**Header Navigation:**
+- Updated to use dark background (#0f2d24) on all pages
+- Navigation text: sans-serif font (Syncopate) with tracking-widest
+- Applied consistently across all pages
+
+**CTA Section Refinement:**
+- Removed special styling from $175 price in "Individual headshot sessions start at $175. Team packages available."
+- Price now displays as plain text at 70% opacity with rest of sentence
+
+**Recent Commits:**
+- 90ee794: Remove hover overlay text, add fullscreen image viewer
+- f2801d8: Consolidate filter tabs, fix hero grid brightness, FAQ fonts, price styling, footer visibility
+- 3daddb6: Fix FAQ font sizes, rebuild footer with four columns, add placeholder privacy and terms pages
+- 4206cf7: Move FAQ to cream background section
+- 3daddb6: Move FAQ to cream background section
+
+---
+
+## 16. Known Risks and Assumptions
 
 - The rebuild is based on retained context, not an original Git backup.
 - Dependencies are installed and verified locally.
