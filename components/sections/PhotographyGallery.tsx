@@ -77,6 +77,13 @@ const allPortfolioItems = [
     image: '/images/headshots/professional-headshot-houston-12.jpg',
     alt: 'Professional headshot',
   },
+  // HEADSHOTS (moved from PORTRAITS)
+  {
+    id: 32,
+    category: 'HEADSHOTS',
+    image: '/images/casual/casual-portrait-houston-01.jpg',
+    alt: 'Casual portrait photography',
+  },
   // EDITORIAL & BRAND
   {
     id: 13,
@@ -193,14 +200,7 @@ const allPortfolioItems = [
     image: '/images/celebrations/graduation-photography-houston-08.jpg',
     alt: 'Graduation photography',
   },
-  // HEADSHOTS (moved from PORTRAITS)
-  {
-    id: 32,
-    category: 'HEADSHOTS',
-    image: '/images/casual/casual-portrait-houston-01.jpg',
-    alt: 'Casual portrait photography',
-  },
-  // EVENTS
+  // CELEBRATIONS (moved from EVENTS)
   {
     id: 33,
     category: 'CELEBRATIONS',
@@ -299,20 +299,13 @@ const allPortfolioItems = [
   },
 ]
 
-// Curated featured images for ALL view (15 images max)
-const featuredImages = [
-  // 6 headshots first
-  1, 2, 3, 4, 5, 6,
-  // 3 editorial
-  13, 14, 15,
-  // 3 celebrations (includes original CELEBRATIONS and moved EVENTS)
-  19, 24, 26, 33, 39, 45,
-]
+const featuredImages = [1, 2, 3, 4, 5, 6, 13, 14, 15, 19, 24, 26, 33, 39, 45]
 
 const filterCategories = ['ALL', 'HEADSHOTS', 'EDITORIAL & BRAND', 'CELEBRATIONS']
 
 export default function PhotographyGallery() {
   const [activeFilter, setActiveFilter] = useState('ALL')
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   const filteredItems =
     activeFilter === 'ALL'
@@ -348,27 +341,58 @@ export default function PhotographyGallery() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {filteredItems.map((item) => (
-              <div key={item.id}>
-                {/* Image tile with hover state */}
-                <div className="group relative overflow-hidden rounded-lg transition-transform duration-500 hover:scale-[1.02] aspect-square">
-                  <Image
-                    src={item.image}
-                    alt={item.alt}
-                    fill
-                    className="object-cover transition-all duration-700 grayscale group-hover:grayscale-0"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    quality={85}
-                  />
-                  {/* Hover overlay with VIEW label */}
-                  <div className="absolute inset-0 bg-forest-green/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span className="font-sans text-xs tracking-widest text-cream">VIEW</span>
-                  </div>
-                </div>
-              </div>
+              <button
+                key={item.id}
+                onClick={() => setSelectedImage(item.image)}
+                className="group relative overflow-hidden rounded-lg transition-transform duration-500 hover:scale-[1.02] aspect-square cursor-pointer focus:outline-none focus:ring-2 focus:ring-gold"
+                aria-label={`Click to view full screen: ${item.alt}`}
+              >
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  className="object-cover transition-all duration-700 grayscale group-hover:grayscale-0"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={85}
+                />
+              </button>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Fullscreen Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Full screen image viewer"
+        >
+          <button
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-4 right-4 text-cream hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold rounded-sm p-2"
+            aria-label="Close image viewer"
+          >
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          <div className="relative w-full h-full max-w-4xl max-h-screen flex items-center justify-center">
+            <Image
+              src={selectedImage}
+              alt="Full screen gallery image"
+              fill
+              className="object-contain"
+              sizes="100vw"
+              quality={95}
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
     </>
   )
 }
