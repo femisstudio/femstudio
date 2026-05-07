@@ -11,7 +11,11 @@ const navLinks = [
   { href: '/contact', label: 'Contact' },
 ]
 
-export default function Header() {
+interface HeaderProps {
+  dark?: boolean
+}
+
+export default function Header({ dark = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -33,7 +37,7 @@ export default function Header() {
     <header
       role="banner"
       className={`fixed top-0 z-50 flex w-full items-center justify-between border-b px-6 py-5 transition-all duration-300 md:px-10 ${
-        scrolled || menuOpen
+        scrolled || menuOpen || dark
           ? 'border-cream/10 bg-darkGreen/95 backdrop-blur-md'
           : 'border-cream/10 bg-transparent'
       }`}
@@ -54,13 +58,13 @@ export default function Header() {
         />
       </Link>
 
-      <nav aria-label="Main navigation" className="hidden items-center gap-10 font-serif text-lg italic md:flex">
+      <nav aria-label="Main navigation" className={`hidden items-center gap-10 font-sans text-xs font-bold tracking-widest md:flex ${scrolled || dark ? 'text-cream' : 'text-forest'}`}>
         {navLinks.map((link) => (
           <Link
             key={link.href}
             href={link.href}
             className={`focus-ring rounded-sm transition-colors duration-200 ${
-              scrolled ? 'text-cream hover:text-gold' : 'text-forest hover:text-gold'
+              scrolled || dark ? 'text-cream hover:text-gold' : 'text-forest hover:text-gold'
             }`}
           >
             {link.label}
@@ -71,11 +75,25 @@ export default function Header() {
       <Link
         href="/contact"
         aria-label="Start a project with FemStudio"
-        className={`focus-ring hidden rounded-full px-7 py-2 font-sans text-xs tracking-widest transition-colors duration-200 md:inline-flex ${
-          scrolled
-            ? 'border border-gold text-cream hover:bg-gold hover:text-darkGreen'
-            : 'border border-forest text-forest hover:bg-forest hover:text-cream'
-        }`}
+        className="focus-ring hidden rounded-full px-7 py-2 font-sans text-xs font-bold tracking-widest transition-colors duration-200 items-center justify-center md:inline-flex"
+        style={{
+          borderWidth: '1px',
+          borderColor: scrolled || dark ? '#b8a862' : '#0f2d24',
+          color: scrolled || dark ? '#fcfbf7' : '#0f2d24',
+        }}
+        onMouseEnter={(e) => {
+          if (scrolled || dark) {
+            e.currentTarget.style.backgroundColor = '#b8a862'
+            e.currentTarget.style.color = '#0f2d24'
+          } else {
+            e.currentTarget.style.backgroundColor = '#0f2d24'
+            e.currentTarget.style.color = '#fcfbf7'
+          }
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = 'transparent'
+          e.currentTarget.style.color = scrolled || dark ? '#fcfbf7' : '#0f2d24'
+        }}
       >
         START PROJECT
       </Link>
@@ -101,12 +119,12 @@ export default function Header() {
           aria-label="Mobile navigation"
           className="fixed inset-0 top-[72px] z-40 bg-darkGreen/98 px-6 py-10 md:hidden"
         >
-          <nav aria-label="Mobile navigation links" className="flex flex-col gap-8 font-serif text-4xl italic">
+          <nav aria-label="Mobile navigation links" className="flex flex-col gap-8 font-sans text-lg font-bold tracking-widest text-cream">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="focus-ring rounded-sm text-cream"
+                className="focus-ring rounded-sm"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}

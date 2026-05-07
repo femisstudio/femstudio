@@ -27,7 +27,7 @@ export default function PhotographyHeroNew() {
   ]
 
   return (
-    <section className="w-full bg-cream min-h-screen md:min-h-[100vh] flex items-center">
+    <section className="w-full bg-cream min-h-screen md:min-h-[100vh] flex items-center pt-20">
       <div className="w-full flex flex-col md:flex-row gap-0">
         {/* LEFT SIDE — 40% width on desktop */}
         <div className="w-full md:w-2/5 px-6 md:px-12 py-12 md:py-20 flex flex-col justify-center">
@@ -83,9 +83,9 @@ export default function PhotographyHeroNew() {
         </div>
 
         {/* RIGHT SIDE — 60% width on desktop */}
-        <div className="w-full md:w-3/5 px-6 md:p-8 pb-12 md:pb-0 flex items-center justify-center">
+        <div className="w-full md:w-3/5 px-6 md:px-12 py-12 md:py-20 flex items-center justify-center">
           {/* 3x3 Grid */}
-          <div className="w-full rounded-2xl overflow-hidden shadow-2xl" style={{ aspectRatio: '1/1', maxWidth: '100%' }}>
+          <div className="w-full rounded-2xl overflow-hidden shadow-2xl" style={{ aspectRatio: '1/1', maxWidth: '80%' }}>
             <div className="w-full h-full grid grid-cols-3 grid-rows-3 gap-2">
               {gridTiles.map((tile, idx) =>
                 tile.type === 'logo' ? (

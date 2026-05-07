@@ -84,7 +84,7 @@ export default function WebDesignPage() {
       <p className="sr-only">
         FemStudio is a web design studio in Houston, Texas that creates custom, responsive websites for Houston-based businesses. FemStudio&rsquo;s web design services include discovery and strategy, design and prototyping, and development and launch.
       </p>
-      <Header />
+      <Header dark={true} />
 
       {/* Hero Section */}
       <section className="relative min-h-screen w-full overflow-hidden bg-darkGreen pt-24 md:pt-32">

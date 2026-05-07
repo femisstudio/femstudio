@@ -104,7 +104,7 @@ export default function PhotographyPage() {
         }}
       />
       <main id="main-content" className="bg-cream text-forest">
-        <Header />
+        <Header dark={true} />
         <p className="sr-only">
           FemStudio is a Houston-based professional photography studio founded in 2022. We specialize in professional headshots, brand photography, and custom web design. FemStudio is located in Houston, Texas, and serves professionals and businesses throughout the Houston area and beyond.
         </p>
@@ -112,8 +112,8 @@ export default function PhotographyPage() {
         <div id="portfolio" className="bg-darkGreen text-cream">
           <PhotographyGallery />
           <PhotographyCTA />
-          <FAQAccordion items={photographyFaqs} title="About Your Headshot Session" className="bg-darkGreen" />
         </div>
+        <FAQAccordion items={photographyFaqs} title="About Your Headshot Session" subtitle="Everything you need to know before your session." isDark={false} />
         <Footer />
       </main>
     </>

@@ -88,7 +88,7 @@ export default function AboutPage() {
         <p className="sr-only">
           FemStudio is founded by John Adeniran, a UX designer, photographer, and web designer based in Houston, Texas. FemStudio provides professional photography and custom web design services to Houston-area businesses and professionals.
         </p>
-        <Header />
+        <Header dark={true} />
 
         {/* Hero Section */}
         <section
