@@ -1,154 +1,189 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 export default function Footer() {
-  const [formState, setFormState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [formData, setFormData] = useState(() => ({
-    service: 'photography',
-    name: '',
-    email: '',
-    phone: '',
-    details: '',
-    company: '',
-    startedAt: Date.now(),
-  }))
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setFormState('loading')
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          service: formData.service,
-          message: formData.details,
-          company: formData.company,
-          startedAt: formData.startedAt,
-        }),
-      })
-
-      if (response.ok) {
-        setFormState('success')
-        setFormData({ service: 'photography', name: '', email: '', phone: '', details: '', company: '', startedAt: Date.now() })
-        setTimeout(() => setFormState('idle'), 4000)
-      } else {
-        setFormState('error')
-        setTimeout(() => setFormState('idle'), 3000)
-      }
-    } catch {
-      setFormState('error')
-      setTimeout(() => setFormState('idle'), 3000)
-    }
-  }
-
   return (
-    <footer className="bg-darkGreen px-6 py-24 md:px-10">
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-20 grid gap-16 md:grid-cols-[1fr_1fr]">
+    <footer className="bg-darkGreen text-cream" aria-label="FemStudio site footer">
+      {/* Top section with 4 columns */}
+      <div className="py-16 px-6 md:px-12 lg:px-20">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Column 1 - Brand */}
           <div>
-            <h2 className="mb-8 font-sans text-3xl font-bold tracking-wider text-gold md:text-4xl">LET&apos;S CREATE MAGIC.</h2>
-            <address className="space-y-4 not-italic text-cream/75">
-              <p>
-                <a href="https://www.instagram.com/femstudio__" target="_blank" rel="noopener noreferrer" className="focus-ring rounded-sm hover:text-gold">
-                  @femstudio__
-                </a>
-              </p>
-              <p>
-                <a href="mailto:info@femsstudio.com" className="focus-ring rounded-sm hover:text-gold">
-                  info@femsstudio.com
-                </a>
-              </p>
-              <p>
-                <a href="tel:+12818183726" className="focus-ring rounded-sm hover:text-gold">
-                  +1 (281) 818-3726
-                </a>
-              </p>
-              <p>Houston, TX</p>
-            </address>
+            <Image
+              src="/images/brand/femstudio-logo-stacked.png"
+              alt="FemStudio logo"
+              width={120}
+              height={120}
+              className="h-16 w-auto object-contain"
+            />
+            <p className="font-cormorant-garamond italic text-base cream opacity-60 mt-4 max-w-xs">
+              Premium brand photography and custom web design in Houston TX.
+            </p>
+            <div className="flex gap-4 mt-6">
+              <a
+                href="https://www.instagram.com/femstudio__"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit FemStudio on Instagram"
+                className="text-cream hover:text-gold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm p-1"
+              >
+                <FontAwesomeIcon icon={faInstagram} className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/femstudio/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit FemStudio on LinkedIn"
+                className="text-cream hover:text-gold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm p-1"
+              >
+                <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5" />
+              </a>
+            </div>
           </div>
 
+          {/* Column 2 - Navigate */}
           <div>
-            {formState === 'success' ? (
-              <div className="flex h-full items-center justify-center rounded-lg border border-gold/30 bg-gold/5 p-8 text-center">
-                <p className="font-serif text-xl text-gold">Message received. We&apos;ll be in touch within 24 hours.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="service-footer" className="block text-xs font-bold tracking-widest text-cream/60 mb-2">
-                    SERVICE INTEREST
-                  </label>
-                  <select
-                    id="service-footer"
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full rounded-sm border border-cream/20 bg-darkGreen px-3 py-2 text-cream placeholder:text-cream/40 focus:border-gold focus:outline-none"
-                  >
-                    <option value="photography">Photography</option>
-                    <option value="web-design">Web Design</option>
-                    <option value="both">Both</option>
-                  </select>
-                </div>
+            <h3 className="font-syncopate text-xs tracking-widest uppercase mb-6" style={{ color: '#c9a227' }}>
+              Navigate
+            </h3>
+            <nav className="space-y-3">
+              <Link
+                href="/photography"
+                aria-label="Go to Photography page"
+                className="font-cormorant-garamond text-base opacity-70 hover:opacity-100 hover:text-gold transition-colors duration-200 block focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
+              >
+                Photography
+              </Link>
+              <Link
+                href="/web-design"
+                aria-label="Go to Web Design page"
+                className="font-cormorant-garamond text-base opacity-70 hover:opacity-100 hover:text-gold transition-colors duration-200 block focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
+              >
+                Web Design
+              </Link>
+              <Link
+                href="/about"
+                aria-label="Go to About page"
+                className="font-cormorant-garamond text-base opacity-70 hover:opacity-100 hover:text-gold transition-colors duration-200 block focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
+              >
+                About
+              </Link>
+              <Link
+                href="/contact"
+                aria-label="Go to Contact page"
+                className="font-cormorant-garamond text-base opacity-70 hover:opacity-100 hover:text-gold transition-colors duration-200 block focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
+              >
+                Contact
+              </Link>
+            </nav>
+          </div>
 
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full rounded-sm border border-cream/20 bg-darkGreen px-3 py-2 text-cream placeholder:text-cream/40 focus:border-gold focus:outline-none"
-                />
+          {/* Column 3 - Services */}
+          <div>
+            <h3 className="font-syncopate text-xs tracking-widest uppercase mb-6" style={{ color: '#c9a227' }}>
+              Services
+            </h3>
+            <nav className="space-y-3">
+              <Link
+                href="/photography"
+                aria-label="Corporate Headshots service"
+                className="font-cormorant-garamond text-base opacity-70 hover:opacity-100 hover:text-gold transition-colors duration-200 block focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
+              >
+                Corporate Headshots
+              </Link>
+              <Link
+                href="/photography"
+                aria-label="Brand Photography service"
+                className="font-cormorant-garamond text-base opacity-70 hover:opacity-100 hover:text-gold transition-colors duration-200 block focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
+              >
+                Brand Photography
+              </Link>
+              <Link
+                href="/web-design"
+                aria-label="Custom Web Design service"
+                className="font-cormorant-garamond text-base opacity-70 hover:opacity-100 hover:text-gold transition-colors duration-200 block focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
+              >
+                Custom Web Design
+              </Link>
+              <Link
+                href="/photography"
+                aria-label="Team Sessions service"
+                className="font-cormorant-garamond text-base opacity-70 hover:opacity-100 hover:text-gold transition-colors duration-200 block focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
+              >
+                Team Sessions
+              </Link>
+              <Link
+                href="/photography"
+                aria-label="Branding Portraits service"
+                className="font-cormorant-garamond text-base opacity-70 hover:opacity-100 hover:text-gold transition-colors duration-200 block focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
+              >
+                Branding Portraits
+              </Link>
+            </nav>
+          </div>
 
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full rounded-sm border border-cream/20 bg-darkGreen px-3 py-2 text-cream placeholder:text-cream/40 focus:border-gold focus:outline-none"
-                />
-
-                <textarea
-                  name="details"
-                  placeholder="Tell us about your project"
-                  value={formData.details}
-                  onChange={handleChange}
-                  rows={4}
-                  className="w-full rounded-sm border border-cream/20 bg-darkGreen px-3 py-2 text-cream placeholder:text-cream/40 focus:border-gold focus:outline-none"
-                />
-
-                <input type="hidden" name="company" value={formData.company} />
-
-                <button
-                  type="submit"
-                  disabled={formState === 'loading'}
-                  className="w-full rounded-full border border-gold bg-gold px-6 py-2 font-sans text-xs font-bold tracking-widest text-darkGreen transition-colors hover:bg-gold/90 disabled:opacity-60"
-                >
-                  {formState === 'loading' ? 'SENDING...' : 'SEND MESSAGE'}
-                </button>
-
-                {formState === 'error' && <p className="text-center text-sm text-red-400">Something went wrong. Please try again.</p>}
-              </form>
-            )}
+          {/* Column 4 - Contact */}
+          <div>
+            <h3 className="font-syncopate text-xs tracking-widest uppercase mb-6" style={{ color: '#c9a227' }}>
+              Get in Touch
+            </h3>
+            <div className="space-y-3">
+              <a
+                href="mailto:info@femsstudio.com"
+                aria-label="Email FemStudio"
+                className="font-cormorant-garamond text-base opacity-70 hover:opacity-100 hover:text-gold transition-colors duration-200 block focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
+              >
+                info@femsstudio.com
+              </a>
+              <a
+                href="tel:+12818183726"
+                aria-label="Call FemStudio"
+                className="font-cormorant-garamond text-base opacity-70 hover:opacity-100 hover:text-gold transition-colors duration-200 block focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
+              >
+                +1 (281) 818-3726
+              </a>
+              <p className="font-cormorant-garamond text-base opacity-70 block">Houston, TX</p>
+              <Link
+                href="/contact"
+                className="inline-block font-syncopate text-xs tracking-widest bg-gold text-forest rounded-full px-6 py-3 mt-4 hover:bg-cream transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold"
+                style={{ backgroundColor: '#c9a227', color: '#0f2d24' }}
+              >
+                Start a Project
+              </Link>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div className="border-t border-cream/10 pt-8 text-center text-xs text-cream/50">
-          2026 FEMSTUDIO. EST. 2022.
+      {/* Bottom bar */}
+      <div className="border-t border-cream/10 py-6 px-6 md:px-12 lg:px-20">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:justify-between md:items-center gap-4 text-center md:text-left">
+          <p className="font-syncopate text-xs tracking-wide opacity-40">
+            © 2025 FemStudio. All rights reserved.
+          </p>
+          <div className="flex justify-center md:justify-end gap-4 items-center flex-wrap">
+            <Link
+              href="/privacy"
+              aria-label="View Privacy Policy"
+              className="font-syncopate text-xs opacity-40 hover:opacity-80 transition-opacity duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
+            >
+              Privacy Policy
+            </Link>
+            <div className="opacity-20" style={{ color: 'rgba(252, 251, 247, 0.2)' }}>
+              |
+            </div>
+            <Link
+              href="/terms"
+              aria-label="View Terms of Service"
+              className="font-syncopate text-xs opacity-40 hover:opacity-80 transition-opacity duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
+            >
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

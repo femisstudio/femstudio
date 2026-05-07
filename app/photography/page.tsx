@@ -113,7 +113,7 @@ export default function PhotographyPage() {
           <PhotographyGallery />
           <PhotographyCTA />
         </div>
-        <FAQAccordion items={photographyFaqs} title="About Your Headshot Session" subtitle="Everything you need to know before your session." isDark={false} />
+        <FAQAccordion items={photographyFaqs} title="About Your Headshot Session" subtitle="Everything you need to know before your session." isDark={false} faqSize="large" />
         <Footer />
       </main>
     </>

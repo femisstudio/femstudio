@@ -13,13 +13,19 @@ interface FAQAccordionProps {
   subtitle?: string
   className?: string
   isDark?: boolean
+  faqSize?: 'normal' | 'large'
 }
 
-export default function FAQAccordion({ items, title = 'Frequently Asked', subtitle, className = '', isDark = false }: FAQAccordionProps) {
+export default function FAQAccordion({ items, title = 'Frequently Asked', subtitle, className = '', isDark = false, faqSize = 'normal' }: FAQAccordionProps) {
   const [openId, setOpenId] = useState(0)
 
   const bgClass = isDark ? 'bg-darkGreen text-cream' : 'bg-cream text-forest'
   const borderTopClass = isDark ? '' : 'border-t-2 border-gold'
+  const isLarge = faqSize === 'large'
+  const headingSize = isLarge ? 'text-4xl md:text-5xl' : 'text-4xl'
+  const questionSize = isLarge ? 'text-base' : 'text-sm'
+  const answerSize = isLarge ? 'text-lg' : 'text-base'
+  const rowPadding = isLarge ? 'py-8' : 'py-6'
 
   return (
     <section className={`w-full px-6 md:px-12 lg:px-20 py-24 ${borderTopClass} ${bgClass} ${className}`}>
@@ -29,7 +35,7 @@ export default function FAQAccordion({ items, title = 'Frequently Asked', subtit
             <p className="font-syncopate text-xs tracking-widest uppercase mb-3" style={{ color: '#c9a227' }}>
               QUESTIONS
             </p>
-            <h2 className="font-cormorant-garamond italic font-bold text-4xl mb-2" style={{ color: isDark ? '#fcfbf7' : '#0f2d24' }}>
+            <h2 className={`font-cormorant-garamond italic font-bold ${headingSize} mb-2`} style={{ color: isDark ? '#fcfbf7' : '#0f2d24' }}>
               {title}
             </h2>
             {subtitle && (
@@ -47,8 +53,8 @@ export default function FAQAccordion({ items, title = 'Frequently Asked', subtit
               onClick={() => setOpenId(openId === index ? -1 : index)}
               className="w-full text-left transition-all duration-200 cursor-pointer"
             >
-              <div className={`flex items-center justify-between gap-4 py-6 focus-visible:outline-none ${isDark ? 'border-gold/30' : 'border-forest/20'} border-b`}>
-                <h3 className="font-syncopate text-sm tracking-wide flex-1" style={{ color: isDark ? '#fcfbf7' : '#0f2d24' }}>
+              <div className={`flex items-center justify-between gap-4 ${rowPadding} focus-visible:outline-none ${isDark ? 'border-gold/30' : 'border-forest/20'} border-b`}>
+                <h3 className={`font-syncopate ${questionSize} tracking-wide flex-1`} style={{ color: isDark ? '#fcfbf7' : '#0f2d24' }}>
                   {item.q}
                 </h3>
                 <svg
@@ -67,7 +73,7 @@ export default function FAQAccordion({ items, title = 'Frequently Asked', subtit
               </div>
 
               {openId === index && (
-                <div className="font-cormorant-garamond text-base leading-relaxed pt-3 pb-2" style={{ color: isDark ? 'rgba(252, 251, 247, 0.7)' : 'rgba(15, 45, 36, 0.7)' }}>
+                <div className={`font-cormorant-garamond ${answerSize} leading-relaxed pt-3 pb-2`} style={{ color: isDark ? 'rgba(252, 251, 247, 0.7)' : 'rgba(15, 45, 36, 0.7)' }}>
                   {item.a}
                 </div>
               )}
