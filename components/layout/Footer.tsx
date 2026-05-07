@@ -10,17 +10,19 @@ export default function Footer() {
     <footer className="bg-darkGreen text-cream" aria-label="FemStudio site footer">
       {/* Top section with 4 columns */}
       <div className="py-16 px-6 md:px-12 lg:px-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
           {/* Column 1 - Brand */}
           <div>
-            <Image
-              src="/images/brand/femstudio-logo-stacked.png"
-              alt="FemStudio logo"
-              width={120}
-              height={120}
-              className="h-16 w-auto object-contain"
-            />
-            <p className="font-cormorant-garamond italic text-base cream opacity-60 mt-4 max-w-xs">
+            <div className="h-20">
+              <Image
+                src="/images/brand/femstudio-logo-stacked.png"
+                alt="FemStudio logo"
+                width={120}
+                height={160}
+                className="h-20 w-auto object-contain brightness-0 invert"
+              />
+            </div>
+            <p className="font-cormorant-garamond text-base opacity-60 mt-4 max-w-xs">
               Premium brand photography and custom web design in Houston TX.
             </p>
             <div className="flex gap-4 mt-6">
@@ -29,25 +31,25 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit FemStudio on Instagram"
-                className="text-cream hover:text-gold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm p-1"
+                className="text-cream text-xl hover:text-gold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm p-1"
               >
-                <FontAwesomeIcon icon={faInstagram} className="w-5 h-5" />
+                <FontAwesomeIcon icon={faInstagram} />
               </a>
               <a
                 href="https://www.linkedin.com/company/femstudio/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit FemStudio on LinkedIn"
-                className="text-cream hover:text-gold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm p-1"
+                className="text-cream text-xl hover:text-gold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm p-1"
               >
-                <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5" />
+                <FontAwesomeIcon icon={faLinkedin} />
               </a>
             </div>
           </div>
 
           {/* Column 2 - Navigate */}
           <div>
-            <h3 className="font-syncopate text-xs tracking-widest uppercase mb-6" style={{ color: '#c9a227' }}>
+            <h3 className="font-syncopate text-sm tracking-widest uppercase mb-6" style={{ color: '#c9a227' }}>
               Navigate
             </h3>
             <nav className="space-y-3">
@@ -84,7 +86,7 @@ export default function Footer() {
 
           {/* Column 3 - Services */}
           <div>
-            <h3 className="font-syncopate text-xs tracking-widest uppercase mb-6" style={{ color: '#c9a227' }}>
+            <h3 className="font-syncopate text-sm tracking-widest uppercase mb-6" style={{ color: '#c9a227' }}>
               Services
             </h3>
             <nav className="space-y-3">
@@ -128,7 +130,7 @@ export default function Footer() {
 
           {/* Column 4 - Contact */}
           <div>
-            <h3 className="font-syncopate text-xs tracking-widest uppercase mb-6" style={{ color: '#c9a227' }}>
+            <h3 className="font-syncopate text-sm tracking-widest uppercase mb-6" style={{ color: '#c9a227' }}>
               Get in Touch
             </h3>
             <div className="space-y-3">
@@ -149,8 +151,10 @@ export default function Footer() {
               <p className="font-cormorant-garamond text-base opacity-70 block">Houston, TX</p>
               <Link
                 href="/contact"
-                className="inline-block font-syncopate text-xs tracking-widest bg-gold text-forest rounded-full px-6 py-3 mt-4 hover:bg-cream transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold"
+                className="inline-block font-syncopate text-xs tracking-widest rounded-full px-6 py-3 mt-4 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold"
                 style={{ backgroundColor: '#c9a227', color: '#0f2d24' }}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#b8a862')}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#c9a227')}
               >
                 Start a Project
               </Link>
@@ -162,24 +166,24 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-cream/10 py-6 px-6 md:px-12 lg:px-20">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:justify-between md:items-center gap-4 text-center md:text-left">
-          <p className="font-syncopate text-xs tracking-wide opacity-40">
+          <p className="font-syncopate text-xs opacity-60">
             © 2025 FemStudio. All rights reserved.
           </p>
           <div className="flex justify-center md:justify-end gap-4 items-center flex-wrap">
             <Link
               href="/privacy"
               aria-label="View Privacy Policy"
-              className="font-syncopate text-xs opacity-40 hover:opacity-80 transition-opacity duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
+              className="font-syncopate text-xs opacity-60 hover:opacity-80 transition-opacity duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
             >
               Privacy Policy
             </Link>
-            <div className="opacity-20" style={{ color: 'rgba(252, 251, 247, 0.2)' }}>
+            <div className="opacity-20">
               |
             </div>
             <Link
               href="/terms"
               aria-label="View Terms of Service"
-              className="font-syncopate text-xs opacity-40 hover:opacity-80 transition-opacity duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
+              className="font-syncopate text-xs opacity-60 hover:opacity-80 transition-opacity duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
             >
               Terms of Service
             </Link>

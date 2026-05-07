@@ -113,7 +113,8 @@ export default function PhotographyHeroNew() {
                       src={tile.src}
                       alt="Professional corporate headshot photography by FemStudio Houston"
                       fill
-                      className="object-cover object-top"
+                      className="object-cover"
+                      style={{ objectPosition: 'center top' }}
                       sizes="(max-width: 768px) 33vw, 20vw"
                       quality={85}
                     />

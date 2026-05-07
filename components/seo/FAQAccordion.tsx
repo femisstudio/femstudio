@@ -23,8 +23,8 @@ export default function FAQAccordion({ items, title = 'Frequently Asked', subtit
   const borderTopClass = isDark ? '' : 'border-t-2 border-gold'
   const isLarge = faqSize === 'large'
   const headingSize = isLarge ? 'text-4xl md:text-5xl' : 'text-4xl'
-  const questionSize = isLarge ? 'text-base' : 'text-sm'
-  const answerSize = isLarge ? 'text-lg' : 'text-base'
+  const questionSize = isLarge ? 'text-lg' : 'text-sm'
+  const answerSize = 'text-lg'
   const rowPadding = isLarge ? 'py-8' : 'py-6'
 
   return (
@@ -54,7 +54,7 @@ export default function FAQAccordion({ items, title = 'Frequently Asked', subtit
               className="w-full text-left transition-all duration-200 cursor-pointer"
             >
               <div className={`flex items-center justify-between gap-4 ${rowPadding} focus-visible:outline-none ${isDark ? 'border-gold/30' : 'border-forest/20'} border-b`}>
-                <h3 className={`font-syncopate ${questionSize} tracking-wide flex-1`} style={{ color: isDark ? '#fcfbf7' : '#0f2d24' }}>
+                <h3 className={`font-syncopate ${questionSize} tracking-normal flex-1`} style={{ color: isDark ? '#fcfbf7' : '#0f2d24' }}>
                   {item.q}
                 </h3>
                 <svg

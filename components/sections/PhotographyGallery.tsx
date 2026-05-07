@@ -193,125 +193,123 @@ const allPortfolioItems = [
     image: '/images/celebrations/graduation-photography-houston-08.jpg',
     alt: 'Graduation photography',
   },
-  // PORTRAITS
+  // HEADSHOTS (moved from PORTRAITS)
   {
     id: 32,
-    category: 'PORTRAITS',
+    category: 'HEADSHOTS',
     image: '/images/casual/casual-portrait-houston-01.jpg',
     alt: 'Casual portrait photography',
   },
   // EVENTS
   {
     id: 33,
-    category: 'EVENTS',
+    category: 'CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-01.jpg',
     alt: 'Wedding guest photography',
   },
   {
     id: 34,
-    category: 'EVENTS',
+    category: 'CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-02.jpg',
     alt: 'Wedding guest photography',
   },
   {
     id: 35,
-    category: 'EVENTS',
+    category: 'CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-03.jpg',
     alt: 'Wedding guest photography',
   },
   {
     id: 36,
-    category: 'EVENTS',
+    category: 'CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-04.jpg',
     alt: 'Wedding guest photography',
   },
   {
     id: 37,
-    category: 'EVENTS',
+    category: 'CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-05.jpg',
     alt: 'Wedding guest photography',
   },
   {
     id: 38,
-    category: 'EVENTS',
+    category: 'CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-06.jpg',
     alt: 'Wedding guest photography',
   },
   {
     id: 39,
-    category: 'EVENTS',
+    category: 'CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-07.jpg',
     alt: 'Wedding guest photography',
   },
   {
     id: 40,
-    category: 'EVENTS',
+    category: 'CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-08.jpg',
     alt: 'Wedding guest photography',
   },
   {
     id: 41,
-    category: 'EVENTS',
+    category: 'CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-09.jpg',
     alt: 'Wedding guest photography',
   },
   {
     id: 42,
-    category: 'EVENTS',
+    category: 'CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-10.jpg',
     alt: 'Wedding guest photography',
   },
   {
     id: 43,
-    category: 'EVENTS',
+    category: 'CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-11.jpg',
     alt: 'Wedding guest photography',
   },
   {
     id: 44,
-    category: 'EVENTS',
+    category: 'CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-12.jpg',
     alt: 'Wedding guest photography',
   },
   {
     id: 45,
-    category: 'EVENTS',
+    category: 'CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-13.jpg',
     alt: 'Wedding guest photography',
   },
   {
     id: 46,
-    category: 'EVENTS',
+    category: 'CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-14.jpg',
     alt: 'Wedding guest photography',
   },
   {
     id: 47,
-    category: 'EVENTS',
+    category: 'CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-15.jpg',
     alt: 'Wedding guest photography',
   },
   {
     id: 48,
-    category: 'EVENTS',
+    category: 'CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-16.jpg',
     alt: 'Wedding guest photography',
   },
 ]
 
-// Fix 1: Curated featured images for ALL view (15 images max)
+// Curated featured images for ALL view (15 images max)
 const featuredImages = [
   // 6 headshots first
   1, 2, 3, 4, 5, 6,
   // 3 editorial
   13, 14, 15,
-  // 3 celebrations
-  19, 24, 26,
-  // 3 events
-  33, 39, 45,
+  // 3 celebrations (includes original CELEBRATIONS and moved EVENTS)
+  19, 24, 26, 33, 39, 45,
 ]
 
-const filterCategories = ['ALL', 'HEADSHOTS', 'EDITORIAL & BRAND', 'CELEBRATIONS', 'PORTRAITS', 'EVENTS']
+const filterCategories = ['ALL', 'HEADSHOTS', 'EDITORIAL & BRAND', 'CELEBRATIONS']
 
 export default function PhotographyGallery() {
   const [activeFilter, setActiveFilter] = useState('ALL')
