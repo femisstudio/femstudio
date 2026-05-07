@@ -59,7 +59,9 @@ export default function Header() {
           <Link
             key={link.href}
             href={link.href}
-            className="focus-ring rounded-sm text-cream transition-colors duration-200 hover:text-gold"
+            className={`focus-ring rounded-sm transition-colors duration-200 ${
+              scrolled ? 'text-cream hover:text-gold' : 'text-forest hover:text-gold'
+            }`}
           >
             {link.label}
           </Link>
@@ -69,7 +71,11 @@ export default function Header() {
       <Link
         href="/contact"
         aria-label="Start a project with FemStudio"
-        className="focus-ring hidden rounded-full border border-gold px-7 py-2 font-sans text-xs tracking-widest text-gold transition-colors duration-200 hover:bg-gold hover:text-darkGreen md:inline-flex"
+        className={`focus-ring hidden rounded-full px-7 py-2 font-sans text-xs tracking-widest transition-colors duration-200 md:inline-flex ${
+          scrolled
+            ? 'border border-gold text-cream hover:bg-gold hover:text-darkGreen'
+            : 'border border-forest text-forest hover:bg-forest hover:text-cream'
+        }`}
       >
         START PROJECT
       </Link>

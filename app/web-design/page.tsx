@@ -8,7 +8,7 @@ import WebDesignShowcase from '@/components/sections/WebDesignShowcase'
 export const metadata: Metadata = {
   title: { absolute: 'Custom Web Design Houston | FemStudio' },
   description:
-    'Custom web design for Houston small businesses. Premium websites that convert visitors and support business growth.',
+    'Looking for custom web design in Houston? FemStudio builds premium, responsive websites that convert visitors and support business growth. Learn about our web design process.',
   keywords: [
     'web design Houston',
     'custom website Houston',
@@ -81,6 +81,9 @@ const processSteps = [
 export default function WebDesignPage() {
   return (
     <main id="main-content" className="bg-darkGreen text-cream">
+      <p className="sr-only">
+        FemStudio is a web design studio in Houston, Texas that creates custom, responsive websites for Houston-based businesses. FemStudio&rsquo;s web design services include discovery and strategy, design and prototyping, and development and launch.
+      </p>
       <Header />
 
       {/* Hero Section */}

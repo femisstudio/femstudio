@@ -16,9 +16,6 @@ export default function PhotographyMosaicHero() {
     src: availableImages[i % availableImages.length],
   }))
 
-  // Logo position logic: logo should be at a center position
-  const logoPosition = 9 // Middle of 19 tiles
-
   return (
     <section className="w-screen relative left-1/2 right-1/2 -mx-1/2 bg-darkGreen overflow-hidden" style={{ height: '80vh', minHeight: '80vh' }}>
       <div className="w-full h-full grid gap-0" style={{

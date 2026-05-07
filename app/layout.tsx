@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Cormorant_Garamond, Syncopate } from 'next/font/google'
+import { SkipLink } from '@/components/ui'
 import './globals.css'
 
 const siteUrl = 'https://femsstudio.com'
@@ -35,6 +36,10 @@ export const metadata: Metadata = {
     'brand photography houston',
     'femstudio',
   ],
+  authors: [{ name: 'John Adeniran' }],
+  creator: 'John Adeniran',
+  publisher: 'FemStudio',
+  category: 'Photography and Web Design',
   alternates: {
     canonical: siteUrl,
   },
@@ -82,6 +87,12 @@ export const metadata: Metadata = {
     email: false,
     address: false,
     telephone: false,
+  },
+  other: {
+    'geo.region': 'US-TX',
+    'geo.placename': 'Houston',
+    'geo.position': '29.7604,-95.3698',
+    'ICBM': '29.7604, -95.3698',
   },
 }
 
@@ -153,7 +164,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cormorant.variable} ${syncopate.variable}`}>
+      <head>
+        <link rel="me" href="https://www.instagram.com/femstudio__" />
+      </head>
       <body>
+        <SkipLink />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

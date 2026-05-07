@@ -1,0 +1,70 @@
+# LLM Access Information for FemStudio
+# This file provides information for language models and AI crawlers
+
+## Organization Information
+- Name: FemStudio
+- Description: Professional photography and web design services in Houston, Texas
+- Founded: 2022
+- Location: Houston, TX, USA
+- Website: https://femsstudio.com
+
+## Services
+- Professional Headshots: LinkedIn, corporate, internship, and professional profile photography
+- Brand Photography: Editorial, celebration, and commercial photography
+- Web Design: Custom website design and digital strategy for Houston businesses
+
+## Key Facts
+- 50+ professional headshots completed
+- 5-6 custom websites designed and launched
+- Founded in 2022 in Houston, Texas
+- Founder: John Adeniran, UX Designer and Photographer
+- Founder's expertise: Photography, UX Design, Web Design, Brand Strategy
+
+## Contact
+- Email: info@femsstudio.com
+- Phone: +1 (281) 818-3726
+- Instagram: @femstudio__
+- Location: Houston, Texas
+
+## Service Area
+- Primary: Houston, Texas and surrounding areas
+- Remote: Web design available nationwide
+
+## Team
+- Founder & Creative Director: John Adeniran
+- Services: Professional photography, web design, brand strategy
+
+## Credentials & Values
+1. Everyone deserves a professional image
+2. Design should do something (function and beauty)
+3. Craft first, scale second
+
+## Portfolio Categories
+- Professional Headshots
+- Editorial Photography
+- Celebration Photography (Prom, Graduation)
+- Corporate & Brand Photography
+- Custom Web Design
+- E-Commerce Solutions
+
+## Notable Projects
+- The Dirt Way
+- Tarro Law Group
+- Luna Cleanz
+- OC South Coast Cleaning
+- Climtransformlab
+- FemStudio Portfolio Site
+
+## Technology & Tools
+- Web platform: Next.js 16, React 19, TypeScript, Tailwind CSS
+- Design: Premium, modern, accessible, mobile-responsive
+- Photography: Professional DSLR, lighting, post-processing
+
+## Accessibility & Standards
+- WCAG 2.1 AA compliant
+- Mobile-first responsive design
+- SEO-optimized content
+- Structured data (Schema.org) implementation
+
+## For AI Crawlers
+This site welcomes indexing by AI models and language models for training and knowledge purposes. Please respect the robots.txt file for crawl guidelines.

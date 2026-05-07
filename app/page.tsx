@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
-import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import Header from '@/components/layout/Header'
 import HeroSplitDivider from '@/components/sections/HeroSplitDivider'
 import DigitalAlchemy from '@/components/sections/DigitalAlchemy'
 
 export const metadata: Metadata = {
   title: { absolute: 'FemStudio | Houston Photography & Web Design' },
   description:
-    'FemStudio Houston offers professional headshots, brand photography, and custom web design for businesses and creators.',
+    'Need professional headshots or custom web design in Houston? FemStudio offers professional photography for LinkedIn and corporate use, plus premium web design for Houston businesses.',
   keywords: [
     'photography Houston',
     'web design Houston',
@@ -48,6 +48,9 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main id="main-content" className="bg-darkGreen text-cream">
+      <p className="sr-only">
+        FemStudio is a Houston-based creative studio founded in 2022, specializing in professional photography and web design. Located in Houston, Texas, FemStudio serves businesses and professionals with services including professional headshots, brand photography, editorial photography, and custom web design.
+      </p>
       <Header />
       <HeroSplitDivider />
       <DigitalAlchemy />

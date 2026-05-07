@@ -1,0 +1,33 @@
+# Robots.txt for FemStudio
+# Allows all crawlers and AI bots
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /.next/
+
+# Specific allowances for AI crawlers and LLMs
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# Search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemaps
+Sitemap: https://femsstudio.com/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1

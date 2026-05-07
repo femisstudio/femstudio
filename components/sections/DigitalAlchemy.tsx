@@ -8,7 +8,7 @@ const processes = [
     title: 'Discovery & Strategy',
     description:
       'We clarify audience, goals, content, and the first actions your visitors need to take.',
-    image: '/images/webdesign/tarro-law-group-website-design.jpg',
+    image: '/images/webdesign/web-design-houston-tarro-law.jpg',
     alt: 'Strategy and discovery process',
   },
   {
@@ -16,7 +16,7 @@ const processes = [
     title: 'Design & Prototyping',
     description:
       'We shape the look, flow, and structure so the site feels refined and easy to use.',
-    image: '/images/webdesign/client-website-example.jpg',
+    image: '/images/webdesign/web-design-houston-example.jpg',
     alt: 'Design and prototyping mockups',
   },
   {
@@ -24,7 +24,7 @@ const processes = [
     title: 'Development & Launch',
     description:
       'We build responsive pages, tune performance, and prepare your site for launch.',
-    image: '/images/webdesign/tarro-law-group-website-design.jpg',
+    image: '/images/webdesign/web-design-houston-tarro-law.jpg',
     alt: 'Development and code',
   },
 ]

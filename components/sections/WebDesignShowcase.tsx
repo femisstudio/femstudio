@@ -20,21 +20,21 @@ const projects: Project[] = [
     title: 'Tarro Law Group',
     category: 'WEB DESIGN',
     year: '2024',
-    image: '/images/webdesign/tarro-law-group-website-design.jpg',
+    image: '/images/webdesign/web-design-houston-tarro-law.jpg',
     alt: 'Tarro Law Group professional website for legal services in Houston',
   },
   {
     title: 'The Dirt Way',
     category: 'WEB DESIGN',
     year: '2024',
-    image: '/images/webdesign/client-website-example.jpg',
+    image: '/images/webdesign/web-design-houston-example.jpg',
     alt: 'The Dirt Way website showcasing landscaping and outdoor services',
   },
   {
     title: 'Luna Cleanz',
     category: 'E-COMMERCE',
     year: '2024',
-    image: '/images/webdesign/client-website-example.jpg',
+    image: '/images/webdesign/web-design-houston-example.jpg',
     alt: 'Luna Cleanz e-commerce platform for cleaning services and product sales',
   },
   {
@@ -48,7 +48,7 @@ const projects: Project[] = [
     title: 'Climtransformlab',
     category: 'SEO & MARKETING',
     year: '2024',
-    image: '/images/webdesign/tarro-law-group-website-design.jpg',
+    image: '/images/webdesign/web-design-houston-tarro-law.jpg',
     alt: 'Climtransformlab digital transformation consulting website',
   },
   {

@@ -10,7 +10,7 @@ export default function HeadshotGridHero() {
       <section aria-label="FemStudio headshot photography portfolio" className="w-full bg-darkGreen overflow-hidden">
         <div className="relative w-full" style={{ aspectRatio: '16 / 10' }}>
           <Image
-            src="/images/brand/femstudio_logo_stacked.png"
+            src="/images/brand/femstudio-logo-stacked.png"
             alt="FemStudio professional headshot photography portfolio grid with 19 headshots and centered logo"
             fill
             className="object-cover object-center"

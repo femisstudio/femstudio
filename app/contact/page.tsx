@@ -3,11 +3,12 @@ import Link from 'next/link'
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
 import ContactForm from '@/components/sections/ContactForm'
+import FAQSection from '@/components/seo/FAQSection'
 
 export const metadata: Metadata = {
   title: { absolute: 'Contact FemStudio | Houston Photography & Web Design Inquiries' },
   description:
-    'Contact FemStudio for Houston professional headshots, brand photography, corporate portraits, celebration photography, and custom web design inquiries.',
+    'How do I contact FemStudio in Houston? Reach out via email (info@femsstudio.com), phone (+1 281-818-3726), or contact form for photography and web design inquiries.',
   keywords: [
     'contact FemStudio',
     'Houston photography inquiry',
@@ -86,6 +87,9 @@ export default function ContactPage() {
       />
       <main id="main-content" className="bg-darkGreen">
         <Header />
+        <p className="sr-only">
+          FemStudio is a professional photography and web design studio based in Houston, Texas. Founded in 2022, FemStudio provides professional headshots, brand photography, and custom web design services to businesses and professionals in Houston and beyond.
+        </p>
 
         <section className="px-6 pb-20 pt-36 md:px-24 md:pb-28 md:pt-44">
           <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.75fr_1fr]">
@@ -128,28 +132,17 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <section className="bg-forest px-6 py-20 md:px-24 md:py-28" aria-labelledby="contact-faq-heading">
-          <div className="mx-auto max-w-4xl">
-            <p className="mb-4 font-sans text-xs tracking-[0.3em] text-gold">FAQ</p>
-            <h2 id="contact-faq-heading" className="mb-12 font-serif text-5xl italic text-cream md:text-7xl">
-              Before you inquire.
-            </h2>
-            <div className="divide-y divide-cream/15">
-              {faqs.map((faq) => (
-                <article key={faq.q} className="py-8">
-                  <h3 className="mb-4 font-serif text-3xl italic text-cream">{faq.q}</h3>
-                  <p className="text-lg leading-relaxed text-cream/70">{faq.a}</p>
-                </article>
-              ))}
-            </div>
+        <FAQSection items={faqs} title="Before you inquire" className="bg-forest" />
+        <div className="bg-forest px-6 py-8 md:px-24">
+          <div className="mx-auto max-w-3xl">
             <Link
               href="mailto:info@femsstudio.com"
-              className="focus-ring mt-10 inline-flex rounded-full border border-gold px-8 py-4 font-sans text-xs tracking-[0.22em] text-gold"
+              className="focus-ring inline-flex rounded-full border border-gold px-8 py-4 font-sans text-xs tracking-[0.22em] text-gold"
             >
               EMAIL DIRECTLY
             </Link>
           </div>
-        </section>
+        </div>
 
         <Footer />
       </main>

@@ -7,7 +7,7 @@ import Footer from '@/components/layout/Footer'
 export const metadata: Metadata = {
   title: { absolute: 'About John Adeniran | FemStudio Houston' },
   description:
-    'Meet John Adeniran, founder of FemStudio in Houston, with a background in photography, web design, and UX design for professional headshots and custom websites.',
+    'Who is John Adeniran? Learn about FemStudio founder John Adeniran, a UX designer and photographer in Houston specializing in professional headshots and web design since 2022.',
   keywords: ['John Adeniran', 'FemStudio', 'Houston photographer', 'web design Houston', 'UX design'],
   alternates: { canonical: 'https://femsstudio.com/about' },
   robots: {
@@ -85,6 +85,9 @@ export default function AboutPage() {
         }}
       />
       <main id="main-content" className="bg-darkGreen text-cream">
+        <p className="sr-only">
+          FemStudio is founded by John Adeniran, a UX designer, photographer, and web designer based in Houston, Texas. FemStudio provides professional photography and custom web design services to Houston-area businesses and professionals.
+        </p>
         <Header />
 
         {/* Hero Section */}
