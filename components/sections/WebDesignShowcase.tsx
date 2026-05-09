@@ -1,146 +1,135 @@
-'use client'
-
 import Image from 'next/image'
-import { useState } from 'react'
-
-type Filter = 'ALL' | 'WEB DESIGN' | 'E-COMMERCE' | 'SEO & MARKETING'
+import Link from 'next/link'
 
 interface Project {
-  title: string
-  category: Exclude<Filter, 'ALL'>
-  year: string
   image: string
+  client: string
+  industry: string
+  description: string
   alt: string
+  liveLink?: string
 }
-
-const filters: Filter[] = ['ALL', 'WEB DESIGN', 'E-COMMERCE', 'SEO & MARKETING']
 
 const projects: Project[] = [
   {
-    title: 'Tarro Law Group',
-    category: 'WEB DESIGN',
-    year: '2024',
-    image: '/images/webdesign/web-design-houston-tarro-law.jpg',
-    alt: 'Tarro Law Group professional website for legal services in Houston',
+    image: '/images/webdesign/web-design-houston-climtransformlab.webp',
+    client: 'ClimTransform Lab',
+    industry: 'Academic Research',
+    description: 'A clean, professional research lab website for Dr. Jola Ajibade at Emory University. Built to communicate complex climate research with clarity and authority.',
+    alt: 'ClimTransform Lab website design by FemStudio Houston — academic research web design',
+    liveLink: 'https://climtransformlab.com',
   },
   {
-    title: 'The Dirt Way',
-    category: 'WEB DESIGN',
-    year: '2024',
-    image: '/images/webdesign/web-design-houston-example.jpg',
-    alt: 'The Dirt Way website showcasing landscaping and outdoor services',
+    image: '/images/webdesign/web-design-houston-tarro-law-group.webp',
+    client: 'Tarro Law Group',
+    industry: 'Legal Services',
+    description: 'A premium dark-themed website for a Houston law firm. Designed to communicate authority, trust, and professionalism to high-value clients.',
+    alt: 'Tarro Law Group website design by FemStudio Houston — law firm web design',
   },
   {
-    title: 'Luna Cleanz',
-    category: 'E-COMMERCE',
-    year: '2024',
-    image: '/images/webdesign/web-design-houston-example.jpg',
-    alt: 'Luna Cleanz e-commerce platform for cleaning services and product sales',
+    image: '/images/webdesign/web-design-houston-luna-cleanz.webp',
+    client: 'Luna Cleanz',
+    industry: 'Cleaning Services',
+    description: 'A bright, conversion-focused website for a commercial cleaning company. Built to drive bookings and communicate professionalism to business clients.',
+    alt: 'Luna Cleanz website design by FemStudio Houston — cleaning business web design',
   },
   {
-    title: 'OC South Coast Cleaning',
-    category: 'WEB DESIGN',
-    year: '2024',
-    image: '/images/og/og-web-design.jpg',
-    alt: 'OC South Coast Cleaning professional services website',
+    image: '/images/webdesign/web-design-houston-the-dirt-way.webp',
+    client: 'The Dirt Way',
+    industry: 'Cleaning Services',
+    description: 'A modern, dark-themed website for a residential and commercial cleaning service. Focused on communicating quality and ease of booking.',
+    alt: 'The Dirt Way website design by FemStudio Houston — cleaning service web design',
   },
   {
-    title: 'Climtransformlab',
-    category: 'SEO & MARKETING',
-    year: '2024',
-    image: '/images/webdesign/web-design-houston-tarro-law.jpg',
-    alt: 'Climtransformlab digital transformation consulting website',
-  },
-  {
-    title: 'FemStudio',
-    category: 'WEB DESIGN',
-    year: '2026',
-    image: '/images/og/og-femstudio.jpg',
-    alt: 'FemStudio website for Houston photography and web design studio',
+    image: '/images/webdesign/web-design-houston-oc-south-coast-cleaning.webp',
+    client: 'OC South Coast Cleaning',
+    industry: 'Cleaning Services',
+    description: 'A professional website for an Orange County cleaning company serving residential and commercial clients. Built for local search visibility and lead generation.',
+    alt: 'OC South Coast Cleaning website design by FemStudio Houston — cleaning company web design',
   },
 ]
 
-function BrowserFrame({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="overflow-hidden rounded-lg border border-gold/30 bg-[#1a1a1a]">
-      <div className="flex items-center gap-1.5 border-b border-gold/20 bg-[#2a2a2a] px-3 py-2" aria-hidden="true">
-        <span className="h-2.5 w-2.5 rounded-full bg-cream/30" />
-        <span className="h-2.5 w-2.5 rounded-full bg-cream/30" />
-        <span className="h-2.5 w-2.5 rounded-full bg-cream/30" />
-      </div>
-      {children}
-    </div>
-  )
-}
-
 export default function WebDesignShowcase() {
-  const [activeFilter, setActiveFilter] = useState<Filter>('ALL')
-  const visibleProjects =
-    activeFilter === 'ALL' ? projects : projects.filter((project) => project.category === activeFilter)
-
   return (
-    <>
-      <section className="sticky top-[80px] z-40 border-b border-gold/20 bg-darkGreen lg:top-[88px]" aria-label="Web design project filters">
-        <div className="mx-auto max-w-[1400px] px-6 py-6 lg:px-12">
-          <div className="flex flex-wrap items-center justify-center gap-6 lg:justify-start lg:gap-12">
-            {filters.map((filter) => {
-              const isActive = activeFilter === filter
+    <section className="bg-cream px-6 py-24 md:px-12 lg:px-20" aria-label="FemStudio web design portfolio — Houston TX">
+      <div className="mx-auto max-w-7xl">
+        <p className="sr-only">
+          FemStudio has designed and developed custom websites for clients in legal services, academic research, and cleaning industries in Houston TX and beyond.
+        </p>
 
-              return (
-                <button
-                  key={filter}
-                  type="button"
-                  onClick={() => setActiveFilter(filter)}
-                  className={`focus-ring relative rounded-sm py-2 font-sans text-xs tracking-[0.3em] transition-colors ${
-                    isActive ? 'text-gold after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:bg-gold' : 'text-cream/40 hover:text-cream'
-                  }`}
-                  aria-pressed={isActive}
-                >
-                  {filter}
-                </button>
-              )
-            })}
-          </div>
-        </div>
-      </section>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project) => {
+            const cardContent = (
+              <div className="relative overflow-hidden rounded-xl group cursor-pointer aspect-[16/10] focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2">
+                <Image
+                  src={project.image}
+                  alt={project.alt}
+                  fill
+                  className="object-cover"
+                  style={{ objectPosition: 'top' }}
+                  quality={85}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
 
-      <section id="projects-grid" className="bg-forest py-16 lg:py-24" aria-labelledby="projects-heading">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-          <h2 id="projects-heading" className="sr-only">
-            Web design examples
-          </h2>
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
-            {visibleProjects.map((project) => (
-              <article
-                key={project.title}
-                className="group overflow-hidden border border-cream/10 bg-darkGreen/50 transition-colors duration-300 hover:border-gold"
-              >
-                <BrowserFrame>
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={project.alt}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <span className="absolute right-4 top-4 flex h-10 w-10 translate-x-2 translate-y-2 items-center justify-center rounded-full bg-gold font-sans text-sm text-darkGreen opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100">
-                      &gt;
-                    </span>
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-forest/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex flex-col justify-between p-6">
+                  {/* Industry label */}
+                  <p className="font-syncopate text-xs tracking-widest uppercase" style={{ color: '#c9a227' }}>
+                    {project.industry}
+                  </p>
+
+                  {/* Client name and description in center */}
+                  <div className="text-center">
+                    <h3 className="font-cormorant-garamond italic text-2xl mb-3" style={{ color: '#fcfbf7' }}>
+                      {project.client}
+                    </h3>
+                    <p className="font-cormorant-garamond text-sm" style={{ color: 'rgba(252, 251, 247, 0.8)' }}>
+                      {project.description}
+                    </p>
                   </div>
-                </BrowserFrame>
-                <div className="p-6 lg:p-8">
-                  <h3 className="mb-2 font-sans text-lg font-bold tracking-tight text-cream lg:text-xl">{project.title}</h3>
-                  <div className="flex items-center justify-between gap-6">
-                    <p className="font-serif text-base italic text-gold lg:text-lg">{project.category}</p>
-                    <p className="font-sans text-xs tracking-wider text-cream/40">{project.year}</p>
-                  </div>
+
+                  {/* View Live Site link if available */}
+                  {project.liveLink && (
+                    <div className="flex justify-center">
+                      <a
+                        href={project.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-syncopate text-xs tracking-widest"
+                        style={{ color: '#c9a227' }}
+                        aria-label="View ClimTransform Lab website — opens in new tab"
+                      >
+                        VIEW LIVE SITE →
+                      </a>
+                    </div>
+                  )}
                 </div>
-              </article>
-            ))}
-          </div>
+              </div>
+            )
+
+            return (
+              <div key={project.client}>
+                {project.liveLink ? (
+                  <Link href={project.liveLink} target="_blank" rel="noopener noreferrer" className="block focus:outline-none">
+                    {cardContent}
+                  </Link>
+                ) : (
+                  <div role="img" aria-label={`${project.client} — ${project.industry} website design by FemStudio`}>
+                    {cardContent}
+                  </div>
+                )}
+              </div>
+            )
+          })}
         </div>
-      </section>
-    </>
+
+        {/* Note below grid */}
+        <div className="text-center mt-16">
+          <p className="font-cormorant-garamond italic text-base" style={{ color: 'rgba(15, 45, 36, 0.6)' }}>
+            Additional projects available upon request. Contact us to discuss your project.
+          </p>
+        </div>
+      </div>
+    </section>
   )
 }
