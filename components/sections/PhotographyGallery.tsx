@@ -332,7 +332,7 @@ export default function PhotographyGallery() {
 
           {/* Filter Bar */}
           <div className="mb-12 pb-6 border-b border-gold/20">
-            <div className="flex gap-8 font-syncopate text-sm tracking-widest uppercase overflow-x-auto">
+            <div className="flex gap-8 font-syncopate text-sm tracking-widest uppercase">
               {filterCategories.map((filter) => (
                 <button
                   key={filter}
