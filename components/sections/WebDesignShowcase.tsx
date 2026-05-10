@@ -21,13 +21,6 @@ const projectsRow1: Project[] = [
     alt: 'ClimTransform Lab website design by FemStudio Houston',
     liveLink: 'https://climtransformlab.com',
   },
-  {
-    image: '/images/webdesign/web-design-houston-tarro-law-group.webp',
-    client: 'Tarro Law Group',
-    industry: 'Legal Services',
-    description: 'A premium dark-themed website built to communicate authority and trust to high-value clients.',
-    alt: 'Tarro Law Group website design by FemStudio Houston',
-  },
 ]
 
 const projectsRow2: Project[] = [
@@ -144,13 +137,10 @@ export default function WebDesignShowcase() {
           FemStudio has designed custom websites for clients in legal services, academic research, and cleaning industries across Houston TX and the United States.
         </p>
 
-        {/* Row 1 - Asymmetric layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
-          <div className="lg:col-span-3">
+        {/* Row 1 - Featured project */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mb-4">
+          <div className="lg:col-span-1">
             <ProjectCard project={projectsRow1[0]} aspectRatio="16/10" />
-          </div>
-          <div className="lg:col-span-2">
-            <ProjectCard project={projectsRow1[1]} aspectRatio="16/10" />
           </div>
         </div>
 
