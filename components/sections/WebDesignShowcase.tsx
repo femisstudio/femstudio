@@ -55,6 +55,17 @@ const projectsRow2: Project[] = [
   },
 ]
 
+const projectsRow3: Project[] = [
+  {
+    image: '/images/webdesign/web-design-houston-johnadeniran.png',
+    client: 'John Adeniran',
+    industry: 'UX/UI Portfolio',
+    description: 'A strategic portfolio platform designed to establish professional authority and attract high-value opportunities. Built with conversion-first UX, clear value proposition, and premium visual design — proving the difference thoughtful design makes.',
+    alt: 'John Adeniran UX/UI portfolio website design',
+    liveLink: 'https://johnadeniran.com',
+  },
+]
+
 function ProjectCard({ project, aspectRatio }: { project: Project; aspectRatio: string }) {
   const cardImage = (
     <>
@@ -164,6 +175,13 @@ export default function WebDesignShowcase() {
               <ProjectCard project={project} aspectRatio="4/3" />
             </div>
           ))}
+        </div>
+
+        {/* Row 3 - Featured portfolio */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mb-10">
+          <div className="lg:col-span-1">
+            <ProjectCard project={projectsRow3[0]} aspectRatio="4/3" />
+          </div>
         </div>
 
         {/* Note and CTA */}
