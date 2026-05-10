@@ -51,6 +51,7 @@ const projectsRow2: Project[] = [
     industry: 'Growth Systems',
     description: 'A premium website built for a growth systems consulting firm focused on scalable organizational solutions.',
     alt: 'CIN CITI Collective website design by FemStudio Houston',
+    liveLink: 'https://cinciticollective.com/',
   },
 ]
 
