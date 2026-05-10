@@ -32,20 +32,6 @@ const projectsRow1: Project[] = [
 
 const projectsRow2: Project[] = [
   {
-    image: '/images/webdesign/web-design-houston-luna-cleanz.webp',
-    client: 'Luna Cleanz',
-    industry: 'Cleaning Services',
-    description: 'A bright, conversion-focused website built to drive bookings and communicate professionalism.',
-    alt: 'Luna Cleanz website design by FemStudio Houston',
-  },
-  {
-    image: '/images/webdesign/web-design-houston-the-dirt-way.webp',
-    client: 'The Dirt Way',
-    industry: 'Cleaning Services',
-    description: 'A modern dark-themed website focused on communicating quality and ease of booking.',
-    alt: 'The Dirt Way website design by FemStudio Houston',
-  },
-  {
     image: '/images/webdesign/web-design-houston-cinciti-collective.webp',
     client: 'CIN CITI Collective',
     industry: 'Growth Systems',
@@ -168,8 +154,8 @@ export default function WebDesignShowcase() {
           </div>
         </div>
 
-        {/* Row 2 - Three equal cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+        {/* Row 2 - Featured active project */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mb-10">
           {projectsRow2.map((project) => (
             <div key={project.client}>
               <ProjectCard project={project} aspectRatio="4/3" />
