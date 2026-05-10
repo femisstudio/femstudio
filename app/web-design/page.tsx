@@ -113,8 +113,8 @@ export default function WebDesignPage() {
 
             <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden border border-cream/10">
               <Image
-                src="/images/webdesign/web-design-houston-tarro-law-group.webp"
-                alt="Tarro Law Group website designed by FemStudio Houston — custom web design example"
+                src="/images/webdesign/web-design-houston-cinciti-collective.webp"
+                alt="CIN CITI Collective website designed by FemStudio Houston — custom web design example"
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"

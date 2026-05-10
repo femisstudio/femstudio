@@ -88,14 +88,6 @@ function ProjectCard({ project, aspectRatio }: { project: Project; aspectRatio: 
             rel="noopener noreferrer"
             className="font-syncopate text-xs tracking-widest border rounded-full px-4 py-2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
             style={{ borderColor: '#c9a227', color: '#c9a227' }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#c9a227'
-              e.currentTarget.style.color = '#0f2d24'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent'
-              e.currentTarget.style.color = '#c9a227'
-            }}
             aria-label="View ClimTransform Lab website opens in new tab"
           >
             VIEW LIVE SITE →
@@ -121,7 +113,7 @@ function ProjectCard({ project, aspectRatio }: { project: Project; aspectRatio: 
   return (
     <div
       className="relative overflow-hidden rounded-2xl group cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2"
-      style={{ aspectRatio }}
+      style={{ aspectRatio: aspectRatio as React.CSSProperties['aspectRatio'] }}
       aria-label={`${project.client} web design project by FemStudio Houston`}
     >
       {cardImage}
@@ -184,12 +176,6 @@ export default function WebDesignShowcase() {
             style={{
               backgroundColor: '#c9a227',
               color: '#0f2d24',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#fcfbf7'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#c9a227'
             }}
           >
             START YOUR PROJECT
