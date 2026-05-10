@@ -46,11 +46,11 @@ const projectsRow2: Project[] = [
     alt: 'The Dirt Way website design by FemStudio Houston',
   },
   {
-    image: '/images/webdesign/web-design-houston-oc-south-coast-cleaning.webp',
-    client: 'OC South Coast Cleaning',
-    industry: 'Cleaning Services',
-    description: 'A professional website built for local search visibility and lead generation in Orange County.',
-    alt: 'OC South Coast Cleaning website design by FemStudio Houston',
+    image: '/images/webdesign/web-design-houston-cinciti-collective.webp',
+    client: 'CIN CITI Collective',
+    industry: 'Growth Systems',
+    description: 'A premium website built for a growth systems consulting firm focused on scalable organizational solutions.',
+    alt: 'CIN CITI Collective website design by FemStudio Houston',
   },
 ]
 
