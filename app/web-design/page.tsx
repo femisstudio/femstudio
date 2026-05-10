@@ -119,6 +119,7 @@ export default function WebDesignPage() {
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
+                style={{ objectPosition: 'left' }}
               />
             </div>
           </div>
