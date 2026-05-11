@@ -27,6 +27,7 @@ const projects: { climTransform: Project; cinciti: Project; johnAdeniran: Projec
     industry: 'Business Growth · Strategy',
     description: 'Bold conversion-focused website for a business growth and systems consultancy.',
     alt: 'Cinciti website designed by FemStudio',
+    liveLink: 'https://cinciticollective.com/',
   },
   johnAdeniran: {
     image: '/images/webdesign/web-design-ux-portfolio-john-adeniran.png',
