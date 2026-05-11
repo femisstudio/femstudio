@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
 import HeroSplitDivider from '@/components/sections/HeroSplitDivider'
-import DigitalAlchemy from '@/components/sections/DigitalAlchemy'
 
 export const metadata: Metadata = {
   title: { absolute: 'FemStudio | Houston Photography & Web Design' },
@@ -53,7 +52,6 @@ export default function HomePage() {
       </p>
       <Header dark={true} />
       <HeroSplitDivider />
-      <DigitalAlchemy />
       <Footer />
     </main>
   )
