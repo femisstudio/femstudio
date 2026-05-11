@@ -12,42 +12,40 @@ interface Project {
   liveLink?: string
 }
 
-const projectsRow1: Project[] = [
-  {
+const projects: { climTransform: Project; cinciti: Project; johnAdeniran: Project } = {
+  climTransform: {
     image: '/images/webdesign/web-design-houston-climtransformlab.webp',
     client: 'ClimTransform Lab',
-    industry: 'Academic Research',
-    description: 'A clean, professional research lab website for Dr. Jola Ajibade at Emory University.',
-    alt: 'ClimTransform Lab website design by FemStudio Houston',
+    industry: 'Academic Research · Emory University',
+    description: 'A research lab website for Dr. Jola Ajibade at Emory University. Built for clarity, credibility, and academic authority.',
+    alt: 'ClimTransform Lab website designed by FemStudio Houston',
     liveLink: 'https://climtransformlab.com',
   },
-]
-
-const projectsRow2: Project[] = [
-  {
-    image: '/images/webdesign/web-design-houston-cinciti-collective.webp',
-    client: 'CIN CITI Collective',
-    industry: 'Growth Systems',
-    description: 'A premium website built for a growth systems consulting firm focused on scalable organizational solutions.',
-    alt: 'CIN CITI Collective website design by FemStudio Houston',
-    liveLink: 'https://cinciticollective.com/',
+  cinciti: {
+    image: '/images/webdesign/web-design-houston-cinciti.webp',
+    client: 'Cinciti',
+    industry: 'Business Growth · Strategy',
+    description: 'Bold conversion-focused website for a business growth and systems consultancy.',
+    alt: 'Cinciti website designed by FemStudio',
   },
-]
-
-const projectsRow3: Project[] = [
-  {
-    image: '/images/webdesign/web-design-houston-johnadeniran.png',
+  johnAdeniran: {
+    image: '/images/webdesign/web-design-ux-portfolio-john-adeniran.png',
     client: 'John Adeniran',
-    industry: 'UX/UI Portfolio',
-    description: 'A strategic portfolio platform designed to establish professional authority and attract high-value opportunities. Built with conversion-first UX, clear value proposition, and premium visual design — proving the difference thoughtful design makes.',
-    alt: 'John Adeniran UX/UI portfolio website design',
+    industry: 'UX/UI Portfolio · Product Design',
+    description: 'A personal UX/UI and product design portfolio showcasing enterprise and digital product work.',
+    alt: 'John Adeniran UX UI portfolio website designed by FemStudio',
     liveLink: 'https://johnadeniran.com',
   },
-]
+}
 
 function ProjectCard({ project, aspectRatio }: { project: Project; aspectRatio: string }) {
-  const cardImage = (
-    <>
+  return (
+    <div
+      className="relative overflow-hidden rounded-2xl group cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2"
+      style={{ aspectRatio: aspectRatio as React.CSSProperties['aspectRatio'], '--tw-ring-color': '#c9a227' } as React.CSSProperties}
+      aria-label={`${project.client} web design project by FemStudio`}
+    >
+      {/* Image */}
       <Image
         src={project.image}
         alt={project.alt}
@@ -55,13 +53,13 @@ function ProjectCard({ project, aspectRatio }: { project: Project; aspectRatio: 
         className="object-cover"
         style={{ objectPosition: 'top' }}
         quality={85}
-        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 60vw, 50vw"
       />
 
       {/* Hover overlay */}
       <div
-        className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex flex-col items-center justify-center p-6 text-center"
-        style={{ backgroundColor: '#0f2d24e0' }}
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
+        style={{ backgroundColor: '#0f2d24ea' }}
       >
         <p className="font-syncopate text-xs tracking-widest uppercase mb-3" style={{ color: '#c9a227' }}>
           {project.industry}
@@ -69,7 +67,7 @@ function ProjectCard({ project, aspectRatio }: { project: Project; aspectRatio: 
         <h3 className="font-cormorant-garamond italic font-bold text-2xl mb-2 leading-tight" style={{ color: '#fcfbf7' }}>
           {project.client}
         </h3>
-        <p className="font-cormorant-garamond text-sm leading-relaxed max-w-xs mb-4" style={{ color: 'rgba(252, 251, 247, 0.75)' }}>
+        <p className="font-cormorant-garamond text-sm leading-relaxed max-w-xs mb-4" style={{ color: 'rgba(252, 251, 247, 0.7)' }}>
           {project.description}
         </p>
         {project.liveLink && (
@@ -79,7 +77,7 @@ function ProjectCard({ project, aspectRatio }: { project: Project; aspectRatio: 
             rel="noopener noreferrer"
             className="font-syncopate text-xs tracking-widest border rounded-full px-4 py-2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
             style={{ borderColor: '#c9a227', color: '#c9a227' }}
-            aria-label="View ClimTransform Lab website opens in new tab"
+            aria-label={`View ${project.client} website opens in new tab`}
           >
             VIEW LIVE SITE →
           </Link>
@@ -91,23 +89,13 @@ function ProjectCard({ project, aspectRatio }: { project: Project; aspectRatio: 
         className="absolute bottom-0 left-0 right-0 px-5 py-3 border-t"
         style={{ backgroundColor: 'white', borderColor: 'rgba(15, 45, 36, 0.1)' }}
       >
-        <p className="font-syncopate text-xs tracking-widest mb-1" style={{ color: '#0f2d24' }}>
+        <p className="font-syncopate text-xs tracking-widest uppercase mb-1" style={{ color: '#0f2d24' }}>
           {project.client}
         </p>
         <p className="font-cormorant-garamond italic text-sm" style={{ color: 'rgba(15, 45, 36, 0.55)' }}>
           {project.industry}
         </p>
       </div>
-    </>
-  )
-
-  return (
-    <div
-      className="relative overflow-hidden rounded-2xl group cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2"
-      style={{ aspectRatio: aspectRatio as React.CSSProperties['aspectRatio'] }}
-      aria-label={`${project.client} web design project by FemStudio Houston`}
-    >
-      {cardImage}
     </div>
   )
 }
@@ -117,7 +105,7 @@ export default function WebDesignShowcase() {
     <section
       className="bg-cream px-6 py-24 md:px-12 lg:px-20"
       style={{ backgroundColor: '#fcfbf7' }}
-      aria-label="FemStudio web design portfolio Houston TX"
+      aria-label="FemStudio web design portfolio"
     >
       <div className="mx-auto max-w-7xl">
         {/* Header */}
@@ -128,41 +116,36 @@ export default function WebDesignShowcase() {
           <h2 className="font-cormorant-garamond italic font-bold text-5xl mt-2 mb-2" style={{ color: '#0f2d24' }}>
             Selected projects.
           </h2>
-          <p className="font-cormorant-garamond text-xl" style={{ color: 'rgba(15, 45, 36, 0.6)' }}>
-            Custom websites built for real businesses.
+          <p className="font-cormorant-garamond text-xl italic" style={{ color: 'rgba(15, 45, 36, 0.55)' }}>
+            Built with strategy, craft, and intention.
           </p>
         </div>
 
         <p className="sr-only">
-          FemStudio has designed custom websites for clients in legal services, academic research, and cleaning industries across Houston TX and the United States.
+          FemStudio has designed and developed websites for academic institutions, business consultancies, and UX/UI professionals across the United States.
         </p>
 
-        {/* Row 1 - Featured project */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mb-4">
-          <div className="lg:col-span-1">
-            <ProjectCard project={projectsRow1[0]} aspectRatio="16/10" />
+        {/* Asymmetric two-column grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 mb-10">
+          {/* Left column - ClimTransform Lab */}
+          <div className="lg:col-span-3">
+            <ProjectCard project={projects.climTransform} aspectRatio="16/10" />
           </div>
-        </div>
 
-        {/* Row 2 - Featured active project */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mb-10">
-          {projectsRow2.map((project) => (
-            <div key={project.client}>
-              <ProjectCard project={project} aspectRatio="4/3" />
+          {/* Right column - Cinciti and John Adeniran */}
+          <div className="lg:col-span-2 flex flex-col gap-4">
+            <div className="flex-1">
+              <ProjectCard project={projects.cinciti} aspectRatio="4/3" />
             </div>
-          ))}
-        </div>
-
-        {/* Row 3 - Featured portfolio */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mb-10">
-          <div className="lg:col-span-1">
-            <ProjectCard project={projectsRow3[0]} aspectRatio="4/3" />
+            <div className="flex-1">
+              <ProjectCard project={projects.johnAdeniran} aspectRatio="4/3" />
+            </div>
           </div>
         </div>
 
         {/* Note and CTA */}
         <div className="text-center mt-12">
-          <p className="font-cormorant-garamond italic text-base" style={{ color: 'rgba(15, 45, 36, 0.5)' }}>
+          <p className="font-cormorant-garamond italic text-base" style={{ color: 'rgba(15, 45, 36, 0.4)' }}>
             Additional projects available upon request.
           </p>
           <Link
@@ -171,7 +154,8 @@ export default function WebDesignShowcase() {
             style={{
               backgroundColor: '#c9a227',
               color: '#0f2d24',
-            }}
+              '--tw-ring-color': '#c9a227',
+            } as React.CSSProperties}
           >
             START YOUR PROJECT
           </Link>
