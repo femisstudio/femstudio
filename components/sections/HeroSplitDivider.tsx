@@ -19,8 +19,8 @@ export default function HeroSplitDivider() {
           UNIVERSE 01
         </div>
 
-        <h1 className="relative z-10 text-7xl md:text-9xl font-light italic text-cream leading-none tracking-tight text-center mt-32 drop-shadow-lg transition-all duration-700 hover:scale-110 hover:text-gold cursor-pointer">
-          Photo<br />graphy
+        <h1 className="relative z-10 text-7xl md:text-9xl font-light italic text-cream leading-none tracking-tight text-center mt-32 drop-shadow-lg transition-all duration-700 hover:scale-110 hover:text-gold cursor-pointer whitespace-nowrap">
+          Photography
         </h1>
 
         <div className="absolute bottom-24 left-12 opacity-0 hover:opacity-100 transition-all duration-500 transform translate-y-4 hover:translate-y-0">
