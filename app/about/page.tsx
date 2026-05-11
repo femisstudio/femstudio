@@ -164,13 +164,20 @@ export default function AboutPage() {
             FemStudio statistics
           </h2>
           <div className="mx-auto max-w-6xl">
-            <div className="grid grid-cols-1 gap-8 divide-y divide-gold/30 md:grid-cols-3 md:divide-x md:divide-y-0 md:gap-0">
-              {stats.map(({ value, label }) => (
-                <div key={label} className="pt-8 text-center md:px-8 md:pt-0">
-                  <p className="mb-3 font-sans text-4xl font-bold leading-none tracking-tight text-gold md:text-5xl lg:text-6xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 items-end">
+              {stats.map(({ value, label }, index) => (
+                <div
+                  key={label}
+                  className={`flex flex-col items-center justify-center text-center py-12 px-6 ${
+                    index > 0 ? 'border-t border-gold/30 md:border-t-0 md:border-l md:border-gold/30' : ''
+                  }`}
+                >
+                  <p className="font-cormorant-garamond font-bold text-5xl md:text-6xl text-cream leading-none mb-3">
                     {value}
                   </p>
-                  <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-cream/60">{label}</p>
+                  <p className="font-syncopate text-xs tracking-widest uppercase mt-3" style={{ color: '#c9a227' }}>
+                    {label}
+                  </p>
                 </div>
               ))}
             </div>
