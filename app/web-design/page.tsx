@@ -113,8 +113,8 @@ export default function WebDesignPage() {
 
             <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden border border-cream/10">
               <Image
-                src="/images/webdesign/web-design-houston-oc-south-coast-cleaning.webp"
-                alt="OC South Coast Cleaning website designed by FemStudio Houston — custom web design example"
+                src="/images/webdesign/web-design-houston-climtransformlab.webp"
+                alt="ClimTransform Lab website designed by FemStudio Houston — custom web design example"
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"

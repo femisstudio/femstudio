@@ -38,11 +38,16 @@ const projects: { climTransform: Project; cinciti: Project; johnAdeniran: Projec
   },
 }
 
-function ProjectCard({ project, aspectRatio }: { project: Project; aspectRatio: string }) {
+function ProjectCard({ project, aspectRatio }: { project: Project; aspectRatio?: string }) {
+  const cardClassName = aspectRatio ? 'relative overflow-hidden rounded-2xl group cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2' : 'relative overflow-hidden rounded-2xl group cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 h-full'
+  const cardStyle = aspectRatio
+    ? ({ aspectRatio: aspectRatio as React.CSSProperties['aspectRatio'], '--tw-ring-color': '#c9a227' } as React.CSSProperties)
+    : ({ '--tw-ring-color': '#c9a227' } as React.CSSProperties)
+
   return (
     <div
-      className="relative overflow-hidden rounded-2xl group cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2"
-      style={{ aspectRatio: aspectRatio as React.CSSProperties['aspectRatio'], '--tw-ring-color': '#c9a227' } as React.CSSProperties}
+      className={cardClassName}
+      style={cardStyle}
       aria-label={`${project.client} web design project by FemStudio`}
     >
       {/* Image */}
@@ -126,19 +131,19 @@ export default function WebDesignShowcase() {
         </p>
 
         {/* Asymmetric two-column grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 mb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 mb-10 items-stretch">
           {/* Left column - ClimTransform Lab */}
           <div className="lg:col-span-3">
             <ProjectCard project={projects.climTransform} aspectRatio="16/10" />
           </div>
 
           {/* Right column - Cinciti and John Adeniran */}
-          <div className="lg:col-span-2 flex flex-col gap-4">
-            <div className="flex-1">
-              <ProjectCard project={projects.cinciti} aspectRatio="4/3" />
+          <div className="lg:col-span-2 flex flex-col gap-4 h-full">
+            <div className="flex-1 min-h-0">
+              <ProjectCard project={projects.cinciti} aspectRatio={undefined} />
             </div>
-            <div className="flex-1">
-              <ProjectCard project={projects.johnAdeniran} aspectRatio="4/3" />
+            <div className="flex-1 min-h-0">
+              <ProjectCard project={projects.johnAdeniran} aspectRatio={undefined} />
             </div>
           </div>
         </div>
