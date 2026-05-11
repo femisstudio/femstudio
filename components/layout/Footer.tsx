@@ -31,7 +31,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit FemStudio on Instagram"
-                className="text-cream text-xl hover:text-gold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm p-1"
+                className="inline-flex items-center justify-center w-5 h-5 text-cream hover:text-gold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm"
               >
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
@@ -40,7 +40,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit FemStudio on LinkedIn"
-                className="text-cream text-xl hover:text-gold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm p-1"
+                className="inline-flex items-center justify-center w-5 h-5 text-cream hover:text-gold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm"
               >
                 <FontAwesomeIcon icon={faLinkedin} />
               </a>
