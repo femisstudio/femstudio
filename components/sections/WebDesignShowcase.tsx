@@ -38,13 +38,12 @@ const projects: { climTransform: Project; cinciti: Project; johnAdeniran: Projec
   },
 }
 
-function ProjectCard({ project, fullHeight }: { project: Project; fullHeight?: boolean }) {
+function ProjectCard({ project, isRightColumn }: { project: Project; isRightColumn: boolean }) {
+  const wrapperClass = isRightColumn ? 'relative overflow-hidden rounded-2xl group cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 h-full' : 'relative overflow-hidden rounded-2xl group cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2'
+  const wrapperStyle = isRightColumn ? { '--tw-ring-color': '#c9a227' } as React.CSSProperties : { aspectRatio: '16/10', '--tw-ring-color': '#c9a227' } as React.CSSProperties
+
   return (
-    <div
-      className={`relative overflow-hidden rounded-2xl group cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 ${fullHeight ? 'h-full' : ''}`}
-      style={{ aspectRatio: fullHeight ? undefined : '16/10', '--tw-ring-color': '#c9a227' } as React.CSSProperties}
-      aria-label={`${project.client} web design project by FemStudio`}
-    >
+    <div className={wrapperClass} style={wrapperStyle} aria-label={`${project.client} web design project by FemStudio`}>
       {/* Image */}
       <Image
         src={project.image}
@@ -57,10 +56,7 @@ function ProjectCard({ project, fullHeight }: { project: Project; fullHeight?: b
       />
 
       {/* Hover overlay */}
-      <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
-        style={{ backgroundColor: '#0f2d24ea' }}
-      >
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center" style={{ backgroundColor: '#0f2d24ea' }}>
         <p className="font-syncopate text-xs tracking-widest uppercase mb-3" style={{ color: '#c9a227' }}>
           {project.industry}
         </p>
@@ -84,11 +80,8 @@ function ProjectCard({ project, fullHeight }: { project: Project; fullHeight?: b
         )}
       </div>
 
-      {/* Bottom strip - always visible */}
-      <div
-        className="absolute bottom-0 left-0 right-0 px-5 py-3 border-t"
-        style={{ backgroundColor: 'white', borderColor: 'rgba(15, 45, 36, 0.1)' }}
-      >
+      {/* Bottom strip */}
+      <div className="absolute bottom-0 left-0 right-0 px-5 py-3 border-t" style={{ backgroundColor: 'white', borderColor: 'rgba(15, 45, 36, 0.1)' }}>
         <p className="font-syncopate text-xs tracking-widest uppercase mb-1" style={{ color: '#0f2d24' }}>
           {project.client}
         </p>
@@ -102,11 +95,7 @@ function ProjectCard({ project, fullHeight }: { project: Project; fullHeight?: b
 
 export default function WebDesignShowcase() {
   return (
-    <section
-      className="bg-cream px-6 py-24 md:px-12 lg:px-20"
-      style={{ backgroundColor: '#fcfbf7' }}
-      aria-label="FemStudio web design portfolio"
-    >
+    <section className="px-6 py-24 md:px-12 lg:px-20" style={{ backgroundColor: '#fcfbf7' }} aria-label="FemStudio web design portfolio">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-16">
@@ -125,25 +114,25 @@ export default function WebDesignShowcase() {
           FemStudio has designed and developed websites for academic institutions, business consultancies, and UX/UI professionals across the United States.
         </p>
 
-        {/* Asymmetric two-column grid */}
+        {/* Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 mb-10 items-stretch">
-          {/* Left column - ClimTransform Lab */}
+          {/* Left column */}
           <div className="lg:col-span-3">
-            <ProjectCard project={projects.climTransform} />
+            <ProjectCard project={projects.climTransform} isRightColumn={false} />
           </div>
 
-          {/* Right column - Cinciti and John Adeniran */}
+          {/* Right column */}
           <div className="lg:col-span-2 flex flex-col gap-4">
             <div className="flex-1 min-h-0">
-              <ProjectCard project={projects.cinciti} fullHeight />
+              <ProjectCard project={projects.cinciti} isRightColumn={true} />
             </div>
             <div className="flex-1 min-h-0">
-              <ProjectCard project={projects.johnAdeniran} fullHeight />
+              <ProjectCard project={projects.johnAdeniran} isRightColumn={true} />
             </div>
           </div>
         </div>
 
-        {/* Note and CTA */}
+        {/* CTA */}
         <div className="text-center mt-12">
           <p className="font-cormorant-garamond italic text-base" style={{ color: 'rgba(15, 45, 36, 0.4)' }}>
             Additional projects available upon request.
@@ -151,11 +140,7 @@ export default function WebDesignShowcase() {
           <Link
             href="/contact"
             className="inline-block font-syncopate text-xs tracking-widest font-medium rounded-full px-8 py-4 mt-6 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
-            style={{
-              backgroundColor: '#c9a227',
-              color: '#0f2d24',
-              '--tw-ring-color': '#c9a227',
-            } as React.CSSProperties}
+            style={{ backgroundColor: '#c9a227', color: '#0f2d24', '--tw-ring-color': '#c9a227' } as React.CSSProperties}
           >
             START YOUR PROJECT
           </Link>
