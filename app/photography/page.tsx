@@ -4,7 +4,7 @@ import Footer from '@/components/layout/Footer'
 import PhotographyHeroNew from '@/components/sections/PhotographyHeroNew'
 import PhotographyGallery from '@/components/sections/PhotographyGallery'
 import PhotographyCTA from '@/components/sections/PhotographyCTA'
-import FAQAccordion from '@/components/seo/FAQAccordion'
+import FAQSection from '@/components/sections/FAQSection'
 
 export const metadata: Metadata = {
   title: { absolute: 'Professional Headshots Houston | FemStudio Photography' },
@@ -113,7 +113,13 @@ export default function PhotographyPage() {
           <PhotographyGallery />
           <PhotographyCTA />
         </div>
-        <FAQAccordion items={photographyFaqs} title="About Your Headshot Session" subtitle="Everything you need to know before your session." isDark={false} faqSize="large" />
+        <FAQSection
+          items={photographyFaqs}
+          heading="About Your Headshot Session."
+          description="Everything you need to know before your session."
+          buttonText="BOOK YOUR SESSION"
+          buttonHref="/contact"
+        />
         <Footer />
       </main>
     </>

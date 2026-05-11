@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import WebDesignShowcase from '@/components/sections/WebDesignShowcase'
+import FAQSection from '@/components/sections/FAQSection'
 
 export const metadata: Metadata = {
   title: { absolute: 'Custom Web Design Houston | FemStudio' },
@@ -48,15 +49,23 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: 'How long does a typical web design project take?',
-    a: 'Most projects take 4-8 weeks from discovery through launch, depending on scope and complexity.',
+    a: 'Most projects take 4 to 8 weeks from discovery through launch depending on scope and complexity.',
   },
   {
     q: 'Do you provide ongoing support after launch?',
-    a: 'Yes. We offer post-launch support and maintenance packages to keep your site secure and up-to-date.',
+    a: 'Yes. We offer post-launch support and maintenance packages to keep your site secure and up to date.',
   },
   {
-    q: 'Will the website be mobile-responsive?',
+    q: 'Will the website be mobile responsive?',
     a: 'Absolutely. Every site we build is fully responsive and optimized for mobile, tablet, and desktop.',
+  },
+  {
+    q: 'How much does a custom website cost?',
+    a: 'Every project is scoped individually based on your goals and requirements. Contact us to discuss your project and get a custom quote.',
+  },
+  {
+    q: 'Do you work with clients outside of Houston?',
+    a: 'Yes. While FemStudio is based in Houston TX we work with web design clients remotely across the United States.',
   },
 ]
 
@@ -151,23 +160,13 @@ export default function WebDesignPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-darkGreen px-6 py-24 md:px-10 md:py-32">
-        <div className="mx-auto max-w-3xl">
-          <div className="mb-16">
-            <p className="mb-3 font-sans text-xs tracking-[0.32em] text-gold">QUESTIONS</p>
-            <h2 className="font-serif text-5xl italic text-cream md:text-6xl">Frequently Asked</h2>
-          </div>
-
-          <div className="space-y-8 border-t border-cream/10 pt-12">
-            {faqs.map((faq, index) => (
-              <article key={index} className="border-b border-cream/10 pb-8 last:border-b-0">
-                <h3 className="mb-3 font-serif text-xl italic text-cream md:text-2xl">{faq.q}</h3>
-                <p className="font-serif text-base italic text-cream/75 md:text-lg">{faq.a}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FAQSection
+        items={faqs}
+        heading="Frequently Asked."
+        description="Everything you need to know before starting your project."
+        buttonText="START YOUR PROJECT"
+        buttonHref="/contact"
+      />
 
       <Footer />
     </main>
