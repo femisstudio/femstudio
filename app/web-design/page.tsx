@@ -141,18 +141,25 @@ export default function WebDesignPage() {
       {/* Process Section */}
       <section className="bg-forest px-6 py-24 md:px-10 md:py-32">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-16">
+          <div className="mb-12">
             <p className="mb-3 font-sans text-xs tracking-[0.32em] text-gold">HOW WE WORK</p>
             <h2 className="font-serif text-5xl italic text-cream md:text-7xl">Our Process</h2>
           </div>
 
-          <div className="relative space-y-12 border-l border-gold/30 pl-8 md:space-y-16 md:pl-12">
+          <div className="relative ml-4 md:ml-6" style={{ borderLeft: '1px solid rgba(201, 162, 39, 0.3)' }}>
+            <div className="absolute left-0 top-0 bottom-0 w-px" style={{ backgroundColor: 'rgba(201, 162, 39, 0.3)' }} />
             {processSteps.map((step, index) => (
-              <div key={index} className="relative pb-8 md:pb-12">
-                <div className="absolute -left-[21px] top-0 h-6 w-6 rounded-full border-2 border-gold/30 bg-darkGreen md:h-8 md:w-8" />
-                <p className="mb-2 font-sans text-xs tracking-[0.2em] text-gold/70">{step.step}</p>
-                <h3 className="mb-3 font-serif text-2xl italic text-cream md:text-3xl">{step.title}</h3>
-                <p className="font-serif text-base italic text-cream/75 md:text-lg">{step.description}</p>
+              <div key={index} className="relative pl-12 md:pl-16 pb-10 md:pb-12 last:pb-0">
+                <div
+                  className="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 rounded-full border-2 flex items-center justify-center"
+                  style={{ borderColor: 'rgba(201, 162, 39, 0.4)', backgroundColor: '#0f2d24' }}
+                >
+                  <p className="font-syncopate text-xs" style={{ color: '#c9a227' }}>
+                    {step.step}
+                  </p>
+                </div>
+                <h3 className="font-cormorant-garamond italic text-2xl md:text-3xl text-cream mb-2 mt-1">{step.title}</h3>
+                <p className="font-cormorant-garamond italic text-base md:text-lg text-cream opacity-75">{step.description}</p>
               </div>
             ))}
           </div>
