@@ -42,7 +42,7 @@ function ProjectCard({ project, isRightColumn }: { project: Project; isRightColu
   const wrapperClass = isRightColumn ? 'relative overflow-hidden rounded-2xl group cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 h-full' : 'relative overflow-hidden rounded-2xl group cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2'
   const wrapperStyle = isRightColumn ? { '--tw-ring-color': '#c9a227' } as React.CSSProperties : { aspectRatio: '16/10', '--tw-ring-color': '#c9a227' } as React.CSSProperties
 
-  return (
+  const cardElement = (
     <div className={wrapperClass} style={wrapperStyle} aria-label={`${project.client} web design project by FemStudio`}>
       {/* Image */}
       <Image
@@ -67,16 +67,9 @@ function ProjectCard({ project, isRightColumn }: { project: Project; isRightColu
           {project.description}
         </p>
         {project.liveLink && (
-          <Link
-            href={project.liveLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-syncopate text-xs tracking-widest border rounded-full px-4 py-2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
-            style={{ borderColor: '#c9a227', color: '#c9a227' }}
-            aria-label={`View ${project.client} website opens in new tab`}
-          >
-            VIEW LIVE SITE →
-          </Link>
+          <p className="font-syncopate text-xs tracking-widest text-gold" style={{ color: '#c9a227' }}>
+            CLICK TO VISIT SITE →
+          </p>
         )}
       </div>
 
@@ -91,6 +84,18 @@ function ProjectCard({ project, isRightColumn }: { project: Project; isRightColu
       </div>
     </div>
   )
+
+  // If has live link, wrap card in Link
+  if (project.liveLink) {
+    return (
+      <Link href={project.liveLink} target="_blank" rel="noopener noreferrer" className="block h-full">
+        {cardElement}
+      </Link>
+    )
+  }
+
+  // Otherwise return card as-is
+  return cardElement
 }
 
 export default function WebDesignShowcase() {
