@@ -47,7 +47,7 @@ export function ProcessSectionHeader({ eyebrow, heading, subtext }: ProcessSecti
   }, [])
 
   return (
-    <div ref={headerRef} className="mb-16">
+    <div ref={headerRef} className="mb-16 pt-12">
       {/* Animated Gold Bar */}
       <div
         ref={barRef}
@@ -60,8 +60,9 @@ export function ProcessSectionHeader({ eyebrow, heading, subtext }: ProcessSecti
       />
 
       {/* Header Layout: Flex row, space-between, align flex-end */}
-      <div className="flex flex-col md:flex-row md:space-between md:items-end gap-8 md:gap-0">
-        <div>
+      <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-8 md:gap-12">
+        {/* Left Side: Eyebrow + Heading */}
+        <div className="flex-1">
           {/* Eyebrow */}
           <p
             ref={eyebrowRef}
@@ -89,7 +90,7 @@ export function ProcessSectionHeader({ eyebrow, heading, subtext }: ProcessSecti
           </h2>
         </div>
 
-        {/* Right Side: Subtext */}
+        {/* Right Side: Subtext - aligned to bottom */}
         <p className="max-w-[280px] font-cormorant-garamond text-base md:text-[17px] font-[300] text-cream/[0.38] leading-relaxed"
           style={{
             opacity: isVisible && !prefersReducedMotion ? 1 : 0,

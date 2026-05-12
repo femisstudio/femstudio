@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 
 const allPortfolioItems = [
@@ -304,8 +305,18 @@ const featuredImages = [1, 2, 3, 4, 5, 6, 13, 14, 15, 19, 24, 26, 33, 39, 45]
 const filterCategories = ['ALL', 'HEADSHOTS', 'EDITORIAL & BRAND', 'CELEBRATIONS']
 
 export default function PhotographyGallery() {
+  const searchParams = useSearchParams()
   const [activeFilter, setActiveFilter] = useState('ALL')
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
+
+  useEffect(() => {
+    const filterParam = searchParams.get('filter')
+    if (filterParam === 'headshots') {
+      setActiveFilter('HEADSHOTS')
+    } else if (filterParam === 'editorial') {
+      setActiveFilter('EDITORIAL & BRAND')
+    }
+  }, [])
 
   const filteredItems =
     activeFilter === 'ALL'

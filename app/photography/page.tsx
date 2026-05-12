@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import PhotographyHeroNew from '@/components/sections/PhotographyHeroNew'
@@ -110,7 +111,9 @@ export default function PhotographyPage() {
         </p>
         <PhotographyHeroNew />
         <div id="portfolio" className="bg-darkGreen text-cream">
-          <PhotographyGallery />
+          <Suspense fallback={<div className="min-h-screen" />}>
+            <PhotographyGallery />
+          </Suspense>
           <PhotographyCTA />
         </div>
         <FAQSection

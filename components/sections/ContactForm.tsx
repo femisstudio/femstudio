@@ -2,7 +2,7 @@
 
 import { FormEvent, useMemo, useState } from 'react'
 
-const serviceOptions = ['Photography', 'Web Design', 'E-Commerce', 'Both'] as const
+const serviceOptions = ['Photography', 'Web Design', 'Website with Online Store', 'Both — Photography & Web Design'] as const
 const budgetOptions = ['Under $500', '$500 - $1,500', '$1,500 - $5,000', '$5,000+'] as const
 
 interface ContactFormState {

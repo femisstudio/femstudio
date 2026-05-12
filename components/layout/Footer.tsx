@@ -91,14 +91,14 @@ export default function Footer() {
             </h3>
             <nav className="space-y-3">
               <Link
-                href="/photography"
+                href="/photography?filter=headshots"
                 aria-label="Corporate Headshots service"
                 className="font-cormorant-garamond text-base opacity-70 hover:opacity-100 hover:text-gold transition-colors duration-200 block focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
               >
                 Corporate Headshots
               </Link>
               <Link
-                href="/photography"
+                href="/photography?filter=editorial"
                 aria-label="Brand Photography service"
                 className="font-cormorant-garamond text-base opacity-70 hover:opacity-100 hover:text-gold transition-colors duration-200 block focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
               >
@@ -112,14 +112,14 @@ export default function Footer() {
                 Custom Web Design
               </Link>
               <Link
-                href="/photography"
+                href="/photography?filter=headshots"
                 aria-label="Team Sessions service"
                 className="font-cormorant-garamond text-base opacity-70 hover:opacity-100 hover:text-gold transition-colors duration-200 block focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
               >
                 Team Sessions
               </Link>
               <Link
-                href="/photography"
+                href="/photography?filter=editorial"
                 aria-label="Branding Portraits service"
                 className="font-cormorant-garamond text-base opacity-70 hover:opacity-100 hover:text-gold transition-colors duration-200 block focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
               >
