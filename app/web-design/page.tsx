@@ -5,7 +5,9 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import WebDesignShowcase from '@/components/sections/WebDesignShowcase'
 import FAQSection from '@/components/sections/FAQSection'
-import { ProcessStep } from '@/components/sections/ProcessStep'
+import { ProcessSectionHeader } from '@/components/sections/ProcessSectionHeader'
+import { ProcessGridItem } from '@/components/sections/ProcessGridItem'
+import { ProcessCTARow } from '@/components/sections/ProcessCTARow'
 
 export const metadata: Metadata = {
   title: { absolute: 'Custom Web Design Houston | FemStudio' },
@@ -72,19 +74,54 @@ const faqs = [
 
 const processSteps = [
   {
-    step: '01',
+    number: '01',
+    phase: 'Week 1',
     title: 'Discovery & Strategy',
-    description: 'We clarify audience, goals, content, and the first actions your visitors need to take.',
+    description: 'We learn your business, your audience, and what success looks like before a single pixel is designed. This is where we align on goals, content, and the first impression your site needs to make.',
+    pills: [
+      { text: 'Brand Brief' },
+      { text: 'Sitemap' },
+      { text: 'Content Direction' },
+      { text: 'Goals Document' },
+    ],
   },
   {
-    step: '02',
+    number: '02',
+    phase: 'Week 2–3',
     title: 'Design & Prototyping',
-    description: 'We shape the look, flow, and structure so the site feels refined and easy to use.',
+    description: 'We shape the visual language and layout of every page. Typography, hierarchy, spacing - every decision is intentional. You see and approve before a line of code is written.',
+    pills: [
+      { text: 'Wireframes' },
+      { text: 'UI Design' },
+      { text: 'Mobile Mockups' },
+      { text: 'Interactive Prototype' },
+    ],
   },
   {
-    step: '03',
+    number: '03',
+    phase: 'Week 4–5',
     title: 'Development & Launch',
-    description: 'We build responsive pages, tune performance, and prepare your site for launch.',
+    description: 'Your design becomes a fast, responsive, production-ready site. We handle the build, deployment, and cross-device testing - then hand you a site that performs from day one.',
+    pills: [
+      { text: 'Next.js Build' },
+      { text: 'Vercel Deployment' },
+      { text: 'Cross-Device QA' },
+    ],
+    conditionalPill: {
+      text: 'CMS Integration',
+      label: 'CMS gives your team the ability to update content independently - no developer needed',
+    },
+  },
+  {
+    number: '04',
+    phase: 'Ongoing',
+    title: 'Support & Growth',
+    description: "The relationship doesn't end at launch. We offer ongoing support for updates, new pages, and performance improvements - so your site grows as your business does.",
+    pills: [
+      { text: 'Priority Updates' },
+      { text: 'New Pages' },
+      { text: 'Performance Checks' },
+    ],
   },
 ]
 
@@ -123,8 +160,8 @@ export default function WebDesignPage() {
 
             <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden border border-cream/10">
               <Image
-                src="/images/webdesign/web-design-houston-oc-south-coast-cleaning.webp"
-                alt="OC South Coast Cleaning website designed by FemStudio Houston — custom web design example"
+                src="/images/webdesign/web-design-houston-oc- south-coast-cleaning.webp"
+                alt="OC South Coast Cleaning website designed by FemStudio Houston - custom web design example"
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -142,16 +179,28 @@ export default function WebDesignPage() {
       {/* Process Section */}
       <section className="bg-forest px-6 py-24 md:px-10 md:py-32">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12">
-            <p className="mb-3 font-sans text-xs tracking-[0.32em] text-gold">HOW WE WORK</p>
-            <h2 className="font-serif text-5xl italic text-cream md:text-7xl">Our Process</h2>
-          </div>
+          <ProcessSectionHeader
+            eyebrow="HOW WE WORK"
+            heading="Our Process"
+            subtext="Every project follows a deliberate sequence - designed to remove guesswork and deliver results that last."
+          />
 
-          <div className="space-y-16 border-t border-cream/10 pt-16">
+          <div>
             {processSteps.map((step, index) => (
-              <ProcessStep key={index} step={step} index={index} />
+              <ProcessGridItem
+                key={index}
+                number={step.number}
+                phase={step.phase}
+                title={step.title}
+                description={step.description}
+                pills={step.pills}
+                conditionalPill={step.conditionalPill}
+                index={index}
+              />
             ))}
           </div>
+
+          <ProcessCTARow />
         </div>
       </section>
 

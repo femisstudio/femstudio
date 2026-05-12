@@ -3,7 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import { PrincipleItem } from '@/components/sections/PrincipleItem'
+import { ProcessSectionHeader } from '@/components/sections/ProcessSectionHeader'
+import { ProcessGridItem } from '@/components/sections/ProcessGridItem'
 
 export const metadata: Metadata = {
   title: { absolute: 'About John Adeniran | FemStudio Houston' },
@@ -57,16 +58,25 @@ const personSchema = {
 
 const values = [
   {
+    number: '01',
+    phase: 'Perspective',
     title: 'Everyone deserves a professional image.',
-    desc: 'Your headshot is your handshake. It should represent your professional self, not just a photo taken on a random day.',
+    description: 'Your headshot is your handshake. It should represent your professional self, not just a photo taken on a random day.',
+    pills: [{ text: 'Credibility' }, { text: 'Authenticity' }, { text: 'First Impression' }],
   },
   {
+    number: '02',
+    phase: 'Purpose',
     title: 'Design should do something.',
-    desc: 'A beautiful website should also guide people clearly. FemStudio builds for both aesthetics and outcomes.',
+    description: 'A beautiful website should also guide people clearly. FemStudio builds for both aesthetics and outcomes.',
+    pills: [{ text: 'Intention' }, { text: 'Clarity' }, { text: 'Impact' }],
   },
   {
+    number: '03',
+    phase: 'Practice',
     title: 'Craft first, scale second.',
-    desc: 'FemStudio is growing intentionally. Every service offered is one that has been practiced with care.',
+    description: 'FemStudio is growing intentionally. Every service offered is one that has been practiced with care.',
+    pills: [{ text: 'Mastery' }, { text: 'Discipline' }, { text: 'Growth' }],
   },
 ]
 
@@ -190,19 +200,23 @@ export default function AboutPage() {
         {/* Values Section */}
         <section id="values" className="relative w-full bg-forest px-6 py-24 md:px-10 md:py-32" aria-labelledby="values-heading">
           <div className="mx-auto max-w-7xl">
-            <div className="mb-20 text-center">
-              <p className="mb-3 font-sans text-xs tracking-[0.32em] text-gold">OUR VALUES</p>
-              <h2
-                id="values-heading"
-                className="mb-8 font-serif text-5xl italic leading-tight text-cream md:text-7xl"
-              >
-                The Principles
-              </h2>
-            </div>
+            <ProcessSectionHeader
+              eyebrow="HOW WE THINK"
+              heading="The Principles"
+              subtext="The values that shape every decision — from the first conversation to the final delivery."
+            />
 
-            <div className="space-y-16 border-t border-cream/10 pt-16 md:space-y-20">
+            <div>
               {values.map((value, index) => (
-                <PrincipleItem key={value.title} value={value} index={index} />
+                <ProcessGridItem
+                  key={index}
+                  number={value.number}
+                  phase={value.phase}
+                  title={value.title}
+                  description={value.description}
+                  pills={value.pills}
+                  index={index}
+                />
               ))}
             </div>
           </div>
