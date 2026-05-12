@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 const navLinks = [
@@ -16,6 +17,7 @@ interface HeaderProps {
 }
 
 export default function Header({ dark = false }: HeaderProps) {
+  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -59,17 +61,24 @@ export default function Header({ dark = false }: HeaderProps) {
       </Link>
 
       <nav aria-label="Main navigation" className={`hidden items-center gap-10 font-sans text-xs font-bold tracking-widest md:flex ${scrolled || dark ? 'text-cream' : 'text-forest'}`}>
-        {navLinks.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={`focus-ring rounded-sm transition-colors duration-200 ${
-              scrolled || dark ? 'text-cream hover:text-gold' : 'text-forest hover:text-gold'
-            }`}
-          >
-            {link.label}
-          </Link>
-        ))}
+        {navLinks.map((link) => {
+          const isActive = pathname === link.href
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`focus-ring rounded-sm transition-colors duration-200 ${
+                isActive
+                  ? 'border-b-[1.5px] border-[#c9a227] text-[#c9a227] pb-0.5'
+                  : scrolled || dark
+                    ? 'text-cream hover:text-gold'
+                    : 'text-forest hover:text-gold'
+              }`}
+            >
+              {link.label}
+            </Link>
+          )
+        })}
       </nav>
 
       <Link
@@ -120,16 +129,21 @@ export default function Header({ dark = false }: HeaderProps) {
           className="fixed inset-0 top-[72px] z-40 bg-darkGreen/98 px-6 py-10 md:hidden"
         >
           <nav aria-label="Mobile navigation links" className="flex flex-col gap-8 font-sans text-lg font-bold tracking-widest text-cream">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="focus-ring rounded-sm"
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`focus-ring rounded-sm ${
+                    isActive ? 'border-b-[1.5px] border-[#c9a227] text-[#c9a227] pb-0.5' : ''
+                  }`}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
             <Link
               href="/contact"
               className="focus-ring mt-4 rounded-full border border-gold px-6 py-4 text-center font-sans text-sm font-bold not-italic tracking-widest text-gold"
