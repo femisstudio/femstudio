@@ -14,55 +14,62 @@ interface PrincipleItemProps {
 }
 
 export function PrincipleItem({ value, index }: PrincipleItemProps) {
-  const { ref, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.2 })
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.15 })
   const numberRef = useParallax<HTMLParagraphElement>(0.4)
 
   const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+  const numberOpacity = prefersReducedMotion ? 0.5 : isVisible ? 0.5 : 0.3
+  const numberScale = prefersReducedMotion ? 1 : isVisible ? 1 : 1.1
+  const textOpacity = prefersReducedMotion ? 1 : isVisible ? 1 : 0
+  const textTransform = prefersReducedMotion ? 0 : isVisible ? 0 : 16
+
   return (
     <article
       ref={ref}
-      className="grid grid-cols-[auto_1fr] gap-8 md:gap-12"
+      className="grid grid-cols-[80px_1fr] md:grid-cols-[120px_1fr] gap-6 md:gap-10 items-start will-change-transform will-change-opacity"
     >
-      <div className="flex flex-shrink-0 items-start pt-1 will-change-transform will-change-opacity">
-        <p
-          ref={numberRef}
-          className="font-sans text-4xl font-bold text-gold/20 md:text-5xl"
-          style={{
-            transform: !prefersReducedMotion && !isVisible ? 'scale(1.8)' : 'scale(1)',
-            opacity: !prefersReducedMotion && !isVisible ? 0 : 0.6,
-            transition: prefersReducedMotion
-              ? 'none'
-              : `transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease-out`,
-            transitionDelay: `${index * 150}ms`,
-          }}
-        >
-          0{index + 1}
-        </p>
-      </div>
+      <p
+        ref={numberRef}
+        className="font-cormorant-garamond font-bold text-7xl md:text-8xl leading-none"
+        style={{
+          color: '#c9a227',
+          opacity: numberOpacity,
+          transform: `scale(${numberScale})`,
+          transition: prefersReducedMotion
+            ? 'none'
+            : `opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)`,
+          transitionDelay: `${index * 150}ms`,
+          willChange: 'opacity, transform',
+        }}
+      >
+        0{index + 1}
+      </p>
       <div>
         <h3
-          className="mb-4 font-serif text-2xl italic text-cream md:text-3xl will-change-transform will-change-opacity"
+          className="font-cormorant-garamond italic text-2xl md:text-3xl text-cream mb-2 will-change-transform will-change-opacity"
           style={{
-            transform: !prefersReducedMotion && !isVisible ? 'translateY(20px)' : 'translateY(0)',
-            opacity: !prefersReducedMotion && !isVisible ? 0 : 1,
+            opacity: textOpacity,
+            transform: `translateY(${textTransform}px)`,
             transition: prefersReducedMotion
               ? 'none'
-              : `transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease-out`,
-            transitionDelay: `${100 + index * 150}ms`,
+              : `opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)`,
+            transitionDelay: `${index * 150}ms`,
+            willChange: 'opacity, transform',
           }}
         >
           {value.title}
         </h3>
         <p
-          className="font-serif italic text-base leading-relaxed text-cream/75 md:text-lg will-change-transform will-change-opacity"
+          className="font-cormorant-garamond italic text-base md:text-lg text-cream will-change-transform will-change-opacity"
           style={{
-            transform: !prefersReducedMotion && !isVisible ? 'translateY(20px)' : 'translateY(0)',
-            opacity: !prefersReducedMotion && !isVisible ? 0 : 0.6,
+            opacity: textOpacity * 0.6,
+            transform: `translateY(${textTransform}px)`,
             transition: prefersReducedMotion
               ? 'none'
-              : `transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease-out`,
-            transitionDelay: `${100 + index * 150}ms`,
+              : `opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)`,
+            transitionDelay: `${index * 150}ms`,
+            willChange: 'opacity, transform',
           }}
         >
           {value.desc}

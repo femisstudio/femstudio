@@ -147,8 +147,7 @@ export default function WebDesignPage() {
             <h2 className="font-serif text-5xl italic text-cream md:text-7xl">Our Process</h2>
           </div>
 
-          <div className="relative ml-4 md:ml-6" style={{ borderLeft: '1px solid rgba(201, 162, 39, 0.3)' }}>
-            <div className="absolute left-0 top-0 bottom-0 w-px" style={{ backgroundColor: 'rgba(201, 162, 39, 0.3)' }} />
+          <div className="space-y-16 border-t border-cream/10 pt-16">
             {processSteps.map((step, index) => (
               <ProcessStep key={index} step={step} index={index} />
             ))}
