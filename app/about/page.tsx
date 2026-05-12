@@ -159,7 +159,7 @@ export default function AboutPage() {
         </section>
 
         {/* Stats Strip */}
-        <section className="w-full border-y border-cream/10 bg-darkGreen px-6 py-16 md:px-10 md:py-20" aria-labelledby="stats-heading">
+        <section className="w-full border-y border-cream/10 bg-darkGreen px-6 py-16 md:px-10" aria-labelledby="stats-heading">
           <h2 id="stats-heading" className="sr-only">
             FemStudio statistics
           </h2>
