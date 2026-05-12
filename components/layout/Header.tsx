@@ -67,9 +67,9 @@ export default function Header({ dark = false }: HeaderProps) {
             <Link
               key={link.href}
               href={link.href}
-              className={`focus-ring rounded-sm transition-colors duration-200 ${
+              className={`focus-ring rounded-sm transition-colors duration-200 no-underline ${
                 isActive
-                  ? 'border-b-[1.5px] border-[#c9a227] text-[#c9a227] pb-0.5'
+                  ? 'border-b-[1.5px] border-[#c9a227] text-[#c9a227] pb-1'
                   : scrolled || dark
                     ? 'text-cream hover:text-gold'
                     : 'text-forest hover:text-gold'
@@ -135,8 +135,8 @@ export default function Header({ dark = false }: HeaderProps) {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`focus-ring rounded-sm ${
-                    isActive ? 'border-b-[1.5px] border-[#c9a227] text-[#c9a227] pb-0.5' : ''
+                  className={`focus-ring rounded-sm no-underline ${
+                    isActive ? 'border-b-[1.5px] border-[#c9a227] text-[#c9a227] pb-1' : ''
                   }`}
                   onClick={() => setMenuOpen(false)}
                 >
