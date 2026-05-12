@@ -1,7 +1,7 @@
 'use client'
 
-import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import Button from '@/components/ui/Button'
 
 export function ProcessCTARow() {
   const rowRef = useRef<HTMLDivElement>(null)
@@ -52,12 +52,13 @@ export function ProcessCTARow() {
         Ready to begin?
       </span>
 
-      <Link
+      <Button
         href="/contact?service=web-design"
-        className="inline-block font-syncopate text-[9px] tracking-[0.3em] uppercase px-[30px] py-[15px] border border-[rgba(252,251,247,0.28)] text-cream/25 transition-all hover:bg-[#c9a227] hover:text-[#0a1f19] hover:border-[#c9a227]"
+        variant="primary"
+        ariaLabel="Start a web design project"
       >
         Start a Project
-      </Link>
+      </Button>
     </div>
   )
 }
