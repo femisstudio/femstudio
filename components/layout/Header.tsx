@@ -69,7 +69,7 @@ export default function Header({ dark = false }: HeaderProps) {
               href={link.href}
               className={`focus-ring rounded-sm transition-colors duration-200 no-underline ${
                 isActive
-                  ? 'border-b-[1.5px] border-[#c9a227] text-[#c9a227] pb-1'
+                  ? '!text-[#c9a227] border-b-[1.5px] border-[#c9a227] pb-1.5'
                   : scrolled || dark
                     ? 'text-cream hover:text-gold'
                     : 'text-forest hover:text-gold'
@@ -136,7 +136,7 @@ export default function Header({ dark = false }: HeaderProps) {
                   key={link.href}
                   href={link.href}
                   className={`focus-ring rounded-sm no-underline ${
-                    isActive ? 'border-b-[1.5px] border-[#c9a227] text-[#c9a227] pb-1' : ''
+                    isActive ? '!text-[#c9a227] border-b-[1.5px] border-[#c9a227] pb-1.5' : ''
                   }`}
                   onClick={() => setMenuOpen(false)}
                 >
