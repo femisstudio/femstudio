@@ -164,7 +164,7 @@ export default function AboutPage() {
             FemStudio statistics
           </h2>
           <div className="mx-auto max-w-6xl">
-            <div className="grid grid-cols-1 md:grid-cols-3 items-end">
+            <div className="grid grid-cols-1 md:grid-cols-3">
               {stats.map(({ value, label }, index) => (
                 <div
                   key={label}
@@ -172,7 +172,9 @@ export default function AboutPage() {
                     index > 0 ? 'border-t border-gold/30 md:border-t-0 md:border-l md:border-gold/30' : ''
                   }`}
                 >
-                  <p className="font-cormorant-garamond font-bold text-5xl md:text-6xl text-cream leading-none mb-3">
+                  <p className={`font-cormorant-garamond font-bold text-cream leading-none mb-3 whitespace-nowrap ${
+                    index === 1 ? 'text-4xl md:text-5xl' : 'text-5xl md:text-6xl'
+                  }`}>
                     {value}
                   </p>
                   <p className="font-syncopate text-xs tracking-widest uppercase mt-3" style={{ color: '#c9a227' }}>
