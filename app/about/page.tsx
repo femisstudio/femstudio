@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import { PrincipleItem } from '@/components/sections/PrincipleItem'
 
 export const metadata: Metadata = {
   title: { absolute: 'About John Adeniran | FemStudio Houston' },
@@ -201,15 +202,7 @@ export default function AboutPage() {
 
             <div className="space-y-16 border-t border-cream/10 pt-16 md:space-y-20">
               {values.map((value, index) => (
-                <article key={value.title} className="grid grid-cols-[auto_1fr] gap-8 md:gap-12">
-                  <div className="flex flex-shrink-0 items-start pt-1">
-                    <p className="font-sans text-4xl font-bold text-gold/20 md:text-5xl">0{index + 1}</p>
-                  </div>
-                  <div>
-                    <h3 className="mb-4 font-serif text-2xl italic text-cream md:text-3xl">{value.title}</h3>
-                    <p className="font-serif italic text-base leading-relaxed text-cream/75 md:text-lg">{value.desc}</p>
-                  </div>
-                </article>
+                <PrincipleItem key={value.title} value={value} index={index} />
               ))}
             </div>
           </div>

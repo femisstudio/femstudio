@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import WebDesignShowcase from '@/components/sections/WebDesignShowcase'
 import FAQSection from '@/components/sections/FAQSection'
+import { ProcessStep } from '@/components/sections/ProcessStep'
 
 export const metadata: Metadata = {
   title: { absolute: 'Custom Web Design Houston | FemStudio' },
@@ -149,18 +150,7 @@ export default function WebDesignPage() {
           <div className="relative ml-4 md:ml-6" style={{ borderLeft: '1px solid rgba(201, 162, 39, 0.3)' }}>
             <div className="absolute left-0 top-0 bottom-0 w-px" style={{ backgroundColor: 'rgba(201, 162, 39, 0.3)' }} />
             {processSteps.map((step, index) => (
-              <div key={index} className="relative pl-12 md:pl-16 pb-10 md:pb-12 last:pb-0">
-                <div
-                  className="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 rounded-full border-2 flex items-center justify-center"
-                  style={{ borderColor: 'rgba(201, 162, 39, 0.4)', backgroundColor: '#0f2d24' }}
-                >
-                  <p className="font-syncopate text-xs" style={{ color: '#c9a227' }}>
-                    {step.step}
-                  </p>
-                </div>
-                <h3 className="font-cormorant-garamond italic text-2xl md:text-3xl text-cream mb-2 mt-1">{step.title}</h3>
-                <p className="font-cormorant-garamond italic text-base md:text-lg text-cream opacity-75">{step.description}</p>
-              </div>
+              <ProcessStep key={index} step={step} index={index} />
             ))}
           </div>
         </div>
