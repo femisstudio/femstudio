@@ -133,7 +133,7 @@ export default function ContactPage() {
         </section>
 
         <FAQSection items={faqs} title="Before you inquire" className="bg-forest" />
-        <div className="bg-forest px-6 py-8 md:px-24">
+        <div className="bg-forest px-6 py-4 md:px-24">
           <div className="mx-auto max-w-3xl">
             <Link
               href="mailto:info@femsstudio.com"

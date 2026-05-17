@@ -79,22 +79,22 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="grid gap-6" aria-label="FemStudio contact form">
-      <div className="hidden" aria-hidden="true">
-        <label>
-          Company
-          <input
-            tabIndex={-1}
-            autoComplete="off"
-            value={form.company}
-            onChange={(event) => setForm({ ...form, company: event.target.value })}
-          />
-        </label>
-      </div>
+      <label className="block">
+        <span className="block font-sans text-xs tracking-[0.15em] uppercase text-cream/70 mb-2">Company (Optional)</span>
+        <input
+          id="company"
+          value={form.company}
+          onChange={(event) => setForm({ ...form, company: event.target.value })}
+          placeholder="Company (Optional)"
+          className="w-full border-0 border-b border-cream/20 bg-transparent py-4 text-xl text-cream outline-none placeholder:text-cream/30 focus:border-gold"
+        />
+      </label>
       <div className="grid gap-6 md:grid-cols-2">
         <label className="block">
-          <span className="sr-only">First Name</span>
+          <span className="block font-sans text-xs tracking-[0.15em] uppercase text-cream/70 mb-2">First Name</span>
           <input
             required
+            id="firstName"
             value={form.firstName}
             onChange={(event) => setForm({ ...form, firstName: event.target.value })}
             placeholder="First Name"
@@ -102,9 +102,10 @@ export default function ContactForm() {
           />
         </label>
         <label className="block">
-          <span className="sr-only">Last Name</span>
+          <span className="block font-sans text-xs tracking-[0.15em] uppercase text-cream/70 mb-2">Last Name</span>
           <input
             required
+            id="lastName"
             value={form.lastName}
             onChange={(event) => setForm({ ...form, lastName: event.target.value })}
             placeholder="Last Name"
@@ -113,9 +114,10 @@ export default function ContactForm() {
         </label>
       </div>
       <label className="block">
-        <span className="sr-only">Email Address</span>
+        <span className="block font-sans text-xs tracking-[0.15em] uppercase text-cream/70 mb-2">Email Address</span>
         <input
           required
+          id="email"
           type="email"
           value={form.email}
           onChange={(event) => setForm({ ...form, email: event.target.value })}
@@ -124,30 +126,30 @@ export default function ContactForm() {
         />
       </label>
       <label className="block">
-        <span className="sr-only">Phone Number</span>
+        <span className="block font-sans text-xs tracking-[0.15em] uppercase text-cream/70 mb-2">Phone Number (Optional)</span>
         <input
+          id="phone"
           value={form.phone}
           onChange={(event) => setForm({ ...form, phone: event.target.value })}
           placeholder="Phone Number (Optional)"
           className="w-full border-0 border-b border-cream/20 bg-transparent py-4 text-xl text-cream outline-none placeholder:text-cream/30 focus:border-gold"
         />
       </label>
-      <div>
-        <label className="block mb-4">
-          <span className="sr-only">Service Interest</span>
-          <select
-            value={form.service}
-            onChange={(event) => setForm({ ...form, service: event.target.value })}
-            className="w-full border-0 border-b border-cream/20 bg-transparent py-4 font-sans text-sm tracking-[0.15em] text-cream outline-none focus:border-gold"
-          >
-            {serviceOptions.map((option) => (
-              <option key={option} value={option} className="bg-darkGreen">
-                {option}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
+      <label className="block">
+        <span className="block font-sans text-xs tracking-[0.15em] uppercase text-cream/70 mb-2">Service Interest</span>
+        <select
+          id="service"
+          value={form.service}
+          onChange={(event) => setForm({ ...form, service: event.target.value })}
+          className="w-full border-0 border-b border-cream/20 bg-transparent py-4 font-sans text-sm tracking-[0.15em] text-cream outline-none focus:border-gold"
+        >
+          {serviceOptions.map((option) => (
+            <option key={option} value={option} className="bg-darkGreen">
+              {option}
+            </option>
+          ))}
+        </select>
+      </label>
 
       <fieldset className="border-0 p-0">
         <legend className="mb-4 font-sans text-sm tracking-[0.15em] text-cream/70">Budget Range (Optional)</legend>
@@ -168,9 +170,10 @@ export default function ContactForm() {
         </div>
       </fieldset>
       <label className="block">
-        <span className="sr-only">Project or session details</span>
+        <span className="block font-sans text-xs tracking-[0.15em] uppercase text-cream/70 mb-2">Project or Session Details</span>
         <textarea
           required
+          id="details"
           value={form.details}
           onChange={(event) => setForm({ ...form, details: event.target.value })}
           placeholder="Tell us about your project or session"

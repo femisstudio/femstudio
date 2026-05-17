@@ -30,19 +30,19 @@ export default function Footer() {
                 href="https://www.instagram.com/femstudio__"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Visit FemStudio on Instagram"
-                className="inline-flex items-center justify-center w-5 h-5 text-cream hover:text-gold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm"
+                className="inline-flex items-center gap-2 text-cream hover:text-gold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-2 py-1"
               >
-                <FontAwesomeIcon icon={faInstagram} />
+                <FontAwesomeIcon icon={faInstagram} className="w-4 h-4" />
+                <span className="text-xs">FemStudio on Instagram</span>
               </a>
               <a
                 href="https://www.linkedin.com/company/femstudio/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Visit FemStudio on LinkedIn"
-                className="inline-flex items-center justify-center w-5 h-5 text-cream hover:text-gold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm"
+                className="inline-flex items-center gap-2 text-cream hover:text-gold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-2 py-1"
               >
-                <FontAwesomeIcon icon={faLinkedin} />
+                <FontAwesomeIcon icon={faLinkedin} className="w-4 h-4" />
+                <span className="text-xs">FemStudio on LinkedIn</span>
               </a>
             </div>
           </div>
@@ -167,7 +167,7 @@ export default function Footer() {
       <div className="border-t border-cream/10 py-6 px-6 md:px-12 lg:px-20">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:justify-between md:items-center gap-4 text-center md:text-left">
           <p className="font-syncopate text-xs opacity-60">
-            © 2025 FemStudio. All rights reserved.
+            © 2026 FemStudio. All rights reserved.
           </p>
           <div className="flex justify-center md:justify-end gap-4 items-center flex-wrap">
             <Link
