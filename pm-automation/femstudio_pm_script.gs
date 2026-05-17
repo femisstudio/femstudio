@@ -73,16 +73,116 @@ function createMorningBriefings(calendar, monday) {
 }
 
 function sendWeeklySummaryEmail(tasks, weekNum, monday) {
-  var subject = "FemStudio — Your week " + weekNum + " tasks are ready";
-  var body = "Hey John,\n\nYour FemStudio tasks for the week are now in your Google Calendar.\n\nWEEK " + weekNum + " FOCUS:\n\n";
+  var subject = "FemStudio — Week " + weekNum + " tasks are locked in 🔒";
+
   var dayNames = ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  var dayColors = ["", "#1a1a2e", "#16213e", "#0f3460", "#1a1a2e", "#16213e"];
+  var phaseLabel = weekNum <= 2 ? "Phase 1 — Foundation" : "Phase 2 — Growth";
+
+  // Build task cards HTML
+  var taskCards = "";
+  var currentDay = 0;
+
   tasks.forEach(function(task) {
-    body += dayNames[task.day] + " — " + task.title.replace("FemStudio — ", "") + "\n";
-    body += "Time: " + task.duration + " min\n";
-    body += task.desc.substring(0, 100) + "...\n\n";
+    if (task.day !== currentDay) {
+      if (currentDay !== 0) taskCards += "</div>";
+      currentDay = task.day;
+      taskCards += '<div style="margin-bottom:8px;">';
+      taskCards += '<div style="background:#1a1a1a;color:#ffffff;padding:8px 16px;border-radius:6px 6px 0 0;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">' + dayNames[task.day] + '</div>';
+    }
+
+    var mins = task.duration;
+    var timeLabel = mins <= 15 ? "⚡ " + mins + " min" : mins <= 30 ? "🕐 " + mins + " min" : "🕑 " + mins + " min";
+
+    taskCards += '<div style="background:#ffffff;border:1px solid #e8e8e8;border-top:none;padding:14px 16px;">';
+    taskCards += '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">';
+    taskCards += '<div style="font-size:14px;font-weight:600;color:#1a1a1a;line-height:1.4;flex:1;">' + task.title.replace("FemStudio — ", "") + '</div>';
+    taskCards += '<div style="font-size:11px;color:#666666;white-space:nowrap;margin-left:12px;padding-top:2px;">' + timeLabel + '</div>';
+    taskCards += '</div>';
+    taskCards += '<div style="font-size:12px;color:#555555;line-height:1.6;border-left:3px solid #e63946;padding-left:10px;">' + task.desc + '</div>';
+    taskCards += '</div>';
   });
-  body += "REMINDERS:\n7AM — Check your calendar, know today's task\n7PM — Open VS Code, work your block\n9:30PM — Log what you finished\n\nNeed help on any task? Open Claude → FemStudio project.\n\nLet's build.\n\n— Your FemStudio PM System";
-  GmailApp.sendEmail(CONFIG.email, subject, body);
+  if (currentDay !== 0) taskCards += "</div>";
+
+  // Total time calculation
+  var totalMins = 0;
+  tasks.forEach(function(t) { totalMins += t.duration; });
+  var totalHrs = Math.floor(totalMins / 60);
+  var remainMins = totalMins % 60;
+  var totalTimeStr = totalHrs > 0 ? totalHrs + "h " + remainMins + "m" : totalMins + " min";
+
+  var html = '<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0;padding:0;background:#f4f4f4;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;">';
+
+  // Wrapper
+  html += '<div style="max-width:600px;margin:0 auto;padding:20px 12px;">';
+
+  // Header
+  html += '<div style="background:#1a1a1a;border-radius:12px 12px 0 0;padding:28px 24px 24px;">';
+  html += '<div style="font-size:11px;color:#999999;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px;">Week ' + weekNum + ' · ' + phaseLabel + '</div>';
+  html += '<div style="font-size:26px;font-weight:700;color:#ffffff;letter-spacing:-0.5px;margin-bottom:4px;">FemStudio</div>';
+  html += '<div style="font-size:14px;color:#aaaaaa;">Your weekly task brief is ready, John.</div>';
+  html += '</div>';
+
+  // Stats bar
+  html += '<div style="background:#e63946;padding:12px 24px;display:flex;">';
+  html += '<div style="flex:1;text-align:center;">';
+  html += '<div style="font-size:20px;font-weight:700;color:#ffffff;">' + tasks.length + '</div>';
+  html += '<div style="font-size:10px;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.06em;">Tasks</div>';
+  html += '</div>';
+  html += '<div style="width:1px;background:rgba(255,255,255,0.2);margin:0 8px;"></div>';
+  html += '<div style="flex:1;text-align:center;">';
+  html += '<div style="font-size:20px;font-weight:700;color:#ffffff;">5</div>';
+  html += '<div style="font-size:10px;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.06em;">Days</div>';
+  html += '</div>';
+  html += '<div style="width:1px;background:rgba(255,255,255,0.2);margin:0 8px;"></div>';
+  html += '<div style="flex:1;text-align:center;">';
+  html += '<div style="font-size:20px;font-weight:700;color:#ffffff;">' + totalTimeStr + '</div>';
+  html += '<div style="font-size:10px;color:rgba(255,255,255,0.8);text-transform:uppercase;letter-spacing:0.06em;">Total time</div>';
+  html += '</div>';
+  html += '</div>';
+
+  // Task cards
+  html += '<div style="background:#f4f4f4;padding:16px 0;">';
+  html += taskCards;
+  html += '</div>';
+
+  // Daily rhythm reminder
+  html += '<div style="background:#ffffff;border:1px solid #e8e8e8;border-radius:0 0 12px 12px;padding:20px 24px;">';
+  html += '<div style="font-size:11px;font-weight:600;color:#999999;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">Your daily rhythm</div>';
+  html += '<div style="display:flex;gap:0;">';
+
+  html += '<div style="flex:1;text-align:center;padding:12px 8px;background:#f9f9f9;border-radius:8px;margin-right:6px;">';
+  html += '<div style="font-size:18px;margin-bottom:4px;">☀️</div>';
+  html += '<div style="font-size:12px;font-weight:600;color:#1a1a1a;">7:00 AM</div>';
+  html += '<div style="font-size:10px;color:#888888;margin-top:2px;">Morning check-in</div>';
+  html += '</div>';
+
+  html += '<div style="flex:1;text-align:center;padding:12px 8px;background:#f9f9f9;border-radius:8px;margin-right:6px;">';
+  html += '<div style="font-size:18px;margin-bottom:4px;">🛠</div>';
+  html += '<div style="font-size:12px;font-weight:600;color:#1a1a1a;">7:00 PM</div>';
+  html += '<div style="font-size:10px;color:#888888;margin-top:2px;">Work block</div>';
+  html += '</div>';
+
+  html += '<div style="flex:1;text-align:center;padding:12px 8px;background:#f9f9f9;border-radius:8px;">';
+  html += '<div style="font-size:18px;margin-bottom:4px;">🌙</div>';
+  html += '<div style="font-size:12px;font-weight:600;color:#1a1a1a;">9:30 PM</div>';
+  html += '<div style="font-size:10px;color:#888888;margin-top:2px;">Close-out</div>';
+  html += '</div>';
+
+  html += '</div>';
+
+  // CTA
+  html += '<div style="margin-top:16px;text-align:center;">';
+  html += '<a href="https://claude.ai" style="display:inline-block;background:#1a1a1a;color:#ffffff;text-decoration:none;padding:12px 28px;border-radius:8px;font-size:13px;font-weight:600;letter-spacing:0.02em;">Open Claude → FemStudio project</a>';
+  html += '</div>';
+
+  html += '<div style="margin-top:16px;text-align:center;font-size:11px;color:#bbbbbb;">femsstudio.com · Auto-generated by FemStudio PM System</div>';
+  html += '</div>';
+
+  html += '</div></body></html>';
+
+  GmailApp.sendEmail(CONFIG.email, subject, "", { htmlBody: html });
+  Logger.log("Sent styled weekly email to " + CONFIG.email);
 }
 
 var TASK_BANK = {
