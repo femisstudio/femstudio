@@ -102,7 +102,7 @@ export async function POST(request: NextRequest) {
   try {
     await resend.emails.send({
       // Use noreply@femsstudio.com only after the femsstudio.com domain is verified in Resend.
-      from: 'FemStudio Contact <onboarding@resend.dev>',
+      from: 'FemStudio Contact <info@femsstudio.com>',
       to: ['info@femsstudio.com'],
       replyTo: email,
       subject: `New FemStudio inquiry from ${name}`,
