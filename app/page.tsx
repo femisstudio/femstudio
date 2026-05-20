@@ -4,7 +4,7 @@ import Header from '@/components/layout/Header'
 import HeroSplitDivider from '@/components/sections/HeroSplitDivider'
 
 export const metadata: Metadata = {
-  title: { absolute: 'FemStudio | Houston Photography & Web Design' },
+  title: { absolute: 'FemStudio | Brand Photographer and Web Designer in Houston TX' },
   description:
     'Need professional headshots or custom web design in Houston? FemStudio offers professional photography for LinkedIn and corporate use, plus premium web design for Houston businesses.',
   keywords: [

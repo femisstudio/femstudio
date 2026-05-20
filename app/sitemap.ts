@@ -1,12 +1,38 @@
-import type { MetadataRoute } from 'next'
-
-const routes = ['', '/about', '/photography', '/web-design', '/contact']
+import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((route) => ({
-    url: `https://femsstudio.com${route}`,
-    lastModified: new Date('2026-05-06'),
-    changeFrequency: route === '' ? 'weekly' : 'monthly',
-    priority: route === '' ? 1 : route === '/contact' ? 0.7 : 0.85,
-  }))
+  const baseUrl = 'https://www.femsstudio.com'
+
+  return [
+    {
+      url: baseUrl,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/portfolio`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+  ]
 }
