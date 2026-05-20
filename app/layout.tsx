@@ -109,7 +109,7 @@ const localBusinessSchema = {
   url: siteUrl,
   logo: `${siteUrl}/images/brand/femstudio-logo-horizontal.png`,
   image: [
-    `${siteUrl}/images/weddings/wedding-guest-photography-houston-06.jpg`,
+    `${siteUrl}/images/wedding-guest/wedding-guest-photography-houston-06.jpg`,
     `${siteUrl}/images/headshots/professional-headshot-houston-01.jpg`,
     `${siteUrl}/images/celebrations/prom-photography-houston-01.jpg`,
   ],
