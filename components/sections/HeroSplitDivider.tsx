@@ -9,8 +9,8 @@ export default function HeroSplitDivider() {
       {/* Left: Photography */}
       <div className="w-full md:w-1/2 h-full relative bg-[#8b8b8b] flex items-center justify-center overflow-hidden transition-all duration-700 hover:w-[55%] cursor-pointer">
         <Image
-          src="/images/editorial/porsche-editorial-brand-photography-houston-model-car-hero.jpg"
-          alt="Editorial Portrait"
+          src="/images/wedding-guest/wedding-guest-photography-houston-06.jpg"
+          alt="Wedding Photography"
           fill
           className="object-cover mix-blend-multiply opacity-80 grayscale transition-all duration-700 hover:opacity-100 hover:grayscale-0 hover:scale-105"
         />
