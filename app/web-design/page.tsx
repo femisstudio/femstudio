@@ -5,15 +5,19 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import WebDesignShowcase from '@/components/sections/WebDesignShowcase'
 import FAQSection from '@/components/sections/FAQSection'
+import WebDesignIntro from '@/components/sections/WebDesignIntro'
 import { ProcessSectionHeader } from '@/components/sections/ProcessSectionHeader'
 import { ProcessGridItem } from '@/components/sections/ProcessGridItem'
 import { ProcessCTARow } from '@/components/sections/ProcessCTARow'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Custom Web Design Houston | FemStudio' },
+  title: { absolute: 'Web Designer in Houston, TX | Custom Web Design | FemStudio' },
   description:
-    'Looking for custom web design in Houston? FemStudio builds premium, responsive websites that convert visitors and support business growth. Learn about our web design process.',
+    'Houston web designer building custom, mobile-friendly websites for small businesses. Strategy, design and launch in 4 to 8 weeks. Start your project.',
   keywords: [
+    'web designer Houston',
+    'custom web design Houston TX',
+    'small business websites Houston',
     'web design Houston',
     'custom website Houston',
     'web designer Houston',
@@ -29,8 +33,8 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://femsstudio.com/web-design',
     siteName: 'FemStudio',
-    title: 'Custom Web Design Houston | FemStudio',
-    description: 'Custom web design for Houston small businesses and creators.',
+    title: 'Web Designer in Houston, TX | Custom Web Design | FemStudio',
+    description: 'Houston web designer building custom, mobile-friendly websites for small businesses.',
     images: [
       {
         url: '/images/og/og-web-design.jpg',
@@ -42,8 +46,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Custom Web Design Houston | FemStudio',
-    description: 'Premium web design for Houston businesses that need to grow online.',
+    title: 'Web Designer in Houston, TX | Custom Web Design | FemStudio',
+    description: 'Houston web designer building custom, mobile-friendly websites for small businesses.',
     creator: '@femstudio__',
     images: ['/images/og/og-web-design.jpg'],
   },
@@ -56,7 +60,7 @@ const faqs = [
   },
   {
     q: 'Do you provide ongoing support after launch?',
-    a: 'Yes. We offer post-launch support and maintenance packages to keep your site secure and up to date.',
+    a: 'Yes. After launch you can choose a monthly care plan for updates, new pages, and performance checks, or book changes at an hourly rate when you need them.',
   },
   {
     q: 'Will the website be mobile responsive?',
@@ -64,11 +68,15 @@ const faqs = [
   },
   {
     q: 'How much does a custom website cost?',
-    a: 'Every project is scoped individually based on your goals and requirements. Contact us to discuss your project and get a custom quote.',
+    a: 'Most small business websites start at $2,500. The final quote depends on page count, features, and whether you need a CMS, and you get it in writing after a short discovery call.',
   },
   {
     q: 'Do you work with clients outside of Houston?',
-    a: 'Yes. While FemStudio is based in Houston TX we work with web design clients remotely across the United States.',
+    a: 'Yes. FemStudio is based in Houston, TX, and we also work remotely with clients across the United States, including a research lab at Emory University.',
+  },
+  {
+    q: 'Do you build websites for Houston small businesses?',
+    a: 'Yes. Small business websites in Houston are a core part of what we do, from service companies to consultancies. We can meet in person in Houston or over video, whichever is easier for you.',
   },
 ]
 
@@ -128,9 +136,6 @@ const processSteps = [
 export default function WebDesignPage() {
   return (
     <main id="main-content" className="bg-darkGreen text-cream">
-      <p className="sr-only">
-        FemStudio is a web design studio in Houston, Texas that creates custom, responsive websites for Houston-based businesses. FemStudio&rsquo;s web design services include discovery and strategy, design and prototyping, and development and launch.
-      </p>
       <Header dark={true} />
 
       {/* Hero Section */}
@@ -141,11 +146,11 @@ export default function WebDesignPage() {
         <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-32">
           <div className="grid gap-12 md:grid-cols-2 md:gap-20 md:items-center">
             <div>
-              <p className="mb-6 font-sans text-xs tracking-[0.32em] text-gold">OUR EXPERTISE</p>
+              <p className="mb-6 font-sans text-xs tracking-[0.32em] text-gold">CUSTOM WEB DESIGN · HOUSTON TX</p>
               <h1 className="mb-8 font-serif text-5xl italic leading-tight text-cream md:text-7xl">
-                Web Design
+                Custom Web Design
                 <br />
-                <span className="text-gold">&amp; Strategy</span>
+                <span className="text-gold">in Houston</span>
               </h1>
               <p className="mb-8 max-w-xl font-serif text-lg italic leading-relaxed text-cream/75">
                 Websites that don&apos;t just look premium. They work. We build for both aesthetics and outcomes.
@@ -172,6 +177,8 @@ export default function WebDesignPage() {
           </div>
         </div>
       </section>
+
+      <WebDesignIntro />
 
       {/* Projects Showcase */}
       <WebDesignShowcase />

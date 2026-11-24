@@ -8,7 +8,7 @@ export default function PhotographyCTA() {
           Ready to look the part?
         </h2>
         <p className="mb-12 font-serif text-xl text-cream opacity-70">
-          Individual headshot sessions start at $175. Team packages available.
+          Individual headshot sessions in Houston start at $175. Team packages are available, so send us your headcount for a quote.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link

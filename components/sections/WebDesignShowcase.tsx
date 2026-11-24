@@ -18,7 +18,7 @@ const projects: { climTransform: Project; cinciti: Project; johnAdeniran: Projec
     client: 'ClimTransform Lab',
     industry: 'Academic Research · Emory University',
     description: 'A research lab website for Dr. Jola Ajibade at Emory University. Built for clarity, credibility, and academic authority.',
-    alt: 'ClimTransform Lab website designed by FemStudio Houston',
+    alt: 'ClimTransform Lab research website for Emory University, designed by FemStudio in Houston',
     liveLink: 'https://climtransformlab.com',
   },
   cinciti: {
@@ -26,7 +26,7 @@ const projects: { climTransform: Project; cinciti: Project; johnAdeniran: Projec
     client: 'Cinciti',
     industry: 'Business Growth · Strategy',
     description: 'Bold conversion-focused website for a business growth and systems consultancy.',
-    alt: 'Cinciti website designed by FemStudio',
+    alt: 'Cinciti consultancy website, designed by Houston web designer FemStudio',
     liveLink: 'https://cinciticollective.com/',
   },
   johnAdeniran: {
@@ -34,7 +34,7 @@ const projects: { climTransform: Project; cinciti: Project; johnAdeniran: Projec
     client: 'John Adeniran',
     industry: 'UX/UI Portfolio · Product Design',
     description: 'A personal UX/UI and product design portfolio showcasing enterprise and digital product work.',
-    alt: 'John Adeniran UX UI portfolio website designed by FemStudio',
+    alt: 'John Adeniran UX/UI portfolio website homepage, designed by FemStudio',
     liveLink: 'https://johnadeniran.com',
   },
 }

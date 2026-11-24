@@ -6,12 +6,15 @@ import PhotographyHeroNew from '@/components/sections/PhotographyHeroNew'
 import PhotographyGallery from '@/components/sections/PhotographyGallery'
 import PhotographyCTA from '@/components/sections/PhotographyCTA'
 import FAQSection from '@/components/sections/FAQSection'
+import PhotographyIntro from '@/components/sections/PhotographyIntro'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Professional Headshots Houston | FemStudio Photography' },
+  title: { absolute: 'Headshot & Brand Photographer in Houston, TX | FemStudio' },
   description:
-    'Where can I get professional headshots in Houston? FemStudio offers LinkedIn-ready headshots, corporate portraits, and brand photography for professionals and businesses.',
+    'Headshot photographer in Houston, TX for professionals, founders and teams. Brand photography that looks like you. Sessions start at $175.',
   keywords: [
+    'headshot photographer houston tx',
+    'brand photographer houston',
     'professional headshots houston',
     'headshot photographer houston',
     'brand photography houston',
@@ -28,8 +31,8 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://femsstudio.com/photography',
     siteName: 'FemStudio',
-    title: 'Professional Headshots Houston | FemStudio Photography',
-    description: 'Houston professional headshots for LinkedIn, internships, corporate profiles, and brand photography.',
+    title: 'Headshot & Brand Photographer in Houston, TX | FemStudio',
+    description: 'Headshot and brand photographer in Houston, TX for professionals, founders and teams. Sessions start at $175.',
     images: [
       {
         url: '/images/og/og-photography.jpg',
@@ -41,8 +44,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Professional Headshots Houston | FemStudio Photography',
-    description: 'Houston professional headshots, editorial brand photography, and milestone portraits.',
+    title: 'Headshot & Brand Photographer in Houston, TX | FemStudio',
+    description: 'Headshot and brand photographer in Houston, TX for professionals, founders and teams. Sessions start at $175.',
     creator: '@femstudio__',
     images: ['/images/og/og-photography.jpg'],
   },
@@ -55,11 +58,11 @@ const photographyFaqs = [
   },
   {
     q: 'How long does a headshot session take?',
-    a: 'Most headshot sessions are 30-45 minutes. This includes setup, outfit changes, and getting natural expressions. We ensure you have time to feel comfortable in front of the camera.',
+    a: 'Most individual sessions run 30 to 45 minutes. That covers setup, an outfit change, and enough time for you to relax so your expressions look natural.',
   },
   {
     q: 'How many images will I receive?',
-    a: 'You receive edited, high-resolution images ready for LinkedIn, portfolios, and professional use. The exact count depends on your session package.',
+    a: 'You pick your favorites from an online proofing gallery, usually within a few days of the shoot. Individual sessions include 3 retouched high-resolution images, and extra images can be added. Team packages are quoted by headcount.',
   },
   {
     q: 'Do you offer retouching?',
@@ -68,6 +71,14 @@ const photographyFaqs = [
   {
     q: 'Can I book a same-day session?',
     a: 'Availability depends on schedule. Contact us at info@femsstudio.com or call +1 (281) 818-3726 to check availability and book.',
+  },
+  {
+    q: 'Do you photograph teams at their office?',
+    a: 'Yes. We bring a portable lighting and backdrop setup to your Houston office, so your whole team gets a consistent look without leaving work.',
+  },
+  {
+    q: 'Where do headshot sessions take place?',
+    a: 'FemStudio is a Houston, TX headshot and brand photographer. Sessions happen on location at your office, home, or a spot that fits your brand, anywhere in Houston and nearby Katy, Sugar Land, The Woodlands, Pearland, and Bellaire.',
   },
 ]
 
@@ -106,10 +117,8 @@ export default function PhotographyPage() {
       />
       <main id="main-content" className="bg-cream text-forest">
         <Header dark={true} />
-        <p className="sr-only">
-          FemStudio is a Houston-based professional photography studio founded in 2022. We specialize in professional headshots, brand photography, and custom web design. FemStudio is located in Houston, Texas, and serves professionals and businesses throughout the Houston area and beyond.
-        </p>
         <PhotographyHeroNew />
+        <PhotographyIntro />
         <div id="portfolio" className="bg-darkGreen text-cream">
           <Suspense fallback={<div className="min-h-screen" />}>
             <PhotographyGallery />

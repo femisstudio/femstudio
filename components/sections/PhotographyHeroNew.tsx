@@ -33,17 +33,17 @@ export default function PhotographyHeroNew() {
         <div className="w-full md:w-2/5 px-6 md:px-12 py-12 md:py-20 flex flex-col justify-center">
           {/* Eyebrow */}
           <p className="font-sans text-xs tracking-widest text-gold uppercase">
-            Houston Corporate Headshots
+            Houston Headshot &amp; Brand Photography
           </p>
 
           {/* Headline */}
           <h1 className="mt-4 font-serif italic font-bold text-4xl md:text-5xl text-forest leading-tight">
-            Headshots that look like leadership.
+            Houston headshots that look like leadership.
           </h1>
 
           {/* Subheading */}
           <p className="mt-4 font-serif text-base text-forest/70 max-w-sm leading-relaxed">
-            Premium headshot photography for professionals, founders, and teams who need to look confident, credible, and ready for the room.
+            Premium headshot and brand photography for professionals, founders, and teams who need to look confident, credible, and ready for the room.
           </p>
 
           {/* CTA Buttons */}
@@ -111,7 +111,7 @@ export default function PhotographyHeroNew() {
                   >
                     <Image
                       src={tile.src}
-                      alt="Professional corporate headshot photography by FemStudio Houston"
+                      alt={`Professional headshot ${(idx % 5) + 1} by FemStudio, headshot photographer in Houston TX`}
                       fill
                       className="object-cover"
                       style={{ objectPosition: 'center top' }}
