@@ -125,184 +125,184 @@ const allPortfolioItems = [
   // CELEBRATIONS
   {
     id: 19,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/celebrations/prom-photography-houston-01.jpg',
     alt: 'Prom celebration photography',
   },
   {
     id: 20,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/celebrations/prom-photography-houston-02.jpg',
     alt: 'Prom photography',
   },
   {
     id: 21,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/celebrations/prom-photography-houston-03.jpg',
     alt: 'Prom celebration',
   },
   {
     id: 22,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/celebrations/prom-photography-houston-04.jpg',
     alt: 'Prom photography',
   },
   {
     id: 23,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/celebrations/prom-photography-houston-05.jpg',
     alt: 'Prom celebration photography',
   },
   {
     id: 24,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/celebrations/graduation-photography-houston-01.jpg',
     alt: 'Graduation celebration',
   },
   {
     id: 25,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/celebrations/graduation-photography-houston-02.jpg',
     alt: 'Graduation photography',
   },
   {
     id: 26,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/celebrations/graduation-photography-houston-03.jpg',
     alt: 'Graduation celebration',
   },
   {
     id: 27,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/celebrations/graduation-photography-houston-04.jpg',
     alt: 'Graduation photography',
   },
   {
     id: 28,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/celebrations/graduation-photography-houston-05.jpg',
     alt: 'Graduation celebration',
   },
   {
     id: 29,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/celebrations/graduation-photography-houston-06.jpg',
     alt: 'Graduation photography',
   },
   {
     id: 30,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/celebrations/graduation-photography-houston-07.jpg',
     alt: 'Graduation celebration',
   },
   {
     id: 31,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/celebrations/graduation-photography-houston-08.jpg',
     alt: 'Graduation photography',
   },
   // CELEBRATIONS (moved from EVENTS)
   {
     id: 33,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-01.jpg',
-    alt: 'Wedding guest photography',
+    alt: 'Wedding photography in Houston by FemStudio',
   },
   {
     id: 34,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-02.jpg',
-    alt: 'Wedding guest photography',
+    alt: 'Wedding photography in Houston by FemStudio',
   },
   {
     id: 35,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-03.jpg',
-    alt: 'Wedding guest photography',
+    alt: 'Wedding photography in Houston by FemStudio',
   },
   {
     id: 36,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-04.jpg',
-    alt: 'Wedding guest photography',
+    alt: 'Wedding photography in Houston by FemStudio',
   },
   {
     id: 37,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-05.jpg',
-    alt: 'Wedding guest photography',
+    alt: 'Wedding photography in Houston by FemStudio',
   },
   {
     id: 38,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-06.jpg',
-    alt: 'Wedding guest photography',
+    alt: 'Wedding photography in Houston by FemStudio',
   },
   {
     id: 39,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-07.jpg',
-    alt: 'Wedding guest photography',
+    alt: 'Wedding photography in Houston by FemStudio',
   },
   {
     id: 40,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-08.jpg',
-    alt: 'Wedding guest photography',
+    alt: 'Wedding photography in Houston by FemStudio',
   },
   {
     id: 41,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-09.jpg',
-    alt: 'Wedding guest photography',
+    alt: 'Wedding photography in Houston by FemStudio',
   },
   {
     id: 42,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-10.jpg',
-    alt: 'Wedding guest photography',
+    alt: 'Wedding photography in Houston by FemStudio',
   },
   {
     id: 43,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-11.jpg',
-    alt: 'Wedding guest photography',
+    alt: 'Wedding photography in Houston by FemStudio',
   },
   {
     id: 44,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-12.jpg',
-    alt: 'Wedding guest photography',
+    alt: 'Wedding photography in Houston by FemStudio',
   },
   {
     id: 45,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-13.jpg',
-    alt: 'Wedding guest photography',
+    alt: 'Wedding photography in Houston by FemStudio',
   },
   {
     id: 46,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-14.jpg',
-    alt: 'Wedding guest photography',
+    alt: 'Wedding photography in Houston by FemStudio',
   },
   {
     id: 47,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-15.jpg',
-    alt: 'Wedding guest photography',
+    alt: 'Wedding photography in Houston by FemStudio',
   },
   {
     id: 48,
-    category: 'CELEBRATIONS',
+    category: 'WEDDINGS & CELEBRATIONS',
     image: '/images/wedding-guest/wedding-guest-photography-houston-16.jpg',
-    alt: 'Wedding guest photography',
+    alt: 'Wedding photography in Houston by FemStudio',
   },
 ]
 
 const featuredImages = [1, 2, 3, 4, 5, 6, 13, 14, 15, 19, 24, 26, 33, 39, 45]
 
-const filterCategories = ['ALL', 'HEADSHOTS', 'EDITORIAL & BRAND', 'CELEBRATIONS']
+const filterCategories = ['ALL', 'HEADSHOTS', 'EDITORIAL & BRAND', 'WEDDINGS & CELEBRATIONS']
 
 export default function PhotographyGallery() {
   const searchParams = useSearchParams()
@@ -315,6 +315,8 @@ export default function PhotographyGallery() {
       setActiveFilter('HEADSHOTS')
     } else if (filterParam === 'editorial') {
       setActiveFilter('EDITORIAL & BRAND')
+    } else if (filterParam === 'weddings') {
+      setActiveFilter('WEDDINGS & CELEBRATIONS')
     }
   }, [])
 
@@ -343,7 +345,7 @@ export default function PhotographyGallery() {
 
           {/* Filter Bar */}
           <div className="mb-12 pb-6 border-b border-gold/20">
-            <div className="flex gap-8 font-syncopate text-sm tracking-widest uppercase">
+            <div className="flex flex-wrap gap-x-8 gap-y-8 font-syncopate text-sm tracking-widest uppercase">
               {filterCategories.map((filter) => (
                 <button
                   key={filter}

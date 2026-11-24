@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   keywords: [
     'headshot photographer houston tx',
     'brand photographer houston',
+    'wedding photographer houston',
     'professional headshots houston',
     'headshot photographer houston',
     'brand photography houston',

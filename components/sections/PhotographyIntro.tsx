@@ -8,6 +8,10 @@ const blocks = [
     body: 'Headshots show who you are. Brand photos show what you do. We capture you at work, your space, your product, and the small details that make your business feel like yours. You leave with a library of images for your website, social media, and pitch decks instead of relying on stock photos.',
   },
   {
+    heading: 'Wedding and celebration photography',
+    body: 'We also photograph weddings, graduations, proms, and other milestones across Houston. The approach is the same: relaxed, guided, and focused on real moments you will want to keep.',
+  },
+  {
     heading: 'Where we shoot in Houston',
     body: 'Sessions happen on location across Houston, including Downtown, Midtown, the Heights, Montrose, the Galleria, and the Energy Corridor. We also travel to Katy, Sugar Land, The Woodlands, Pearland, and Bellaire.',
   },
@@ -20,7 +24,7 @@ export default function PhotographyIntro() {
         <p className="max-w-3xl font-serif text-xl leading-relaxed text-forest/80 md:text-2xl">
           FemStudio is a headshot photographer in Houston, TX. Since 2022 we&apos;ve photographed 50+ professionals, from new LinkedIn profiles to full company About pages. Sessions are relaxed and guided. We help with posture, expression, and wardrobe, then keep shooting until you see a frame you actually want to use.
         </p>
-        <div className="mt-16 grid gap-12 md:grid-cols-3 md:gap-10">
+        <div className="mt-16 grid gap-12 md:grid-cols-2 md:gap-x-16 md:gap-y-14">
           {blocks.map((block) => (
             <div key={block.heading}>
               <h2 className="font-serif text-2xl italic leading-snug text-forest">{block.heading}</h2>

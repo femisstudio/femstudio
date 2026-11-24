@@ -10,7 +10,7 @@ export default function HeroSplitDivider() {
       <div className="w-full md:w-1/2 h-full relative bg-[#8b8b8b] flex items-center justify-center overflow-hidden transition-all duration-700 hover:w-[55%] cursor-pointer">
         <Image
           src="/images/wedding-guest/wedding-guest-photography-houston-06.jpg"
-          alt="Wedding Photography"
+          alt="Wedding photography in Houston by FemStudio"
           fill
           className="object-cover mix-blend-multiply opacity-80 grayscale transition-all duration-700 hover:opacity-100 hover:grayscale-0 hover:scale-105"
         />
@@ -56,7 +56,7 @@ export default function HeroSplitDivider() {
           <div className="w-1 h-1 rounded-full bg-gold animate-pulse" style={{ animationDelay: '0.5s' }} />
 
           <span className="vertical-text font-sans text-[10px] tracking-[0.2em] text-gold/80 transition-all duration-300 hover:text-gold hover:scale-110 cursor-pointer">
-            6 CLIENT WEBSITES
+            5+ CLIENT WEBSITES
           </span>
 
           <div className="w-1 h-1 rounded-full bg-gold animate-pulse" style={{ animationDelay: '1s' }} />

@@ -30,8 +30,22 @@ export default function FAQSection({ items, heading, description, buttonText, bu
     }
   }
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  }
+
   return (
     <section className="px-6 py-24 md:px-12 lg:px-20" style={{ backgroundColor: '#fcfbf7' }} aria-label="Frequently asked questions">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, '\\u003c') }}
+      />
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Left Column - Section Intro */}
@@ -63,6 +77,8 @@ export default function FAQSection({ items, heading, description, buttonText, bu
                 style={{ borderColor: 'rgba(15, 45, 36, 0.15)' }}
               >
                 <button
+                  id={`faq-question-${index}`}
+                  type="button"
                   onClick={() => toggleAccordion(index)}
                   onKeyDown={(e) => handleKeyDown(e, index)}
                   role="button"
@@ -90,17 +106,24 @@ export default function FAQSection({ items, heading, description, buttonText, bu
                   </svg>
                 </button>
 
-                {openIndex === index && (
-                  <div
-                    id={`faq-answer-${index}`}
-                    role="region"
-                    aria-labelledby={`faq-question-${index}`}
-                    className="font-cormorant-garamond text-base leading-relaxed pt-3 pb-1"
-                    style={{ color: 'rgba(15, 45, 36, 0.7)' }}
-                  >
-                    {item.a}
+                <div
+                  id={`faq-answer-${index}`}
+                  role="region"
+                  aria-labelledby={`faq-question-${index}`}
+                  aria-hidden={openIndex !== index}
+                  className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+                    openIndex === index ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p
+                      className="font-cormorant-garamond text-base leading-relaxed pt-3 pb-1"
+                      style={{ color: 'rgba(15, 45, 36, 0.7)' }}
+                    >
+                      {item.a}
+                    </p>
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>

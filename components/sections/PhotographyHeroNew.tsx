@@ -74,7 +74,7 @@ export default function PhotographyHeroNew() {
               </p>
             </div>
             <div>
-              <p className="font-serif font-bold text-4xl text-forest">5–6</p>
+              <p className="font-serif font-bold text-4xl text-forest">5+</p>
               <p className="font-sans text-xs tracking-widest text-forest/60 uppercase mt-1">
                 client websites
               </p>

@@ -125,6 +125,13 @@ export default function Footer() {
               >
                 Branding Portraits
               </Link>
+              <Link
+                href="/photography?filter=weddings"
+                aria-label="Wedding Photography service"
+                className="font-cormorant-garamond text-base opacity-70 hover:opacity-100 hover:text-gold transition-colors duration-200 block focus:outline-none focus:ring-2 focus:ring-gold rounded-sm px-1"
+              >
+                Wedding Photography
+              </Link>
             </nav>
           </div>
 
