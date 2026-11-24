@@ -3,8 +3,12 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | FemStudio',
-  description: 'Privacy Policy for FemStudio',
+  title: { absolute: 'Privacy Policy | FemStudio Houston' },
+  description:
+    'How FemStudio, a Houston photography and web design studio, handles the information you share when you book a session or contact us.',
+  alternates: { canonical: 'https://femsstudio.com/privacy' },
+  // Placeholder page: keep it out of search results until the full policy is published.
+  robots: { index: false, follow: true },
 }
 
 export default function PrivacyPage() {

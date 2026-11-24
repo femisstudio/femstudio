@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Cormorant_Garamond, Syncopate } from 'next/font/google'
 import { SkipLink } from '@/components/ui'
+import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 import './globals.css'
 
 const siteUrl = 'https://femsstudio.com'
@@ -183,6 +184,7 @@ export default function RootLayout({
         />
         <div className="film-grain" aria-hidden="true" />
         {children}
+        <GoogleAnalytics />
       </body>
     </html>
   )

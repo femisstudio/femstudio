@@ -3,8 +3,12 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | FemStudio',
-  description: 'Terms of Service for FemStudio',
+  title: { absolute: 'Terms of Service | FemStudio Houston' },
+  description:
+    'Terms for booking FemStudio photography sessions and web design projects in Houston, TX.',
+  alternates: { canonical: 'https://femsstudio.com/terms' },
+  // Placeholder page: keep it out of search results until the full terms are published.
+  robots: { index: false, follow: true },
 }
 
 export default function TermsPage() {

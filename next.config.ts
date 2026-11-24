@@ -4,11 +4,11 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 
 const contentSecurityPolicy = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isDevelopment ? " 'unsafe-eval'" : ''}`,
+  `script-src 'self' 'unsafe-inline' https://www.googletagmanager.com${isDevelopment ? " 'unsafe-eval'" : ''}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
+  "img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com",
   "font-src 'self' data:",
-  `connect-src 'self'${isDevelopment ? ' ws: http: https:' : ''}`,
+  `connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com${isDevelopment ? ' ws: http: https:' : ''}`,
   "media-src 'self'",
   "object-src 'none'",
   "base-uri 'self'",
@@ -21,6 +21,16 @@ const contentSecurityPolicy = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    // Old URLs from the previous site that Google still knows about.
+    return [
+      { source: '/author/:slug*', destination: '/', permanent: true },
+      { source: '/digital-marketing', destination: '/web-design', permanent: true },
+      { source: '/services', destination: '/', permanent: true },
+      { source: '/contact-us', destination: '/contact', permanent: true },
+      { source: '/portfolio', destination: '/photography', permanent: true },
+    ]
+  },
   images: {
     formats: ['image/webp', 'image/avif'],
     qualities: [75, 85, 90],
