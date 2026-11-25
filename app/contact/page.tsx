@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     'web design Houston',
     'brand photography Houston',
   ],
-  alternates: { canonical: 'https://femsstudio.com/contact' },
+  alternates: { canonical: 'https://www.femsstudio.com/contact' },
   robots: {
     index: true,
     follow: true,
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    url: 'https://femsstudio.com/contact',
+    url: 'https://www.femsstudio.com/contact',
     siteName: 'FemStudio',
     title: 'Contact FemStudio | Houston Photography & Web Design Inquiries',
     description:

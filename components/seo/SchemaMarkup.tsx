@@ -18,7 +18,7 @@ export const LocalBusinessSchema = {
   '@type': 'LocalBusiness',
   name: 'FemStudio',
   description: 'Houston brand photography and custom web design studio',
-  url: 'https://femsstudio.com',
+  url: 'https://www.femsstudio.com',
   telephone: '+12818183726',
   email: 'info@femsstudio.com',
   address: {
@@ -92,7 +92,7 @@ export function BreadcrumbSchema(items: BreadcrumbItem[]) {
       '@type': 'ListItem',
       position: idx + 1,
       name: item.name,
-      item: `https://femsstudio.com${item.href}`,
+      item: `https://www.femsstudio.com${item.href}`,
     })),
   }
 }

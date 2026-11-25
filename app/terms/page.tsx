@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: { absolute: 'Terms of Service | FemStudio Houston' },
   description:
     'Terms for booking FemStudio photography sessions and web design projects in Houston, TX.',
-  alternates: { canonical: 'https://femsstudio.com/terms' },
+  alternates: { canonical: 'https://www.femsstudio.com/terms' },
   // Placeholder page: keep it out of search results until the full terms are published.
   robots: { index: false, follow: true },
 }

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     'web designer Houston',
     'small business website Houston',
   ],
-  alternates: { canonical: 'https://femsstudio.com/web-design' },
+  alternates: { canonical: 'https://www.femsstudio.com/web-design' },
   robots: {
     index: true,
     follow: true,
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    url: 'https://femsstudio.com/web-design',
+    url: 'https://www.femsstudio.com/web-design',
     siteName: 'FemStudio',
     title: 'Web Designer in Houston, TX | Custom Web Design | FemStudio',
     description: 'Houston web designer building custom, mobile-friendly websites for small businesses.',

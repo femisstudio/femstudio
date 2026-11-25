@@ -1,6 +1,6 @@
 // Photographer + LocalBusiness schema for /photography (Phase 2 task).
 // Lives in a route layout so it doesn't touch the page's copy.
-const siteUrl = 'https://femsstudio.com'
+const siteUrl = 'https://www.femsstudio.com'
 
 const photographerSchema = {
   '@context': 'https://schema.org',

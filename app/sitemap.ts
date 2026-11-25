@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 // Must match the canonical host used in page metadata (apex, no www).
 // Only list real, indexable pages: /services and /portfolio do not exist.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://femsstudio.com'
+  const baseUrl = 'https://www.femsstudio.com'
   const lastModified = new Date()
 
   return [

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     'Who is John Adeniran? Learn about FemStudio founder John Adeniran, a UX designer and photographer in Houston specializing in professional headshots and web design since 2022.',
   keywords: ['John Adeniran', 'FemStudio', 'Houston photographer', 'web design Houston', 'UX design'],
-  alternates: { canonical: 'https://femsstudio.com/about' },
+  alternates: { canonical: 'https://www.femsstudio.com/about' },
   robots: {
     index: true,
     follow: true,
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'profile',
-    url: 'https://femsstudio.com/about',
+    url: 'https://www.femsstudio.com/about',
     siteName: 'FemStudio',
     title: 'About John Adeniran | FemStudio Houston',
     description:
@@ -52,7 +52,7 @@ const personSchema = {
     '@type': 'Organization',
     name: 'FemStudio',
   },
-  url: 'https://femsstudio.com/about',
+  url: 'https://www.femsstudio.com/about',
   sameAs: 'https://www.instagram.com/femstudio__',
 }
 

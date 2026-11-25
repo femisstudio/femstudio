@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/', '/staging/', '/internal/', '/private/'],
     },
-    sitemap: 'https://femsstudio.com/sitemap.xml',
-    host: 'https://femsstudio.com',
+    sitemap: 'https://www.femsstudio.com/sitemap.xml',
+    host: 'https://www.femsstudio.com',
   }
 }

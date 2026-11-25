@@ -4,7 +4,7 @@ import { SkipLink } from '@/components/ui'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 import './globals.css'
 
-const siteUrl = 'https://femsstudio.com'
+const siteUrl = 'https://www.femsstudio.com'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],

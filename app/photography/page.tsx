@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     'editorial photography houston',
     'houston photographer',
   ],
-  alternates: { canonical: 'https://femsstudio.com/photography' },
+  alternates: { canonical: 'https://www.femsstudio.com/photography' },
   robots: {
     index: true,
     follow: true,
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    url: 'https://femsstudio.com/photography',
+    url: 'https://www.femsstudio.com/photography',
     siteName: 'FemStudio',
     title: 'Headshot & Brand Photographer in Houston, TX | FemStudio',
     description: 'Headshot and brand photographer in Houston, TX for professionals, founders and teams. Sessions start at $175.',
