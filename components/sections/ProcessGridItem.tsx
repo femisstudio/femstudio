@@ -151,8 +151,8 @@ export function ProcessGridItem({
         </div>
       </div>
 
-      {/* Column 3: Title + Description + Pills */}
-      <div>
+      {/* Column 3: Title + Description + Pills (full width under the number on mobile) */}
+      <div className="col-span-2 md:col-span-1">
         <div className="overflow-hidden mb-4">
           <h3
             ref={titleRef}
