@@ -1,8 +1,8 @@
 import Script from 'next/script'
 
-// GA4 loads only when NEXT_PUBLIC_GA_MEASUREMENT_ID is set (Vercel → Project → Settings → Environment Variables).
-// With no ID set, nothing renders, so this is safe to ship before the GA4 property exists.
-const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+// FemStudio GA4 web stream (www.femsstudio.com). A measurement ID is public, not a secret.
+// NEXT_PUBLIC_GA_MEASUREMENT_ID in Vercel overrides it if ever set.
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-DCY9QB8XYP'
 
 export default function GoogleAnalytics() {
   if (!GA_ID || !/^G-[A-Z0-9]+$/.test(GA_ID)) return null
