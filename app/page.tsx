@@ -47,6 +47,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main id="main-content" className="bg-darkGreen text-cream">
+      <h1 className="sr-only">FemStudio: headshot and brand photographer and web designer in Houston, TX</h1>
       <p className="sr-only">
         FemStudio is a Houston-based creative studio founded in 2022, specializing in professional photography and web design. Located in Houston, Texas, FemStudio serves businesses and professionals with services including professional headshots, brand photography, editorial photography, wedding photography, and custom web design.
       </p>

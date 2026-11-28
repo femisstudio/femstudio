@@ -23,10 +23,17 @@ const photographerSchema = {
     addressRegion: 'TX',
     addressCountry: 'US',
   },
-  areaServed: { '@type': 'City', name: 'Houston' },
+  areaServed: [
+    { '@type': 'City', name: 'Houston' },
+    { '@type': 'City', name: 'Katy' },
+    { '@type': 'City', name: 'Sugar Land' },
+    { '@type': 'City', name: 'The Woodlands' },
+    { '@type': 'City', name: 'Pearland' },
+    { '@type': 'City', name: 'Bellaire' },
+  ],
   founder: { '@type': 'Person', name: 'John Adeniran' },
   parentOrganization: { '@id': `${siteUrl}/#localbusiness` },
-  sameAs: ['https://www.instagram.com/femstudio__'],
+  sameAs: ['https://www.instagram.com/femstudio__', 'https://www.linkedin.com/company/femstudio/'],
 }
 
 export default function PhotographyLayout({ children }: { children: React.ReactNode }) {
