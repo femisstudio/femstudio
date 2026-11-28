@@ -12,6 +12,8 @@ export default function HeroSplitDivider() {
           src="/images/wedding-guest/wedding-guest-photography-houston-06.jpg"
           alt="Wedding photography in Houston by FemStudio"
           fill
+          priority
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover mix-blend-multiply opacity-80 grayscale transition-all duration-700 hover:opacity-100 hover:grayscale-0 hover:scale-105"
         />
 
@@ -19,9 +21,9 @@ export default function HeroSplitDivider() {
           UNIVERSE 01
         </div>
 
-        <h1 className="relative z-10 text-7xl md:text-9xl font-light italic text-cream leading-none tracking-tight text-center mt-32 drop-shadow-lg transition-all duration-700 hover:scale-110 hover:text-gold cursor-pointer whitespace-nowrap">
+        <p className="relative z-10 text-7xl md:text-9xl font-light italic text-cream leading-none tracking-tight text-center mt-32 drop-shadow-lg transition-all duration-700 hover:scale-110 hover:text-gold cursor-pointer whitespace-nowrap">
           Photography
-        </h1>
+        </p>
 
         <div className="absolute bottom-24 left-12 opacity-0 hover:opacity-100 transition-all duration-500 transform translate-y-4 hover:translate-y-0">
           <p className="font-serif text-sm text-cream/80 italic mb-4 max-w-xs">Capturing raw emotion and timeless beauty through the lens</p>
@@ -90,15 +92,15 @@ export default function HeroSplitDivider() {
         </div>
 
         <div className="relative z-10 flex flex-col items-center text-center transition-all duration-700 hover:scale-110">
-          <h1 className="text-6xl md:text-8xl font-sans font-bold text-cream tracking-tighter leading-none transition-all duration-500 hover:text-gold cursor-pointer">
+          <p className="text-6xl md:text-8xl font-sans font-bold text-cream tracking-tighter leading-none transition-all duration-500 hover:text-gold cursor-pointer">
             DIGITAL
-          </h1>
-          <h1
+          </p>
+          <p
             className="text-6xl md:text-8xl font-sans font-bold tracking-tighter leading-none mt-2 transition-all duration-500 hover:text-cream cursor-pointer"
             style={{ color: 'transparent', WebkitTextStroke: '1px rgba(252, 251, 247, 0.5)' }}
           >
             REALM
-          </h1>
+          </p>
         </div>
 
         <div className="absolute bottom-24 right-12 opacity-0 hover:opacity-100 transition-all duration-500 transform translate-y-4 hover:translate-y-0 text-right">
